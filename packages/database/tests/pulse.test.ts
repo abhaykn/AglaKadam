@@ -67,8 +67,12 @@ async function classWithChildren(
 
 async function grantConsent(studentId: string, granted = true): Promise<void> {
   await database.query(
-    `insert into public.guardian_consents (student_id, purpose, granted, guardian_name, method)
-     values ($1, 'audio_assessment', $2, 'Guardian', 'paper_form')`,
+    // Strictly later than any earlier decision, so the newest one is never ambiguous.
+    `insert into public.guardian_consents (student_id, purpose, granted, guardian_name, method, recorded_at)
+     values ($1, 'audio_assessment', $2, 'Guardian', 'paper_form', greatest(
+       clock_timestamp(),
+       coalesce((select max(recorded_at) from public.guardian_consents where student_id = $1), '-infinity') + interval '1 millisecond'
+     ))`,
     [studentId, granted],
   );
 }

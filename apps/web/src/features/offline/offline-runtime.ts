@@ -93,6 +93,8 @@ class OfflineRuntime {
   private flushing: Promise<void> | null = null;
   private flushAgain = false;
   private forceNext = false;
+  /** Latest creation time handed out, so changes made within one millisecond keep their order. */
+  private lastCreatedAt = 0;
   private sessionWaitUntil = 0;
   private timer: ReturnType<typeof setTimeout> | null = null;
   private detach: (() => void) | null = null;
@@ -300,7 +302,8 @@ class OfflineRuntime {
     }
     const checked = handler.schema.parse(payload);
     const id = crypto.randomUUID();
-    const now = Date.now();
+    const now = Math.max(Date.now(), this.lastCreatedAt + 1);
+    this.lastCreatedAt = now;
     const sealed = await sealJson(account.key, checked, outboxContext(account.userId, id));
     await account.store.replaceOutboxEntry({
       id,
