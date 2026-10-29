@@ -299,3 +299,164 @@ export function RoleArt({ kind, className }: { kind: RoleKind; className?: strin
     </svg>
   );
 }
+
+const AUTH_STARS = Array.from({ length: 46 }, (_, i) => ({
+  x: (i * 197 + 31) % 560,
+  y: (i * 71 + 14) % 330,
+  r: 0.7 + (i % 3) * 0.4,
+  delay: (i % 9) * 0.5,
+}));
+
+const AUTH_STEPS = Array.from({ length: 5 }, (_, i) => ({
+  x: 306 + i * 36,
+  y: 470 - i * 46,
+}));
+
+const AUTH_GLYPHS = [
+  { text: 'अ', x: 226, delay: 0, size: 26 },
+  { text: 'A', x: 262, delay: 1.4, size: 24 },
+  { text: 'क', x: 300, delay: 2.6, size: 26 },
+  { text: '7', x: 336, delay: 0.8, size: 24 },
+  { text: 'B', x: 246, delay: 3.4, size: 22 },
+  { text: '+', x: 318, delay: 4.2, size: 24 },
+];
+
+/**
+ * A portrait night scene for the sign-in page: an open book whose light rises as a staircase
+ * towards the moon, the mark of the product. Drawn to fit its panel whole, never cropped.
+ * Decorative only.
+ */
+export function AuthScene({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 560 700"
+      preserveAspectRatio="xMidYMax slice"
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <defs>
+        <linearGradient id="au-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#021522" />
+          <stop offset="0.6" stopColor="#0a3d63" />
+          <stop offset="1" stopColor="#12608f" />
+        </linearGradient>
+        <radialGradient id="au-glow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stopColor="#ffe9a8" stopOpacity="0.9" />
+          <stop offset="1" stopColor="#ffb347" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="au-ray" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="#ffe9a8" stopOpacity="0.38" />
+          <stop offset="1" stopColor="#ffe9a8" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="au-step" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#bfe5fa" stopOpacity="0.5" />
+          <stop offset="1" stopColor="#7cc8f2" stopOpacity="0.04" />
+        </linearGradient>
+        <linearGradient id="au-page" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#fff6d6" />
+          <stop offset="1" stopColor="#ffd98a" />
+        </linearGradient>
+        <radialGradient id="au-moon" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.35" stopColor="#f6f1d6" stopOpacity="0.28" />
+          <stop offset="1" stopColor="#f6f1d6" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      <rect width="560" height="700" fill="url(#au-sky)" />
+
+      {AUTH_STARS.map((star, i) => (
+        <circle
+          key={i}
+          cx={star.x}
+          cy={star.y}
+          r={star.r}
+          fill="#fff"
+          className="vg-twinkle"
+          style={{ animationDelay: `${star.delay}s` }}
+        />
+      ))}
+
+      <circle cx="446" cy="112" r="84" fill="url(#au-moon)" />
+      <circle cx="446" cy="112" r="30" fill="#f6f1d6" />
+      <circle cx="456" cy="104" r="26" fill="#021b2e" opacity="0.1" />
+
+      <path d="M0 520 C120 484 250 524 360 500 S500 486 560 508 V700 H0Z" fill="#0b3b5e" />
+      <path d="M0 574 C140 540 280 584 410 558 S520 548 560 562 V700 H0Z" fill="#072e49" />
+      <path d="M0 628 C160 602 320 640 470 616 S530 610 560 618 V700 H0Z" fill="#05233a" />
+
+      <path d="M226 540 L130 160 L430 160 L334 540Z" fill="url(#au-ray)" className="vg-pulse" />
+
+      {AUTH_STEPS.map((step, i) => (
+        <g key={i}>
+          <rect
+            x={step.x}
+            y={step.y}
+            width="40"
+            height={540 - step.y}
+            fill="url(#au-step)"
+            className="vg-pulse"
+            style={{ animationDelay: `${i * 0.5}s` }}
+          />
+          <rect x={step.x} y={step.y} width="40" height="3" rx="1.5" fill="#d6efff" opacity="0.8" />
+        </g>
+      ))}
+      <circle cx="466" cy="252" r="22" fill="url(#au-glow)" className="vg-pulse" />
+      <circle cx="466" cy="252" r="7.5" fill="#ffd27a" />
+
+      <ellipse cx="280" cy="546" rx="250" ry="90" fill="url(#au-glow)" className="vg-pulse" />
+
+      {AUTH_GLYPHS.map((glyph) => (
+        <text
+          key={glyph.text}
+          x={glyph.x}
+          y="520"
+          fontSize={glyph.size}
+          fill="#ffe9a8"
+          textAnchor="middle"
+          className="vg-rise"
+          style={{
+            animationDelay: `${glyph.delay}s`,
+            fontFamily: "'Noto Sans Devanagari', 'Nirmala UI', Inter, sans-serif",
+            fontWeight: 600,
+          }}
+        >
+          {glyph.text}
+        </text>
+      ))}
+
+      <g transform="translate(280 560) scale(1.12) translate(-600 -330)">
+        <path
+          d="M434 306 L434 350 C500 334 560 334 600 354 C640 334 700 334 766 350 L766 306Z"
+          fill="#7a4a22"
+        />
+        <path
+          d="M600 304 C560 286 498 286 440 304 L440 344 C500 328 560 328 600 348Z"
+          fill="url(#au-page)"
+        />
+        <path
+          d="M600 304 C640 286 702 286 760 304 L760 344 C700 328 640 328 600 348Z"
+          fill="url(#au-page)"
+        />
+        <path d="M600 304 V348" stroke="#c9a15a" strokeWidth="1.5" />
+        <g stroke="#c9a15a" strokeWidth="1" opacity="0.7" fill="none">
+          <path d="M470 312 C510 304 560 306 590 314" />
+          <path d="M470 322 C510 314 560 316 590 324" />
+          <path d="M610 314 C640 306 690 304 730 312" />
+          <path d="M610 324 C640 316 690 314 730 322" />
+        </g>
+      </g>
+
+      {FLOWERS.slice(0, 26).map((flower, i) => (
+        <circle
+          key={i}
+          cx={(flower.x * 560) / 1200}
+          cy={624 + (flower.y - 322) * 1.2}
+          r={flower.r * 0.9}
+          fill={flower.hot ? '#f7b955' : '#e8803a'}
+          opacity="0.85"
+        />
+      ))}
+    </svg>
+  );
+}

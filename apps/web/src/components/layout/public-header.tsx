@@ -163,7 +163,7 @@ export function PublicHeader() {
             ) : null}
             <Link
               to="/login"
-              className="btn-solid btn-shine rounded-full px-4 py-2.5 text-sm font-medium transition-transform hover:scale-[1.03] active:scale-[0.97] sm:px-5"
+              className="btn-solid btn-shine rounded-full px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-transform hover:scale-[1.03] active:scale-[0.97] sm:px-5"
             >
               {t('common.signIn')}
             </Link>

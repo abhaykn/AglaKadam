@@ -1,5 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
-import { useState, type ComponentPropsWithRef } from 'react';
+import { useState, type ComponentPropsWithRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/cn';
 
@@ -10,22 +10,54 @@ const inputClassName =
   'disabled:cursor-not-allowed disabled:opacity-60 ' +
   'aria-invalid:border-danger aria-invalid:focus-visible:outline-danger';
 
-export function Input({ className, type = 'text', ...props }: ComponentPropsWithRef<'input'>) {
-  return <input type={type} className={cn(inputClassName, className)} {...props} />;
+/** A small decorative icon inside the left edge of a field; it never takes the pointer. */
+function LeadingIcon({ children }: { children: ReactNode }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-y-0 left-0 flex w-11 items-center justify-center text-fg-subtle transition-colors duration-150 group-focus-within:text-primary [&>svg]:size-[1.125rem]"
+    >
+      {children}
+    </span>
+  );
+}
+
+interface LeadingIconProps {
+  /** Shown inside the left edge of the field. */
+  leadingIcon?: ReactNode;
+}
+
+export function Input({
+  className,
+  type = 'text',
+  leadingIcon,
+  ...props
+}: ComponentPropsWithRef<'input'> & LeadingIconProps) {
+  if (!leadingIcon) {
+    return <input type={type} className={cn(inputClassName, className)} {...props} />;
+  }
+  return (
+    <div className="group relative">
+      <LeadingIcon>{leadingIcon}</LeadingIcon>
+      <input type={type} className={cn(inputClassName, 'pl-11', className)} {...props} />
+    </div>
+  );
 }
 
 /** Password input with a control to show or hide what has been typed. */
 export function PasswordInput({
   className,
+  leadingIcon,
   ...props
-}: Omit<ComponentPropsWithRef<'input'>, 'type'>) {
+}: Omit<ComponentPropsWithRef<'input'>, 'type'> & LeadingIconProps) {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   return (
-    <div className="relative">
+    <div className="group relative">
+      {leadingIcon ? <LeadingIcon>{leadingIcon}</LeadingIcon> : null}
       <input
         type={visible ? 'text' : 'password'}
-        className={cn(inputClassName, 'pr-12', className)}
+        className={cn(inputClassName, 'pr-12', leadingIcon && 'pl-11', className)}
         {...props}
       />
       <button

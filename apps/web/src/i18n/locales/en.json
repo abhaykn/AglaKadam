@@ -214,6 +214,8 @@
   },
   "auth": {
     "title": "Sign in",
+    "welcome": "Welcome back",
+    "noSignup": "There is no sign-up here. Your school or administrator creates your account.",
     "subtitle": "Use the details given to you by your administrator or school.",
     "tabs": {
       "label": "Who is signing in",

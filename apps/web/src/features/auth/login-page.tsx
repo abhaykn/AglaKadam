@@ -1,7 +1,22 @@
 import { Link, useNavigate } from '@tanstack/react-router';
-import { ArrowRight, FlaskConical, Languages, LogIn, ShieldCheck, WifiOff } from 'lucide-react';
+import {
+  ArrowRight,
+  FlaskConical,
+  GraduationCap,
+  Hash,
+  KeyRound,
+  Languages,
+  Lock,
+  LogIn,
+  Mail,
+  ShieldCheck,
+  Smartphone,
+  UsersRound,
+  WifiOff,
+} from 'lucide-react';
 import { useId, useState, type PointerEvent, type SubmitEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { LogoMark } from '@/components/brand/logo';
 import { EducationBackdrop } from '@/components/layout/education-backdrop';
 import { PublicHeader } from '@/components/layout/public-header';
 import { Alert } from '@/components/ui/alert';
@@ -11,7 +26,7 @@ import { Input, PasswordInput } from '@/components/ui/input';
 import { useOnlineStatus } from '@/features/connectivity/use-online-status';
 import { cn } from '@/lib/cn';
 import { getEnv } from '@/lib/env';
-import { NightReadingScene } from '@/features/landing/illustrations';
+import { AuthScene } from '@/features/landing/illustrations';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { signInFamily, signInStaff, SignInError, type SignInFailure } from './sign-in';
 
@@ -95,7 +110,7 @@ function StaffForm({ onSignedIn }: FormProps) {
   };
 
   return (
-    <form onSubmit={(event) => void submit(event)} className="stagger space-y-5" noValidate>
+    <form onSubmit={(event) => void submit(event)} className="stagger space-y-4" noValidate>
       {error ? (
         <Alert tone="danger" assertive>
           {error}
@@ -108,6 +123,7 @@ function StaffForm({ onSignedIn }: FormProps) {
         >
           <Input
             name="username"
+            leadingIcon={usesEmail ? <Mail /> : <Smartphone />}
             type={usesEmail ? 'email' : 'text'}
             autoComplete="username"
             inputMode={usesEmail ? 'email' : 'tel'}
@@ -130,6 +146,7 @@ function StaffForm({ onSignedIn }: FormProps) {
       <Field label={t('auth.passwordLabel')}>
         <PasswordInput
           name="password"
+          leadingIcon={<Lock />}
           autoComplete="current-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
@@ -145,7 +162,7 @@ function StaffForm({ onSignedIn }: FormProps) {
       >
         {t('common.signIn')}
       </Button>
-      <p className="text-sm text-fg-muted">{t('auth.staff.forgotPassword')}</p>
+      <p className="text-xs text-fg-muted">{t('auth.staff.forgotPassword')}</p>
     </form>
   );
 }
@@ -186,7 +203,7 @@ function FamilyForm({ onSignedIn }: FormProps) {
   };
 
   return (
-    <form onSubmit={(event) => void submit(event)} className="stagger space-y-5" noValidate>
+    <form onSubmit={(event) => void submit(event)} className="stagger space-y-4" noValidate>
       {error ? (
         <Alert tone="danger" assertive>
           {error}
@@ -195,6 +212,7 @@ function FamilyForm({ onSignedIn }: FormProps) {
       <Field label={t('auth.family.learnerCodeLabel')} hint={t('auth.family.learnerCodeHint')}>
         <Input
           name="learner-code"
+          leadingIcon={<Hash />}
           autoComplete="username"
           inputMode="numeric"
           maxLength={14}
@@ -206,6 +224,7 @@ function FamilyForm({ onSignedIn }: FormProps) {
       <Field label={t('auth.family.pinLabel')}>
         <PasswordInput
           name="pin"
+          leadingIcon={<KeyRound />}
           autoComplete="current-password"
           inputMode="numeric"
           maxLength={6}
@@ -223,7 +242,7 @@ function FamilyForm({ onSignedIn }: FormProps) {
       >
         {t('common.signIn')}
       </Button>
-      <p className="text-sm text-fg-muted">{t('auth.family.help')}</p>
+      <p className="text-xs text-fg-muted">{t('auth.family.help')}</p>
     </form>
   );
 }
@@ -261,10 +280,10 @@ export function LoginPage({ redirectTo }: LoginPageProps) {
     void navigate({ to: target, replace: true });
   };
 
-  const tabs: { value: Audience; label: string }[] = [
-    { value: 'staff', label: t('auth.tabs.staff') },
-    { value: 'family', label: t('auth.tabs.family') },
-  ];
+  const tabs = [
+    { value: 'staff', label: t('auth.tabs.staff'), icon: GraduationCap },
+    { value: 'family', label: t('auth.tabs.family'), icon: UsersRound },
+  ] satisfies { value: Audience; label: string; icon: typeof GraduationCap }[];
 
   return (
     <div
@@ -276,21 +295,21 @@ export function LoginPage({ redirectTo }: LoginPageProps) {
 
       <main
         id="main-content"
-        className="page-enter relative z-10 flex flex-1 items-center justify-center px-4 py-8 sm:py-12"
+        className="page-enter relative z-10 flex flex-1 items-center justify-center px-4 py-6 sm:py-8 [@media(max-height:780px)]:py-3"
       >
-        <div className="mx-auto grid w-full max-w-6xl items-stretch gap-12 lg:grid-cols-[1fr_28rem] lg:gap-16">
+        <div className="liquid-glass card-aurora mx-auto grid w-full max-w-5xl rounded-[2rem] lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1fr)]">
           <aside
-            className="liquid-glass relative hidden min-h-[34rem] overflow-hidden rounded-3xl transition-transform duration-200 ease-out will-change-transform lg:block"
+            className="relative hidden min-h-[36rem] overflow-hidden lg:block"
             onPointerMove={tiltPanel}
             onPointerLeave={resetPanel}
           >
-            <NightReadingScene className="absolute inset-0 h-full w-full" />
-            <div className="absolute inset-0 bg-gradient-to-b from-[hsl(201_100%_9%/0.85)] via-transparent to-transparent" />
+            <AuthScene className="absolute inset-0 h-full w-full" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[hsl(201_100%_8%/0.8)] via-transparent via-45% to-transparent" />
             <span aria-hidden="true" className="shooting-star" />
             <span aria-hidden="true" className="shooting-star shooting-star-late" />
-            <div className="relative p-10">
+            <div className="relative p-9">
               <p
-                className="text-5xl leading-[0.98] tracking-[-0.03em] text-balance text-white"
+                className="text-[2.6rem] leading-[1.02] tracking-[-0.03em] text-balance text-white"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 {t('landing.hero.title')
@@ -306,13 +325,13 @@ export function LoginPage({ redirectTo }: LoginPageProps) {
                   ))}
               </p>
               <p
-                className="animate-fade-rise mt-5 max-w-sm text-base leading-relaxed text-white/70"
+                className="animate-fade-rise mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-white/70"
                 style={{ animationDelay: '700ms' }}
               >
                 {t('landing.hero.note')}
               </p>
             </div>
-            <ul className="absolute right-6 bottom-6 left-6 flex flex-wrap gap-2">
+            <ul className="absolute right-5 bottom-5 left-5 flex flex-wrap justify-center gap-2">
               {[
                 { icon: WifiOff, label: t('landing.stats.tags.offline') },
                 { icon: Languages, label: t('landing.stats.tags.bilingual') },
@@ -320,93 +339,114 @@ export function LoginPage({ redirectTo }: LoginPageProps) {
               ].map(({ icon: Icon, label }, index) => (
                 <li
                   key={label}
-                  className="liquid-glass animate-fade-rise inline-flex items-center gap-2 rounded-full bg-black/30! px-3.5 py-2 text-sm text-white backdrop-blur-md!"
+                  className="animate-fade-rise inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 text-xs text-white backdrop-blur-md"
                   style={{ animationDelay: `${index * 120 + 300}ms` }}
                 >
-                  <Icon className="size-4 text-primary" aria-hidden="true" />
+                  <Icon className="size-3.5 text-primary" aria-hidden="true" />
                   {label}
                 </li>
               ))}
             </ul>
           </aside>
-          <div className="w-full max-w-md justify-self-center">
-            <h1
-              className="text-4xl font-normal text-fg sm:text-5xl"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              {t('auth.title')}
-            </h1>
-            <p className="mt-1 text-fg-muted">{t('auth.subtitle')}</p>
 
-            <div className="liquid-glass card-aurora animate-fade-rise mt-6 rounded-3xl p-5 sm:p-7">
-              <div
-                role="tablist"
-                aria-label={t('auth.tabs.label')}
-                className="liquid-glass relative mb-6 grid h-12 grid-cols-2 rounded-full p-1"
-              >
+          <section className="flex flex-col justify-center border-white/10 p-6 sm:p-9 lg:border-l">
+            <div className="animate-fade-rise flex items-center gap-4">
+              <span className="relative inline-flex shrink-0">
                 <span
                   aria-hidden="true"
-                  className="absolute top-1 bottom-1 left-1 w-[calc(50%-0.25rem)] rounded-full bg-white shadow-md shadow-black/20 transition-transform duration-300 ease-[cubic-bezier(0.34,1.4,0.64,1)]"
-                  style={{ transform: `translateX(${audience === 'staff' ? 0 : 100}%)` }}
+                  className="absolute -inset-3 rounded-full bg-primary/25 blur-xl"
                 />
-                {tabs.map((tab) => {
-                  const selected = tab.value === audience;
-                  return (
-                    <button
-                      key={tab.value}
-                      type="button"
-                      role="tab"
-                      id={`${tabsId}-${tab.value}-tab`}
-                      aria-selected={selected}
-                      aria-controls={`${tabsId}-${tab.value}-panel`}
-                      onClick={() => setAudience(tab.value)}
-                      className={cn(
-                        'relative z-10 rounded-full text-sm font-medium transition-colors duration-300',
-                        selected ? 'text-[hsl(201_100%_13%)]' : 'text-white/75 hover:text-white',
-                      )}
-                    >
-                      {tab.label}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {!isOnline ? (
-                <Alert tone="warning" className="mb-5" title={t('auth.offlineTitle')}>
-                  <span className="inline-flex items-start gap-2">
-                    <WifiOff className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-                    {t('auth.offlineBody')}
-                  </span>
-                </Alert>
-              ) : null}
-
-              <div
-                role="tabpanel"
-                id={`${tabsId}-${audience}-panel`}
-                aria-labelledby={`${tabsId}-${audience}-tab`}
-              >
-                {audience === 'staff' ? (
-                  <StaffForm onSignedIn={onSignedIn} />
-                ) : (
-                  <FamilyForm onSignedIn={onSignedIn} />
-                )}
+                <LogoMark className="relative size-12 drop-shadow-lg" />
+              </span>
+              <div>
+                <p className="text-[0.7rem] font-semibold tracking-[0.18em] text-primary uppercase [:lang(hi)_&]:text-xs [:lang(hi)_&]:tracking-normal">
+                  {t('auth.welcome')}
+                </p>
+                <h1
+                  className="text-4xl leading-[1.15] font-normal text-fg"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  {t('auth.title')}
+                </h1>
               </div>
             </div>
+            <p className="mt-3 mb-5 text-sm text-fg-muted">{t('auth.subtitle')}</p>
 
-            {getEnv().demoWorkspaceEnabled ? (
-              <Link
-                to="/demo"
-                className="liquid-glass spotlight group btn-arrow mt-5 flex items-center gap-3 rounded-2xl p-4 text-sm text-fg transition-transform hover:-translate-y-0.5"
-              >
-                <FlaskConical className="size-5 shrink-0 text-primary" aria-hidden="true" />
-                <span>
-                  <span className="block font-medium">{t('demo.login.title')}</span>
-                  <span className="block text-fg-muted">{t('demo.login.body')}</span>
+            <div
+              role="tablist"
+              aria-label={t('auth.tabs.label')}
+              className="liquid-glass relative mb-5 grid h-11 grid-cols-2 rounded-full p-1"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute top-1 bottom-1 left-1 w-[calc(50%-0.25rem)] rounded-full bg-white shadow-md shadow-black/20 transition-transform duration-300 ease-[cubic-bezier(0.34,1.4,0.64,1)]"
+                style={{ transform: `translateX(${audience === 'staff' ? 0 : 100}%)` }}
+              />
+              {tabs.map((tab) => {
+                const selected = tab.value === audience;
+                const TabIcon = tab.icon;
+                return (
+                  <button
+                    key={tab.value}
+                    type="button"
+                    role="tab"
+                    id={`${tabsId}-${tab.value}-tab`}
+                    aria-selected={selected}
+                    aria-controls={`${tabsId}-${tab.value}-panel`}
+                    onClick={() => setAudience(tab.value)}
+                    className={cn(
+                      'relative z-10 inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition-colors duration-300',
+                      selected ? 'text-[hsl(201_100%_13%)]' : 'text-white/75 hover:text-white',
+                    )}
+                  >
+                    <TabIcon className="size-4 shrink-0" aria-hidden="true" />
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {!isOnline ? (
+              <Alert tone="warning" className="mb-4" title={t('auth.offlineTitle')}>
+                <span className="inline-flex items-start gap-2">
+                  <WifiOff className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                  {t('auth.offlineBody')}
                 </span>
-                <ArrowRight className="ml-auto size-5 shrink-0 text-primary" aria-hidden="true" />
-              </Link>
+              </Alert>
             ) : null}
-          </div>
+
+            <div
+              role="tabpanel"
+              id={`${tabsId}-${audience}-panel`}
+              aria-labelledby={`${tabsId}-${audience}-tab`}
+            >
+              {audience === 'staff' ? (
+                <StaffForm onSignedIn={onSignedIn} />
+              ) : (
+                <FamilyForm onSignedIn={onSignedIn} />
+              )}
+            </div>
+
+            <div className="mt-5 space-y-3 border-t border-white/10 pt-4">
+              {getEnv().demoWorkspaceEnabled ? (
+                <Link
+                  to="/demo"
+                  className="group btn-arrow flex items-center gap-3 rounded-xl border border-white/15 bg-white/[0.04] px-3.5 py-2.5 text-sm text-fg transition-colors hover:border-primary/60 hover:bg-white/[0.08]"
+                >
+                  <FlaskConical className="size-5 shrink-0 text-primary" aria-hidden="true" />
+                  <span className="min-w-0">
+                    <span className="block font-medium">{t('demo.login.title')}</span>
+                    <span className="block text-xs text-fg-muted">{t('demo.login.body')}</span>
+                  </span>
+                  <ArrowRight className="ml-auto size-4 shrink-0 text-primary" aria-hidden="true" />
+                </Link>
+              ) : null}
+              <p className="flex items-start gap-2 text-xs text-fg-muted">
+                <ShieldCheck className="mt-0.5 size-3.5 shrink-0 text-primary" aria-hidden="true" />
+                {t('auth.noSignup')}
+              </p>
+            </div>
+          </section>
         </div>
       </main>
     </div>
