@@ -1,4 +1,30 @@
-# Agla Kadam · अगला कदम
+<div align="center">
+
+<img src="docs/images/banner.svg" alt="Agla Kadam: every school visit should leave one clear next step" width="100%">
+
+<br>
+
+[![Live app](https://img.shields.io/badge/live%20app-agla--kadam--pi.vercel.app-7CC8F2?style=for-the-badge&logo=vercel&logoColor=white&labelColor=012B42)](https://agla-kadam-pi.vercel.app)
+[![CI](https://img.shields.io/github/actions/workflow/status/abhaykn/AglaKadam/ci.yml?branch=main&style=for-the-badge&label=CI&logo=githubactions&logoColor=white&labelColor=012B42)](https://github.com/abhaykn/AglaKadam/actions/workflows/ci.yml)
+[![Licence: MIT](https://img.shields.io/badge/licence-MIT-FFD27A?style=for-the-badge&labelColor=012B42)](LICENSE)
+
+![PWA](https://img.shields.io/badge/PWA-works%20offline-2D86B4?style=flat-square&logo=pwa&logoColor=white)
+![React](https://img.shields.io/badge/React-19-2D86B4?style=flat-square&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-2D86B4?style=flat-square&logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Postgres%20%2B%20RLS-2D86B4?style=flat-square&logo=supabase&logoColor=white)
+![Python](https://img.shields.io/badge/Python-speech%20engine-2D86B4?style=flat-square&logo=python&logoColor=white)
+![Languages](https://img.shields.io/badge/languages-Hindi%20%C2%B7%20English-2D86B4?style=flat-square)
+
+**[Live app](https://agla-kadam-pi.vercel.app)** &nbsp;·&nbsp;
+**[Try the demo](https://agla-kadam-pi.vercel.app/demo)** &nbsp;·&nbsp;
+**[The loop](#the-loop)** &nbsp;·&nbsp;
+**[AI services](#ai-services-and-models)** &nbsp;·&nbsp;
+**[Architecture](#architecture)** &nbsp;·&nbsp;
+**[Run it locally](#run-it-locally)**
+
+</div>
+
+---
 
 Agla Kadam helps Cluster Resource Persons (CRPs) turn routine school visits into measured
 improvement in how children learn to read. It plans the CRP's week from an honest learning signal,
@@ -8,7 +34,20 @@ checks at the next visit and in the next month's reading check whether the step 
 It is an installable web app for low-cost Android phones. It works offline on 2G and is built
 around NIPUN Bharat's goals for Classes 1 to 3, in Hindi and English.
 
-**Live app:** <https://agla-kadam-pi.vercel.app>
+<p align="center">
+  <a href="https://agla-kadam-pi.vercel.app"><img src="docs/images/landing.jpg" alt="The Agla Kadam home page" width="92%"></a>
+</p>
+
+## Highlights
+
+| | |
+| --- | --- |
+| **One clear next step** | Every visit ends with one strength, one practice and a check-back date, agreed with the teacher, and the next visit and the next month's reading check show whether it worked. |
+| **Works offline** | Attendance, reading checks, visits, coaching, marks and notes are all kept encrypted on the phone and sent in order when a network returns. |
+| **Hindi and English** | The whole interface is in both languages, and a reading check is taken in the class's own language. |
+| **Speech scoring with open models** | Children's recordings never leave our own engine: IndicConformer and Whisper score reading and spoken English. |
+| **Evidence, not rankings** | Offices see totals over at least five classes and three schools, and every report says how much of it was independently confirmed. |
+| **Private by design** | Audio only, guardian consent before any recording, row level security on every table, recordings deleted after 30 days. |
 
 ## Try it
 
@@ -20,7 +59,30 @@ days. A banner switches between roles, and a short guide lists what to try in ea
 
 Everything in a demonstration district is simulated, and it is kept apart from real data.
 
+## Who uses it
+
+| Role | What they do in the app |
+| --- | --- |
+| **Teacher** | Takes attendance, records the week's Pulse children, enters exam marks, shares results and notes with families. |
+| **Cluster Resource Person** | Plans the week, prepares and runs visits, agrees one step with each teacher, drafts and scores feedback with Sahayak, rehearses hard conversations. |
+| **Block education officer** | Sees totals over many classes and schools: never rankings of a person or a class. |
+| **Family** | Sees the child's attendance, shared results and the teacher's notes, and practises reading and numbers at home. |
+
 ## The loop
+
+```mermaid
+flowchart LR
+    P["<b>Pulse</b><br/>a one-minute reading<br/>check, monthly"] --> L["<b>Plan</b><br/>the week, ranked<br/>by need"]
+    L --> O["<b>Observe</b><br/>focus items, moments,<br/>a voice note"]
+    O --> C["<b>Coach</b><br/>one step agreed<br/>with the teacher"]
+    C --> F["<b>Follow up</b><br/>did the step work?"]
+    F -- "next month's Pulse" --> P
+    style P fill:#0A4F78,stroke:#7CC8F2,color:#fff
+    style L fill:#0A4F78,stroke:#7CC8F2,color:#fff
+    style O fill:#0A4F78,stroke:#7CC8F2,color:#fff
+    style C fill:#0A4F78,stroke:#FFD27A,color:#fff
+    style F fill:#0A4F78,stroke:#7CC8F2,color:#fff
+```
 
 | Step | What happens | Where AI helps |
 | --- | --- | --- |
@@ -78,14 +140,36 @@ recording is about 120 KB.
 
 ## Architecture
 
-```text
-Phone (installable web app, offline)        Supabase (free plan)                   Engine (Python)
-React + TanStack, Workbox service worker -> Postgres with row level security <- nightly: GitHub Actions (CPU)
-encrypted outbox in IndexedDB               Auth, Storage (audio kept 30 days)     or Kaggle (GPU), or locally
-                                            Edge Functions (Deno):                 IndicConformer + Whisper
-                                            sahayak -> Groq / Claude
-                                            demo, notify (Web Push), accounts
+```mermaid
+flowchart LR
+    subgraph Phone["Phone: installable web app, offline"]
+        A["React + TanStack<br/>Workbox service worker"]
+        B[("Encrypted outbox<br/>IndexedDB")]
+        A --- B
+    end
+    subgraph Supabase["Supabase: free plan"]
+        D[("Postgres<br/>row level security")]
+        S["Auth and Storage<br/>audio kept 30 days"]
+        E["Edge Functions (Deno)<br/>sahayak · demo · notify · accounts"]
+    end
+    subgraph Engine["Speech engine: Python"]
+        G["IndicConformer + Whisper<br/>nightly on GitHub Actions (CPU)<br/>or Kaggle (GPU), or locally"]
+    end
+    Phone -->|"syncs in order"| Supabase
+    G -->|"scores recordings"| D
+    S -->|"audio"| G
+    E -->|"drafts, scores, order photos"| L["Groq · Claude"]
+    style Phone fill:#033B5C,stroke:#7CC8F2,color:#fff
+    style Supabase fill:#033B5C,stroke:#7CC8F2,color:#fff
+    style Engine fill:#033B5C,stroke:#FFD27A,color:#fff
 ```
+
+| Layer | Built with |
+| --- | --- |
+| Web app | React 19, TypeScript, Vite, Tailwind CSS 4, TanStack Router and Query, Workbox, i18next |
+| Data | Supabase: Postgres with row level security, Auth, Storage, Edge Functions (Deno) |
+| Speech engine | Python, IndicConformer, faster-whisper |
+| Hosting and automation | Vercel, GitHub Actions, optionally Kaggle |
 
 ## Repository
 
@@ -150,7 +234,8 @@ npm run check:live    # end-to-end check of a hosted project (asks for its secre
 cd engine && pytest   # the speech engine
 ```
 
-The suites cover the web app, every database policy and role, the Edge Functions and the engine.
+The suites cover the web app, every database policy and role, the Edge Functions and the engine:
+about 360 database tests, 365 web tests, 137 Edge Function tests and 25 live-check tests, run on every push.
 `check:live` signs in as each role on the hosted project and runs the whole loop, from importing a
 school to Pulse, a visit, exams, Sahayak and the demonstration, then removes everything it made.
 

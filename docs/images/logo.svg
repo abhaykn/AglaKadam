@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 40 40" role="img" aria-label="Agla Kadam">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7CC8F2"/>
+      <stop offset="1" stop-color="#2D86B4"/>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#tile)"/>
+  <path d="M9 29V23.5H16V17.5H23V11.5H31V29Z" fill="#04293F" stroke="#04293F" stroke-width="1.5" stroke-linejoin="round"/>
+  <circle cx="18.9" cy="12.2" r="2.6" fill="#FFD27A"/>
+</svg>
