@@ -1,11 +1,11 @@
 import { queryOptions, useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Megaphone, Paperclip, Send, Trash2, X } from 'lucide-react';
+import { Megaphone, Paperclip, Send, Trash2, X } from 'lucide-react';
 import { useRef, useState, type SubmitEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { todayInIndia } from '@shared/accounts.ts';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -189,13 +189,7 @@ export function ClassNotesPage({ classSectionId }: { classSectionId: string }) {
 
   return (
     <div className="container-page space-y-6 py-8">
-      <Link
-        to="/app/teacher"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('notes.back')}
-      </Link>
+      <BackLink to="/app/teacher">{t('notes.back')}</BackLink>
       <PageHeader
         title={t('notes.title')}
         description={

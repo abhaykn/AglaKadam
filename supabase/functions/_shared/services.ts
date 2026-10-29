@@ -235,7 +235,7 @@ export interface SahayakServices {
     debrief: Omit<RehearsalDebrief, 'id' | 'createdAt'>,
     crpId: string,
   ): Promise<RehearsalDebrief>;
-  /** Whether the account belongs to a demonstration district, whose visitors never use Claude. */
+  /** Whether the account belongs to a demonstration district, whose visitors have smaller allowances. */
   isDemonstration(profileId: string): Promise<boolean>;
 }
 

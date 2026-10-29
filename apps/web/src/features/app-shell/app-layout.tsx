@@ -15,6 +15,7 @@ import { DemoBanner } from '@/features/demo/demo-banner';
 import { sessionStore } from '@/features/auth/session';
 import { useOnlineStatus } from '@/features/connectivity/use-online-status';
 import { SyncIndicator } from '@/features/offline/sync-center';
+import { TutorLauncher } from '@/features/tutor/tutor-launcher';
 import { setLanguage } from '@/features/preferences/preferences';
 import { getEnv } from '@/lib/env';
 import { readLocal, writeLocal } from '@/lib/local-storage';
@@ -105,7 +106,7 @@ function ShellFrame({ access, children }: { access: Access | null; children: Rea
       <main
         id="main-content"
         tabIndex={-1}
-        className="page-enter relative z-10 flex-1 outline-none"
+        className="page-enter relative z-10 flex-1 pb-20 outline-none"
       >
         {children}
       </main>
@@ -210,6 +211,7 @@ export function AppLayout() {
       <ShellFrame access={access}>
         <Outlet />
       </ShellFrame>
+      <TutorLauncher access={access} />
     </AccessContext>
   );
 }

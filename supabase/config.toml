@@ -437,5 +437,8 @@ verify_jwt = false
 [functions.sahayak]
 verify_jwt = true
 
+[functions.disha]
+verify_jwt = true
+
 [functions.demo]
 verify_jwt = false

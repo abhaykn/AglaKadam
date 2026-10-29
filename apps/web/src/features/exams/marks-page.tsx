@@ -1,12 +1,13 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Link, useBlocker } from '@tanstack/react-router';
+import { useBlocker } from '@tanstack/react-router';
 import type { TFunction } from 'i18next';
-import { ArrowLeft, Eraser, History, RotateCcw, Save, Undo2, UserX } from 'lucide-react';
+import { Eraser, History, RotateCcw, Save, Undo2, UserX } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { todayInIndia } from '@shared/accounts.ts';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -117,14 +118,9 @@ export function MarksPage({
     roll.data ?? (paper && classRoster.data ? rollOn(classRoster.data, heldOn) : undefined);
 
   const back = (
-    <Link
-      to="/app/exams/$classId"
-      params={{ classId: classSectionId }}
-      className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-    >
-      <ArrowLeft className="size-4" aria-hidden="true" />
+    <BackLink to="/app/exams/$classId" params={{ classId: classSectionId }}>
       {t('exams.marks.back')}
-    </Link>
+    </BackLink>
   );
 
   if (!paper || !stored || !children) {

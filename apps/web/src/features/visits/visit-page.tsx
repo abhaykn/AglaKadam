@@ -1,7 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import {
-  ArrowLeft,
   Check,
   CircleDashed,
   Clock,
@@ -15,6 +14,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { todayInIndia } from '@shared/accounts.ts';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -191,14 +191,9 @@ export function VisitPage({ visitId }: { visitId: string }) {
 
   return (
     <div className="container-page space-y-5 py-8">
-      <Link
-        to="/app/crp/class/$classId"
-        params={{ classId }}
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
+      <BackLink to="/app/crp/class/$classId" params={{ classId }}>
         {t('visits.visit.backToClass')}
-      </Link>
+      </BackLink>
       <PageHeader
         title={title}
         description={[

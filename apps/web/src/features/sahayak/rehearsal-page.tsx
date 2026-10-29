@@ -1,17 +1,9 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
-import {
-  ArrowLeft,
-  CircleCheck,
-  CircleX,
-  LoaderCircle,
-  MessagesSquare,
-  RotateCcw,
-  Send,
-} from 'lucide-react';
+import { CircleCheck, CircleX, LoaderCircle, MessagesSquare, RotateCcw, Send } from 'lucide-react';
 import { useEffect, useRef, useState, type SubmitEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { ChoiceGroup } from '@/components/ui/choice-group';
@@ -172,13 +164,7 @@ export function RehearsalPage() {
 
   return (
     <div className="container-page space-y-6 py-8">
-      <Link
-        to="/app/crp"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('visits.plan.back')}
-      </Link>
+      <BackLink to="/app/crp">{t('visits.plan.back')}</BackLink>
       <PageHeader
         title={t('sahayak.rehearsal.title')}
         description={t('sahayak.rehearsal.description')}

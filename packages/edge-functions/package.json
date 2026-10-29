@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint . --max-warnings 0 && node scripts/deno.mjs lint --no-config ../../supabase/functions",
-    "typecheck": "tsc --noEmit && node scripts/deno.mjs check --no-lock --no-config ../../supabase/functions/account-admin/index.ts ../../supabase/functions/account-password/index.ts ../../supabase/functions/family-sign-in/index.ts ../../supabase/functions/pulse-retention/index.ts ../../supabase/functions/notify/index.ts ../../supabase/functions/sahayak/index.ts ../../supabase/functions/demo/index.ts",
+    "typecheck": "tsc --noEmit && node scripts/deno.mjs check --no-lock --no-config ../../supabase/functions/account-admin/index.ts ../../supabase/functions/account-password/index.ts ../../supabase/functions/family-sign-in/index.ts ../../supabase/functions/pulse-retention/index.ts ../../supabase/functions/notify/index.ts ../../supabase/functions/sahayak/index.ts ../../supabase/functions/disha/index.ts ../../supabase/functions/demo/index.ts",
     "test": "vitest run"
   },
   "devDependencies": {

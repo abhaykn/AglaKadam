@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
-import { ArrowLeft, FileSpreadsheet, Printer, Share2, Undo2 } from 'lucide-react';
+import { FileSpreadsheet, Printer, Share2, Undo2 } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -134,19 +134,19 @@ export function ResultSheetPage({
   });
   useDocumentTitle(t('exams.result.title'));
 
-  const linkClass =
-    'inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline print:hidden';
   // Teachers go back to the class's exams; a CRP to the cluster's.
   const back = workspacesOf(access).includes('teacher') ? (
-    <Link to="/app/exams/$classId" params={{ classId: classSectionId }} className={linkClass}>
-      <ArrowLeft className="size-4" aria-hidden="true" />
+    <BackLink
+      to="/app/exams/$classId"
+      params={{ classId: classSectionId }}
+      className="print:hidden"
+    >
       {t('exams.marks.back')}
-    </Link>
+    </BackLink>
   ) : (
-    <Link to="/app/crp/exams" className={linkClass}>
-      <ArrowLeft className="size-4" aria-hidden="true" />
+    <BackLink to="/app/crp/exams" className="print:hidden">
       {t('exams.marks.back')}
-    </Link>
+    </BackLink>
   );
 
   const data = result.data;

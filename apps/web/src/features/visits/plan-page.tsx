@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft, CalendarDays, CalendarPlus, Info, School, X } from 'lucide-react';
+import { CalendarDays, CalendarPlus, Info, School, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { todayInIndia } from '@shared/accounts.ts';
+import { BackLink } from '@/components/ui/back-link';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
@@ -90,13 +91,7 @@ export function PlanPage() {
 
   return (
     <div className="container-page space-y-6 py-8">
-      <Link
-        to="/app/crp"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('visits.plan.back')}
-      </Link>
+      <BackLink to="/app/crp">{t('visits.plan.back')}</BackLink>
       <PageHeader
         title={t('visits.plan.title')}
         description={t('visits.plan.description', {

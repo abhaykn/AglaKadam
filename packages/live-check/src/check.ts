@@ -1134,6 +1134,36 @@ export async function runLiveCheck(
     },
   );
 
+  await report.check('Disha answers every signed-in role as itself, and nobody else', async () => {
+    const chat = (persona: string) => ({
+      action: 'chat',
+      persona,
+      language: 'en',
+      messages: [{ role: 'user', text: 'What is a noun?' }],
+    });
+    const refused = await invoke(visitor, 'disha', chat('teacher'));
+    expect(refused.status === 401, `disha answered ${answered(refused)} without a sign-in.`);
+    // Asking as another kind of person is turned away before any service is asked.
+    const asCrp = await invoke(teacher, 'disha', chat('crp'));
+    if (asCrp.status === 503 && errorCodeOf(asCrp) === 'not_configured') {
+      report.note('Disha is not set up yet: run `npm run ai:keys` (setup guide, Part 10).');
+      return;
+    }
+    expect(
+      asCrp.status === 403,
+      `disha answered ${answered(asCrp)} to a teacher speaking as a CRP.`,
+    );
+    const empty = await invoke(teacher, 'disha', {
+      action: 'chat',
+      persona: 'teacher',
+      language: 'en',
+    });
+    expect(
+      empty.status === 400,
+      `disha answered ${answered(empty)} to a request without messages.`,
+    );
+  });
+
   await report.check('Sahayak answers CRPs only, within their allowance', async () => {
     const refused = await invoke(visitor, 'sahayak', { action: 'rehearse', language: 'en' });
     expect(refused.status === 401, `sahayak answered ${answered(refused)} without a sign-in.`);

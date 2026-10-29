@@ -6,6 +6,7 @@ import { withSendingPaused } from '@/features/offline/background-sync';
 import { offlineRuntime } from '@/features/offline/offline-runtime';
 import { forgetPushOnSignOut } from '@/features/notifications/push';
 import { syncStatusStore } from '@/features/offline/sync-status';
+import { endConversations } from '@/features/tutor/tutor-chat';
 import { createStore } from '@/lib/store';
 
 /** Set while the person is asked to confirm signing out with changes that are not uploaded. */
@@ -38,6 +39,7 @@ export function useFinishSignOut(): () => Promise<void> {
         await signOut();
       });
       queryClient.clear();
+      endConversations();
       await navigate({ to: '/login', replace: true });
     } finally {
       signingOutStore.set(false);

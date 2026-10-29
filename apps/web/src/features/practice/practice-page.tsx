@@ -1,6 +1,4 @@
-import { Link } from '@tanstack/react-router';
 import {
-  ArrowLeft,
   ArrowRight,
   BookOpenText,
   Calculator,
@@ -14,6 +12,7 @@ import { useMemo, useState } from 'react';
 import type { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { todayInIndia } from '@shared/accounts.ts';
+import { BackLink } from '@/components/ui/back-link';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody } from '@/components/ui/card';
 import { ChoiceGroup } from '@/components/ui/choice-group';
@@ -63,7 +62,7 @@ function Stars({ count, label }: { count: number; label: string }) {
 }
 
 /** A story to read, and a question about it. */
-function StoryPractice({
+export function StoryPractice({
   language,
   grade,
   speak,
@@ -75,13 +74,19 @@ function StoryPractice({
   onStar: () => void;
 }) {
   const { t } = useTranslation();
-  const stories = practiceStories(language, grade);
+  // The stories come in a new order each time the activity opens, and each is told once before any
+  // is told again; the answers to a question are shuffled afresh every time as well.
+  const [seed] = useState(() => Math.floor(Math.random() * 1_000_000));
+  const stories = useMemo(
+    () => shuffled(practiceStories(language, grade), seed),
+    [language, grade, seed],
+  );
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState<string | null>(null);
   const story = stories[index % stories.length];
   const choices = useMemo(
-    () => (story ? shuffled(story.choices, index * 31 + grade) : []),
-    [story, index, grade],
+    () => (story ? shuffled(story.choices, seed + index * 31 + grade) : []),
+    [story, seed, index, grade],
   );
   if (!story) {
     return null;
@@ -371,13 +376,7 @@ export function PracticePage() {
 
   return (
     <div className="container-page space-y-6 py-8">
-      <Link
-        to="/app/family"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('practice.back')}
-      </Link>
+      <BackLink to="/app/family">{t('practice.back')}</BackLink>
       <PageHeader
         title={t('practice.title')}
         description={t('practice.description', { grade })}

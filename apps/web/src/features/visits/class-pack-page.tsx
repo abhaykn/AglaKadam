@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from '@tanstack/react-router';
 import {
-  ArrowLeft,
   AudioLines,
   CalendarPlus,
   ClipboardList,
@@ -16,6 +15,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { todayInIndia } from '@shared/accounts.ts';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -161,13 +161,7 @@ export function ClassPackPage({ classSectionId }: { classSectionId: string }) {
 
   return (
     <div className="container-page space-y-5 py-8">
-      <Link
-        to="/app/crp/plan"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('visits.pack.backToPlan')}
-      </Link>
+      <BackLink to="/app/crp/plan">{t('visits.pack.backToPlan')}</BackLink>
       <PageHeader
         title={title}
         description={details.data ? schoolName(details.data.school.id) : undefined}

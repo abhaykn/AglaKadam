@@ -107,10 +107,11 @@ Every external AI service the product calls, what it does and the keys it needs:
 | Groq API: `openai/gpt-oss-120b` | Feedback drafts; the judged parts of the feedback score | `supabase/functions/sahayak` | `GROQ_API_KEY` (Edge Function secret) |
 | Groq API: `qwen/qwen3.8-27b` (vision) | Reading a photo of a block order into tasks | `supabase/functions/sahayak` | `GROQ_API_KEY` |
 | Groq API: `llama-3.3-70b-versatile` | The rehearsal room when Claude is not available | `supabase/functions/sahayak` | `GROQ_API_KEY` |
-| Anthropic Claude API: `claude-sonnet-5-5` | The rehearsal room's simulated teacher and the debrief after it | `supabase/functions/sahayak` | `ANTHROPIC_API_KEY` (optional; falls back to Groq) |
+| Anthropic Claude API: `claude-sonnet-5-5` | **First choice for Disha**, the learning guide; the rehearsal room's simulated teacher and the debrief after it | `supabase/functions/disha`, `supabase/functions/sahayak` | `ANTHROPIC_API_KEY` (optional; Groq answers when Claude cannot) |
+| Groq API: `openai/gpt-oss-120b`, then `llama-3.3-70b-versatile` | Disha when Claude's credit is used up, its key is missing or it is busy; the second model when the first is busy | `supabase/functions/disha` | `GROQ_API_KEY` |
 | The phone's own speech synthesis | Reading words and stories aloud in the family's practice | the browser | none |
 
-Models can be changed with the secrets `GROQ_TEXT_MODEL`, `GROQ_VISION_MODEL`, `GROQ_CHAT_MODEL`
+Models can be changed with the secrets `GROQ_TEXT_MODEL`, `GROQ_TUTOR_MODEL`, `GROQ_VISION_MODEL`, `GROQ_CHAT_MODEL`
 and `CLAUDE_MODEL`. Children's recordings are never sent to a third-party AI service: speech is
 recognised by the open models in our own engine.
 
@@ -128,11 +129,32 @@ recognised by the open models in our own engine.
 - **Allowances:** daily limits per person and per project, smaller ones for demonstration visitors,
   and a request that generated nothing is given back.
 
+### Disha, the learning guide
+
+Every signed-in person (teacher, CRP, officer, administrator or family) has **Disha** one tap
+away on every page: a chat for any question about learning and teaching, answered in the manner
+of the person's own role. A child gets short, step-by-step help in simple words; a teacher gets a
+ten-minute classroom activity; a CRP gets help with a visit or a hard conversation; an officer gets
+help reading what the totals can and cannot say.
+
+- **Claude first, Groq after.** Disha asks Claude while the project's credit and each person's daily
+  share last. When Claude cannot answer (credit used up, key missing or revoked, busy, down), the
+  answer comes from Groq, with a second Groq model behind the first. A service that is known to be
+  out is left alone for a while, so a spent credit costs one failed call and not one for every
+  question. Each answer says which service wrote it.
+- **One role at a time.** The role is checked on the server against the account: nobody can speak
+  as a role they do not hold.
+- **Privacy.** Email addresses, phone numbers and ten-digit codes are taken out of what is typed
+  before it is sent; Disha is told never to ask for names or personal details. Conversations are
+  kept in memory only and end with the page or the account.
+- **Allowances.** 80 questions a day for each person, 25 for a demonstration visitor (400 for all
+  demonstration districts together); a question no service could answer is given back.
+
 ## Works offline
 
 | Works without a network | Needs a network |
 | --- | --- |
-| Attendance, Pulse recording (a week that opened offline is unlocked by the CRP's QR code), visits with focus items, moments and voice notes, coaching and agreement, exam marks, notes to families, consent records, home practice | Signing in on a new phone, Sahayak (drafts, scores, order photos, rehearsal), listening to a recording for the first time, opening a demonstration district |
+| Attendance, Pulse recording (a week that opened offline is unlocked by the CRP's QR code), visits with focus items, moments and voice notes, coaching and agreement, exam marks, notes to families, consent records, home practice | Signing in on a new phone, Disha, Sahayak (drafts, scores, order photos, rehearsal), listening to a recording for the first time, opening a demonstration district |
 
 Changes made offline are kept encrypted on the phone (IndexedDB, AES-GCM, a key per account) and
 sent in order when a network returns, also by the service worker after the app is closed. A

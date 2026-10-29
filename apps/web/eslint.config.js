@@ -43,7 +43,7 @@ export default defineConfig([
       ],
       'react-refresh/only-export-components': [
         'error',
-        { allowConstantExport: true, allowExportNames: ['Route'] },
+        { allowConstantExport: true, allowExportNames: ['Route'], extraHOCs: ['createLink'] },
       ],
       // TanStack Router signals redirects and not-found states by throwing these objects.
       '@typescript-eslint/only-throw-error': [

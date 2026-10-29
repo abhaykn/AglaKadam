@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
-import { ArrowLeft, HandHelping, Printer, Undo2 } from 'lucide-react';
+import { HandHelping, Printer, Undo2 } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
@@ -58,13 +58,7 @@ export function TeacherVisitsPage({ classSectionId }: { classSectionId: string }
 
   return (
     <div className="container-page space-y-6 py-8">
-      <Link
-        to="/app/teacher"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('app.home')}
-      </Link>
+      <BackLink to="/app/teacher">{t('app.home')}</BackLink>
       <PageHeader title={t('visits.teacher.title')} description={title} />
 
       <QueryState

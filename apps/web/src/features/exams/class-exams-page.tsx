@@ -1,7 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import {
-  ArrowLeft,
   CalendarClock,
   CalendarPlus,
   ClipboardList,
@@ -13,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { todayInIndia } from '@shared/accounts.ts';
 import { Alert } from '@/components/ui/alert';
+import { BackLink } from '@/components/ui/back-link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
@@ -105,13 +105,7 @@ export function ClassExamsPage({ classSectionId }: { classSectionId: string }) {
 
   return (
     <div className="container-page space-y-6 py-8">
-      <Link
-        to="/app/teacher"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('exams.class.back')}
-      </Link>
+      <BackLink to="/app/teacher">{t('exams.class.back')}</BackLink>
       <PageHeader
         title={t('exams.class.title')}
         description={details.data ? `${title} · ${localise(details.data.school)}` : undefined}

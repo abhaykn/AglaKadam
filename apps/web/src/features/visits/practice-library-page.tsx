@@ -1,6 +1,5 @@
-import { Link } from '@tanstack/react-router';
-import { ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { BackLink } from '@/components/ui/back-link';
 import { Card, CardHeader } from '@/components/ui/card';
 import { PageHeader } from '@/features/workspaces/page-header';
 import { useDocumentTitle } from '@/lib/use-document-title';
@@ -16,13 +15,7 @@ export function PracticeLibraryPage() {
   useDocumentTitle(t('visits.library.title'));
   return (
     <div className="container-page space-y-6 py-8">
-      <Link
-        to="/app"
-        className="inline-flex min-h-10 items-center gap-1 text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        {t('app.home')}
-      </Link>
+      <BackLink to="/app">{t('app.home')}</BackLink>
       <PageHeader title={t('visits.library.title')} description={t('visits.library.description')} />
       {AREAS.map((area) => {
         const ofArea = PRACTICES.filter((entry) => entry.area === area);

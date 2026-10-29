@@ -2070,6 +2070,82 @@
       }
     }
   },
+  "tutor": {
+    "name": "Disha",
+    "nameNative": "दिशा",
+    "ask": "Ask Disha",
+    "closeChat": "Close Disha",
+    "hello": "Hello, I am Disha",
+    "you": "You",
+    "conversation": "Conversation with Disha",
+    "thinking": "Disha is thinking",
+    "tryAsking": "Try asking",
+    "placeholder": "Ask about learning or teaching…",
+    "send": "Send",
+    "newChat": "Start a new chat",
+    "offline": "Disha needs an internet connection. The rest of the app keeps working.",
+    "disclaimer": "Disha is an AI and can make mistakes. Please do not share names, phone numbers or other personal details.",
+    "via": {
+      "claude": "Answered with Claude",
+      "groq": "Answered with Groq"
+    },
+    "tagline": {
+      "family": "Help with your studies",
+      "teacher": "Ideas for your classroom",
+      "crp": "Support for your school visits",
+      "officer": "Help with reading the numbers",
+      "admin": "Help with school records"
+    },
+    "greeting": {
+      "family": "Ask me about reading, numbers, words or stories from your books. I will explain it step by step.",
+      "teacher": "Ask me for a classroom activity, a way to explain an idea, or help for a child who is behind.",
+      "crp": "Ask me how to prepare a visit, give feedback to a teacher or hold a difficult conversation.",
+      "officer": "Ask me what the numbers can tell you, and how to plan support for schools.",
+      "admin": "Ask me how to keep school records accurate, or how to plan support for schools."
+    },
+    "suggestions": {
+      "family": {
+        "s1": "How do I add 27 and 15?",
+        "s2": "What is a noun? Give me examples.",
+        "s3": "Help me read a word I do not know",
+        "s4": "Tell me a short story to practise reading"
+      },
+      "teacher": {
+        "s1": "Give me a 10-minute activity to teach place value in Class 2",
+        "s2": "How can I help a child who cannot read yet?",
+        "s3": "How do I teach two classes at the same time?",
+        "s4": "How can I explain fractions with things in my classroom?"
+      },
+      "crp": {
+        "s1": "How do I prepare for a school visit?",
+        "s2": "What should I observe in a reading lesson?",
+        "s3": "How do I give feedback that a teacher will use?",
+        "s4": "How do I start a difficult conversation with a teacher?"
+      },
+      "officer": {
+        "s1": "What can a reading check tell us, and what can it not?",
+        "s2": "How should I read a figure that comes from a few classes?",
+        "s3": "How can a block plan support for its clusters?",
+        "s4": "What are the NIPUN Bharat goals for Class 3?"
+      },
+      "admin": {
+        "s1": "How do I keep attendance records accurate?",
+        "s2": "What should a school check when a new year starts?",
+        "s3": "How do I explain the reading checks to school staff?",
+        "s4": "How should a school keep records of exam marks?"
+      }
+    },
+    "errors": {
+      "network": "Disha could not be reached. Check the connection and try again.",
+      "notConfigured": "Disha is not set up for this project yet. The administrator stores its keys.",
+      "quota": "You have reached today's limit of questions. Disha is available again tomorrow.",
+      "unavailable": "Disha is busy right now. Try again in a minute.",
+      "refused": "Disha could not answer that. Try asking in another way.",
+      "forbidden": "Disha is not open for this account.",
+      "tooLong": "That message is too long. Shorten it and try again.",
+      "other": "Something went wrong. Please try again."
+    }
+  },
   "progress": {
     "open": "Progress",
     "back": "Back",
