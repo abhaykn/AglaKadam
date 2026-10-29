@@ -5,7 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { getEnv } from '@/lib/env';
 
 // The video is kept in the application itself, not on another site, so that it always plays.
-const HERO_VIDEO_SRC = '/media/hero.mp4';
+const HERO_POSTER_SRC = '/media/hero-poster.jpg';
+// VP9 is about half the size of H.264 and is tried first; every browser can play the MP4.
+const HERO_VIDEO_SOURCES = [
+  { src: '/media/hero.webm', type: 'video/webm; codecs="vp9"' },
+  { src: '/media/hero.mp4', type: 'video/mp4' },
+] as const;
 
 /**
  * Progressive blur under the two bottom corners: a wide, gentle layer and a tighter, stronger one,
@@ -108,13 +113,18 @@ export function HeroSection() {
         <video
           ref={videoRef}
           className="absolute inset-0 z-0 h-full w-full object-cover will-change-transform"
-          src={HERO_VIDEO_SRC}
+          poster={HERO_POSTER_SRC}
+          preload="auto"
           autoPlay
           loop
           muted
           playsInline
           aria-hidden="true"
-        />
+        >
+          {HERO_VIDEO_SOURCES.map((source) => (
+            <source key={source.src} src={source.src} type={source.type} />
+          ))}
+        </video>
       )}
 
       <div
