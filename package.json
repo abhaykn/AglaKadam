@@ -1,0 +1,40 @@
+{
+  "name": "agla-kadam",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline-first mentoring platform for Cluster Resource Persons and primary teachers working towards NIPUN Bharat foundational literacy and numeracy goals.",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=10.9.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace @agla-kadam/web",
+    "build": "npm run build --workspace @agla-kadam/web",
+    "preview": "npm run preview --workspace @agla-kadam/web",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
+    "db:test": "npm run test --workspace @agla-kadam/database",
+    "db:types": "supabase gen types typescript --linked --schema public > apps/web/src/lib/database.types.ts",
+    "check:live": "npm run start --workspace @agla-kadam/live-check --",
+    "review:live": "npm run start --workspace @agla-kadam/live-check -- --review",
+    "push:keys": "npm run push-keys --workspace @agla-kadam/live-check",
+    "ai:keys": "npm run ai-keys --workspace @agla-kadam/live-check"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "supabase": "2.121.0"
+  },
+  "overrides": {
+    "jsdom": "29.1.1"
+  }
+}

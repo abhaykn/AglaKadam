@@ -1,0 +1,28 @@
+{
+  "name": "@agla-kadam/live-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "End-to-end check of the deployed project: sign-in, administration and family access, with every record it makes removed afterwards.",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON src/main.ts",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "push-keys": "node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON src/push-keys-cli.ts",
+    "ai-keys": "node --experimental-strip-types --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON src/ai-keys-cli.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "supabase": "2.121.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.6.5",
+    "eslint": "10.13.0",
+    "globals": "17.13.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.2",
+    "vitest": "5.0.5"
+  }
+}

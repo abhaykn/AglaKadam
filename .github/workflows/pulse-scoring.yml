@@ -1,0 +1,131 @@
+name: Pulse scoring
+
+# Scores the Pulse recordings that arrived since the last run, with the speech engine in engine/,
+# on the runner's CPU. The same engine runs on a GPU (Kaggle) when more is needed; see the setup
+# guide. The secret key and the Hugging Face token are given to the scoring step only, never to
+# the installation of packages.
+
+on:
+  schedule:
+    # 22:30 UTC is 04:00 IST: after the nightly draw and the retention job, before school starts.
+    - cron: '30 22 * * *'
+  workflow_dispatch:
+    inputs:
+      max_minutes:
+        description: Stop after this many minutes of scoring (the next run continues)
+        default: '100'
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pulse-scoring
+  cancel-in-progress: false
+
+jobs:
+  score:
+    name: Score recordings
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      HF_HOME: ${{ github.workspace }}/.models
+      # Plain downloads resume reliably; the chunked transfer has stalled on some networks.
+      HF_HUB_DISABLE_XET: '1'
+    steps:
+      - name: Check the configuration
+        id: config
+        env:
+          HAS_URL: ${{ secrets.SUPABASE_URL != '' }}
+          HAS_KEY: ${{ secrets.SUPABASE_SECRET_KEY != '' }}
+          HAS_HF_TOKEN: ${{ secrets.HF_TOKEN != '' }}
+          MAX_MINUTES: ${{ inputs.max_minutes || '100' }}
+        run: |
+          if [ "$HAS_URL" != "true" ] || [ "$HAS_KEY" != "true" ]; then
+            echo "::warning::Repository secrets SUPABASE_URL and SUPABASE_SECRET_KEY are not set; nothing to score."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # The job's time limit leaves room for installing, the models and the voice notes.
+          case "$MAX_MINUTES" in
+            ''|*[!0-9]*) echo "max_minutes must be a whole number of minutes." >&2; exit 1 ;;
+          esac
+          if [ "$MAX_MINUTES" -lt 1 ] || [ "$MAX_MINUTES" -gt 100 ]; then
+            echo "max_minutes must be from 1 to 100." >&2
+            exit 1
+          fi
+          echo "max_minutes=$MAX_MINUTES" >> "$GITHUB_OUTPUT"
+          # With a Hugging Face token, Hindi reading must be heard by IndicConformer: a token that
+          # stopped working fails the run instead of quietly scoring with the fallback.
+          if [ "$HAS_HF_TOKEN" = "true" ]; then
+            echo "hindi=indicconformer" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::HF_TOKEN is not set; Hindi reading is transcribed with Whisper and flagged as uncertain."
+            echo "hindi=whisper" >> "$GITHUB_OUTPUT"
+          fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+
+      - name: Check out repository
+        if: steps.config.outputs.ready == 'true'
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        if: steps.config.outputs.ready == 'true'
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            engine/pyproject.toml
+            engine/constraints.txt
+
+      # The models are kept between runs. An older copy is a good start when the pinned revisions
+      # change: only the files that differ are fetched.
+      - name: Restore the speech models
+        id: models
+        if: steps.config.outputs.ready == 'true'
+        uses: actions/cache/restore@v6
+        with:
+          path: .models
+          key: speech-models-${{ steps.config.outputs.hindi }}-${{ hashFiles('engine/src/agla_engine/asr.py') }}
+          restore-keys: |
+            speech-models-${{ steps.config.outputs.hindi }}-
+
+      - name: Install the engine
+        if: steps.config.outputs.ready == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --constraint engine/constraints.txt "./engine[speech]"
+
+      - name: Fetch the speech models
+        id: download
+        if: steps.config.outputs.ready == 'true' && steps.models.outputs.cache-hit != 'true'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HINDI: ${{ steps.config.outputs.hindi }}
+        run: python -m agla_engine download-models --hindi "$HINDI"
+
+      # Saved as soon as the models are complete, so that a run that later fails or reaches its
+      # time limit still leaves them for the next night.
+      - name: Keep the speech models
+        if: steps.download.outcome == 'success'
+        uses: actions/cache/save@v6
+        with:
+          path: .models
+          key: ${{ steps.models.outputs.cache-primary-key }}
+
+      - name: Score the waiting recordings
+        if: steps.config.outputs.ready == 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          # Optional: a read token of a Hugging Face account that accepted IndicConformer's
+          # terms. Without it, Hindi reading is transcribed with Whisper and every such score is
+          # flagged as uncertain.
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HINDI: ${{ steps.config.outputs.hindi }}
+          MAX_MINUTES: ${{ steps.config.outputs.max_minutes }}
+        run: |
+          python -m agla_engine score --runner scheduled --device cpu --hindi "$HINDI" \
+            --max-minutes "$MAX_MINUTES" --notes-minutes 20

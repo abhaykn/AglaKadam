@@ -1,0 +1,2317 @@
+{
+  "common": {
+    "appName": "Agla Kadam",
+    "appNameNative": "अगला कदम",
+    "signIn": "Sign in",
+    "installApp": "Install app",
+    "close": "Close",
+    "skipToContent": "Skip to main content",
+    "language": "Language",
+    "theme": "Theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "offline": "Offline",
+    "offlineDescription": "You are offline. Your work is saved on this device.",
+    "backOnline": "Back online",
+    "updateAvailable": "A new version of Agla Kadam is available.",
+    "reload": "Reload",
+    "openMenu": "Open menu",
+    "homeLink": "Agla Kadam home",
+    "updateReloadNeeded": "This page is out of date. Reload it to continue with the latest version.",
+    "cancel": "Cancel"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This address does not exist or has been moved.",
+    "backHome": "Back to home"
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "body": "The page could not be displayed. Your saved work on this device is not affected.",
+    "retry": "Try again",
+    "staleBody": "A newer version of Agla Kadam is available. Reload the page to continue; your saved work on this device is not affected."
+  },
+  "install": {
+    "iosTitle": "Install on iPhone or iPad",
+    "iosIntro": "Add Agla Kadam to your home screen to use it offline.",
+    "iosStepShare": "Tap the Share button in Safari.",
+    "iosStepAdd": "Choose “Add to Home Screen”.",
+    "iosStepOpen": "Open Agla Kadam from your home screen."
+  },
+  "nav": {
+    "howItWorks": "How it works",
+    "whoItsFor": "Who it is for",
+    "principles": "Principles"
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "NIPUN Bharat · Foundational literacy and numeracy",
+      "title": "Every school visit should leave one clear next step.",
+      "titleAccent": "one clear next step.",
+      "subtitle": "Agla Kadam helps Cluster Resource Persons plan each week from an honest learning signal, coach teachers with evidence and check whether classroom practice actually changed.",
+      "primaryCta": "Sign in",
+      "secondaryCta": "How it works",
+      "note": "Works offline on low-cost phones and syncs automatically when a network is available.",
+      "flow": {
+        "label": "Pulse checks, visit notes and class results go in; a weekly plan, a coaching card and a follow-up check come out.",
+        "inputs": {
+          "pulse": "Pulse check",
+          "visit": "Visit notes",
+          "results": "Class results"
+        },
+        "outputs": {
+          "plan": "Weekly plan",
+          "coach": "Coaching card",
+          "followUp": "Follow-up"
+        }
+      }
+    },
+    "stats": {
+      "eyebrow": "Why it works",
+      "label": "The loop in numbers",
+      "children": {
+        "value": "20",
+        "label": "children picked at random in every class, every month"
+      },
+      "names": {
+        "value": "5",
+        "label": "names released to each teacher every week"
+      },
+      "check": {
+        "value": "1 min",
+        "label": "to record a learning check in the app"
+      },
+      "followUp": {
+        "value": "3 weeks",
+        "label": "to confirm that practice really changed"
+      },
+      "tags": {
+        "nipun": "NIPUN Bharat",
+        "samagra": "Samagra Shiksha",
+        "dpdp": "DPDP Act 2023",
+        "offline": "Works offline",
+        "bilingual": "Hindi and English"
+      }
+    },
+    "preview": {
+      "eyebrow": "See it in action",
+      "title": "A plan for the week, ready on your phone.",
+      "body": "Visits are ranked by learning gaps and pending follow-ups, so a mentor opens the app and knows where to go first.",
+      "points": {
+        "ranked": "Ranked by real learning gaps",
+        "offline": "Works offline, syncs later",
+        "nextStep": "One clear next step for every visit"
+      },
+      "chips": {
+        "offline": "Saved offline",
+        "names": "5 names this week"
+      },
+      "phone": {
+        "label": "A phone screen showing this week's ranked school visits, for illustration.",
+        "title": "This week",
+        "subtitle": "Your visits, in order",
+        "synced": "All changes saved on this phone",
+        "visits": {
+          "first": {
+            "name": "Rampur Primary School",
+            "note": "Reading dipped in Class 2; follow-up is due.",
+            "tag": "Visit first"
+          },
+          "second": {
+            "name": "Sitapur Upper Primary",
+            "note": "Numeracy steady; share the new practice card.",
+            "tag": "This week"
+          },
+          "third": {
+            "name": "Kheda Primary School",
+            "note": "On track; a short check-in is enough.",
+            "tag": "On track"
+          }
+        }
+      }
+    },
+    "loop": {
+      "title": "One loop, five steps",
+      "subtitle": "The mentor decides at every step. The platform does the reading, scoring, sorting and drafting.",
+      "diagramLabel": "The five-step mentoring loop: Pulse, Plan, Observe, Coach and Follow up, returning to Pulse.",
+      "note": "The loop closes when the next random check confirms the change.",
+      "steps": {
+        "pulse": {
+          "title": "Pulse",
+          "body": "Each month the app randomly selects 20 children in every class of Classes 1 to 3 and releases five names a week. Teachers record a one-minute check inside the app: the child reads in the class's language, then speaks a little English. Children with special needs get an adapted check observed by the teacher."
+        },
+        "plan": {
+          "title": "Plan",
+          "body": "Cluster Resource Persons receive a weekly visit plan ranked by learning gaps, pending follow-ups and block office orders."
+        },
+        "observe": {
+          "title": "Observe",
+          "body": "Five focused observation items and a two-minute voice note replace long paper checklists."
+        },
+        "coach": {
+          "title": "Coach",
+          "body": "Evidence-backed feedback, a ten-minute demonstration built on the day's textbook page and a space to rehearse the conversation."
+        },
+        "followUp": {
+          "title": "Follow up",
+          "body": "The next month's check shows whether the agreed step moved children's learning."
+        }
+      }
+    },
+    "roles": {
+      "title": "Built for everyone who supports a classroom",
+      "subtitle": "Each role sees only what it needs, nothing more.",
+      "crp": {
+        "title": "Cluster Resource Persons",
+        "body": "A ranked weekly plan, a visit pack prepared in advance, structured observation and coaching tools."
+      },
+      "teacher": {
+        "title": "Teachers",
+        "body": "Five quick checks a week, attendance, practice cards, the school's own exams with marks, and class progress."
+      },
+      "block": {
+        "title": "Block and district officers",
+        "body": "Anonymised trends across clusters, never individual teacher records."
+      },
+      "family": {
+        "title": "Students and parents",
+        "body": "A child's own results and the learning material shared by the teacher."
+      }
+    },
+    "principles": {
+      "title": "Designed for real classrooms",
+      "subtitle": "Rural schools have patchy networks, shared phones and very little time. Every design decision starts there.",
+      "offline": {
+        "title": "Works without a network",
+        "body": "Recordings and forms are encrypted on the device and uploaded automatically when a connection returns."
+      },
+      "privacy": {
+        "title": "Children's privacy first",
+        "body": "Audio only, with no photographs or biometrics. Recordings are deleted from the server within 30 days."
+      },
+      "honest": {
+        "title": "Data no one can cherry-pick",
+        "body": "The system selects children at random. Teachers cannot choose, add or swap a child."
+      },
+      "free": {
+        "title": "No licence fees",
+        "body": "The platform runs on open-source models and free-tier infrastructure."
+      }
+    },
+    "footer": {
+      "alignment": "Aligned with the NIPUN Bharat and Samagra Shiksha frameworks.",
+      "privacy": "Designed for the Digital Personal Data Protection Act, 2023.",
+      "rights": "© {{year}} Agla Kadam.",
+      "explore": "Explore",
+      "start": "Get started",
+      "backToTop": "Back to top"
+    }
+  },
+  "form": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  },
+  "auth": {
+    "title": "Sign in",
+    "subtitle": "Use the details given to you by your administrator or school.",
+    "tabs": {
+      "label": "Who is signing in",
+      "staff": "Staff",
+      "family": "Parent or student"
+    },
+    "passwordLabel": "Password",
+    "staff": {
+      "identifierLabel": "Mobile number",
+      "identifierHint": "The 10-digit number registered with your account.",
+      "forgotPassword": "Forgot your password? Ask your cluster resource person or administrator to reset it.",
+      "emailLabel": "Email address",
+      "emailHint": "The email address of the main administrator account.",
+      "useEmail": "Main administrator? Sign in with email",
+      "useMobile": "Sign in with mobile number"
+    },
+    "family": {
+      "learnerCodeLabel": "Learner code",
+      "learnerCodeHint": "The 10-digit code printed on the slip from school.",
+      "pinLabel": "PIN",
+      "help": "Lost the slip or PIN? Ask your child’s teacher for a new one."
+    },
+    "offlineTitle": "You are offline",
+    "offlineBody": "Signing in needs an internet connection. Once signed in, you can keep working offline.",
+    "errors": {
+      "missingFields": "Enter your mobile number and password.",
+      "invalidMobile": "Enter a valid 10-digit mobile number.",
+      "invalidLearnerCode": "Enter the 10-digit learner code from the slip.",
+      "invalidPin": "The PIN has 6 digits.",
+      "staffInvalidCredentials": "The mobile number or password is incorrect.",
+      "familyInvalidCredentials": "The learner code or PIN is incorrect.",
+      "accountBlocked": "This account has been switched off. Contact your administrator.",
+      "locked": "Too many incorrect attempts. Try again in {{minutes}} minutes, or ask the teacher for a new PIN.",
+      "rateLimited": "Too many attempts from this device. Wait a few minutes and try again.",
+      "network": "Could not reach the server. Check the internet connection and try again.",
+      "unexpected": "Something went wrong. Please try again.",
+      "throttled": "Too many unsuccessful sign-ins from this network. Try again in {{minutes}} minutes.",
+      "invalidEmail": "Enter a valid email address."
+    }
+  },
+  "app": {
+    "home": "Home",
+    "loading": "Loading",
+    "account": "Account",
+    "accountMenu": "Account menu",
+    "changePassword": "Change password",
+    "signOut": "Sign out",
+    "workspaces": "Workspaces",
+    "accessError": {
+      "title": "Your account could not be loaded",
+      "body": "There was a problem reaching the server. Try again in a moment."
+    },
+    "accessOffline": {
+      "title": "Connect to the internet once",
+      "body": "Your account details have not been downloaded to this device yet. Connect to the internet and try again."
+    },
+    "notProvisioned": {
+      "title": "Your account is not set up yet",
+      "body": "You have signed in, but no role has been assigned to this account. Contact your administrator."
+    },
+    "deactivated": {
+      "title": "This account has been switched off",
+      "body": "Contact your administrator if you think this is a mistake."
+    },
+    "notAllowed": {
+      "title": "This page is not part of your role",
+      "body": "Open your home page to see what you can do."
+    },
+    "loadError": {
+      "title": "This information could not be loaded",
+      "body": "Check the connection and try again."
+    },
+    "signingOut": "Signing out…"
+  },
+  "workspaces": {
+    "admin": "Administration",
+    "crp": "Cluster",
+    "teacher": "School",
+    "officer": "Block and district",
+    "family": "My child"
+  },
+  "roles": {
+    "super_admin": "Super administrator",
+    "district_officer": "District officer",
+    "block_officer": "Block officer",
+    "crp": "Cluster resource person",
+    "teacher": "Teacher"
+  },
+  "password": {
+    "title": "Change password",
+    "description": "Enter your current password and choose a new one.",
+    "firstTitle": "Choose your own password",
+    "firstDescription": "You signed in with a temporary password. Choose a new password that only you know.",
+    "current": "Current password",
+    "new": "New password",
+    "confirm": "Repeat the new password",
+    "submit": "Save password",
+    "rulesLabel": "Password requirements",
+    "ruleMet": "met",
+    "ruleNotMet": "not met",
+    "rules": {
+      "too_short": "At least 8 characters",
+      "too_long": "Not too long: at most 72 characters in English letters, or about 24 in Hindi",
+      "needs_letter": "At least one letter",
+      "needs_digit": "At least one digit",
+      "contains_mobile": "Does not contain your mobile number"
+    },
+    "changed": "Your password has been changed. You have been signed out on your other devices.",
+    "familyNotApplicable": "Family accounts sign in with a learner code and PIN, which the school issues.",
+    "errors": {
+      "rulesNotMet": "The new password does not meet all the requirements.",
+      "mismatch": "The two passwords do not match.",
+      "currentRequired": "Enter your current password.",
+      "currentIncorrect": "The current password is incorrect.",
+      "reauthenticate": "For your security, enter your current password to continue."
+    }
+  },
+  "account": {
+    "title": "Your account",
+    "profile": "Profile",
+    "name": "Name",
+    "mobile": "Mobile number",
+    "learnerCode": "Learner code",
+    "roles": "Roles",
+    "preferences": "Preferences",
+    "preferredLanguage": "Preferred language",
+    "preferredLanguageHint": "Used when you sign in on a new device.",
+    "languageSaved": "Language preference saved.",
+    "languageNotSaved": "The preference could not be saved. Try again."
+  },
+  "home": {
+    "greeting": "Namaste, {{name}}",
+    "teacherDescription": "Your school and classes for the current session.",
+    "crpDescription": "Schools of {{clusters}}.",
+    "officerDescription": "Figures for your area. Individual teacher and student records are not shown to education officers.",
+    "familyGreeting": "Namaste",
+    "familyDescription": "Details of your child as recorded by the school.",
+    "udise": "UDISE code {{code}}",
+    "clusterCode": "Cluster code {{code}}",
+    "blockScope": "Block",
+    "districtScope": "District",
+    "class": "Class",
+    "studentCount_one": "{{count}} student",
+    "studentCount_other": "{{count}} students",
+    "yourClass": "Your class",
+    "noClasses": {
+      "title": "No classes for this session yet",
+      "body": "Your cluster resource person sets up the classes of your school."
+    },
+    "noSchools": {
+      "title": "No schools in this cluster yet",
+      "body": "The administrator adds schools to clusters."
+    },
+    "schoolsTableCaption": "Schools and their current figures",
+    "columns": {
+      "school": "School",
+      "teachers": "Teachers",
+      "classes": "Classes",
+      "students": "Students",
+      "pending": "Awaiting verification",
+      "clusters": "Clusters",
+      "schools": "Schools"
+    }
+  },
+  "classes": {
+    "balvatika": "Balvatika",
+    "grade": "Class {{grade}}",
+    "withSection": "{{grade}} – {{section}}"
+  },
+  "slips": {
+    "title_one": "Sign-in slip",
+    "title_other": "{{count}} sign-in slips",
+    "description": "Print these details or copy them carefully for each person.",
+    "shownOnce": "These passwords and PINs are shown only now and are not stored anywhere readable. If they are lost, issue new ones.",
+    "staffHeading": "Staff sign-in",
+    "familyHeading": "Family sign-in",
+    "signInId": "Mobile number",
+    "temporaryPassword": "Temporary password",
+    "learnerCode": "Learner code",
+    "pin": "PIN",
+    "staffInstructions": "Open {{address}}, choose Staff and sign in with your mobile number and this temporary password. You will then choose your own password.",
+    "familyInstructions": "Open {{address}}, choose Parent or student and enter the learner code and PIN. Keep this slip safe and do not share it.",
+    "print": "Print",
+    "done": "Done"
+  },
+  "admin": {
+    "navigation": "Administration sections",
+    "sections": {
+      "overview": "Overview",
+      "schools": "Schools",
+      "staff": "Staff",
+      "students": "Students",
+      "academicYears": "Academic sessions",
+      "audit": "Audit trail"
+    },
+    "save": "Save",
+    "cancel": "Cancel",
+    "saved": "Changes saved.",
+    "saveFailed": "The change could not be saved. Try again.",
+    "required": "Required",
+    "actions": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "noMatches": "Nothing matches the search.",
+    "pagination": {
+      "label": "Pages",
+      "range": "{{first}}–{{last}} of {{total}}",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "errors": {
+      "mobile_in_use": "This mobile number is already used by another account.",
+      "cannot_change_self": "You cannot do this for your own account.",
+      "forbidden": "You are not allowed to do this.",
+      "not_found": "The record no longer exists.",
+      "student_not_verified": "Only verified students can receive a family sign-in.",
+      "lastSuperAdmin": "At least one super administrator must remain.",
+      "concurrent_update": "Someone made the same change at the same moment. Try again."
+    },
+    "overview": {
+      "title": "Platform overview",
+      "description": "Add an academic session to get started.",
+      "currentYear": "Current session: {{label}}",
+      "setupTitle": "Getting started",
+      "setupDescription": "Complete these steps to make the platform ready for schools.",
+      "stepDone": "Done",
+      "stepPending": "To do",
+      "steps": {
+        "academicYear": {
+          "title": "Add the academic session",
+          "body": "Sessions run from April to March."
+        },
+        "schools": {
+          "title": "Import schools",
+          "body": "Upload the UDISE school list for your area."
+        },
+        "crps": {
+          "title": "Add cluster resource persons",
+          "body": "Each CRP is linked to a cluster."
+        },
+        "teachers": {
+          "title": "Add teachers",
+          "body": "Each teacher is linked to a school."
+        },
+        "students": {
+          "title": "Import students",
+          "body": "Import the class lists of each school."
+        }
+      },
+      "geography": "Area",
+      "people": "People",
+      "districts": "Districts",
+      "blocks": "Blocks",
+      "clusters": "Clusters",
+      "schools": "Schools",
+      "officers": "Education officers",
+      "activeStudents": "Verified students",
+      "pendingStudents": "Students awaiting verification",
+      "familyAccounts": "Family sign-ins issued"
+    },
+    "import": {
+      "columnsTitle": "Columns",
+      "optional": "optional",
+      "utf8Hint": "Save the file as “CSV UTF-8” so that Hindi names are kept correctly. The first row must contain the column names.",
+      "downloadTemplate": "Download empty template",
+      "chooseFile": "Choose CSV file",
+      "fileReady_one": "{{file}}: {{count}} row ready to import.",
+      "fileReady_other": "{{file}}: {{count}} rows ready to import.",
+      "ignoredColumns": "These columns are not used and will be ignored: {{columns}}",
+      "start_one": "Import {{count}} row",
+      "start_other": "Import {{count}} rows",
+      "missingColumns": "The file is missing required columns: {{columns}}",
+      "noRows": "The file has no data rows.",
+      "tooManyRows": "The file has more than {{max}} rows. Split it into smaller files.",
+      "unreadable": "The file could not be read.",
+      "failed": "The import could not be completed. Nothing was saved. Try again.",
+      "rejected_one": "{{count}} problem found. Nothing was imported.",
+      "rejected_other": "{{count}} problems found. Nothing was imported.",
+      "rejectedHint": "Correct these rows in the spreadsheet and upload the file again.",
+      "problem": "Row {{row}}, column {{column}}: {{issue}}",
+      "createdUpdated": "{{created}} added, {{updated}} updated",
+      "issues": {
+        "required": "a value is required",
+        "format": "the value is not valid",
+        "duplicate": "this value appears more than once",
+        "conflict": "the same code has different names in the file",
+        "unknown": "no record has this code",
+        "ambiguous": "more than one record has this code"
+      },
+      "formatErrors": {
+        "empty": "The file is empty.",
+        "unterminated_quote": "The file has a quotation mark that is never closed.",
+        "not_utf8": "The file was not saved as UTF-8. Save it as “CSV UTF-8” and try again."
+      },
+      "duplicateColumns": "These columns appear more than once: {{columns}}. Keep one of each and upload the file again."
+    },
+    "columns": {
+      "state_code": "State code",
+      "state_name": "State name",
+      "state_name_hi": "State name in Hindi",
+      "district_code": "District code",
+      "district_name": "District name",
+      "district_name_hi": "District name in Hindi",
+      "block_code": "Block code",
+      "block_name": "Block name",
+      "block_name_hi": "Block name in Hindi",
+      "cluster_code": "Cluster code",
+      "cluster_name": "Cluster name",
+      "cluster_name_hi": "Cluster name in Hindi",
+      "udise_code": "11-digit UDISE+ code",
+      "school_name": "School name",
+      "school_name_hi": "School name in Hindi",
+      "village": "Village or locality",
+      "full_name": "Full name",
+      "mobile": "10-digit mobile number",
+      "role": "teacher, crp, block_officer, district_officer or super_admin",
+      "scope_code": "UDISE code for a teacher, cluster code for a CRP, block or district code for an officer",
+      "preferred_language": "hi or en",
+      "starts_on": "Posting start date, YYYY-MM-DD",
+      "gender": "female, male or transgender",
+      "grade": "0 for Balvatika, or 1 to 8",
+      "section": "A, B, … (A when empty)",
+      "admission_number": "School admission number",
+      "date_of_birth": "YYYY-MM-DD",
+      "has_special_needs": "yes or no"
+    },
+    "schools": {
+      "description": "Schools of the area, grouped by cluster, block and district.",
+      "import": "Import schools",
+      "importDescription": "Adds new schools and updates existing ones, matched by UDISE code. Missing districts, blocks and clusters are created.",
+      "search": "Search by name or UDISE code",
+      "cluster": "Cluster",
+      "blockDistrict": "Block · District",
+      "editTitle": "Edit school",
+      "editNamed": "Edit {{name}}",
+      "nameEn": "Name in English",
+      "nameHi": "Name in Hindi",
+      "village": "Village or locality",
+      "active": "School is active",
+      "imported": "{{rows}} rows imported.",
+      "levels": {
+        "states": "States",
+        "districts": "Districts",
+        "blocks": "Blocks",
+        "clusters": "Clusters",
+        "schools": "Schools"
+      },
+      "empty": {
+        "title": "No schools yet",
+        "body": "Import the UDISE school list to begin."
+      }
+    },
+    "staff": {
+      "description": "Accounts of administrators, education officers, cluster resource persons and teachers.",
+      "add": "Add staff",
+      "addTitle": "Add a staff member",
+      "addDescription": "A temporary password is created; the person chooses their own at the first sign-in.",
+      "import": "Import staff",
+      "importDescription": "Creates an account for every row. Each person receives a temporary password on a printable slip.",
+      "search": "Search by name or mobile number",
+      "allRoles": "All roles",
+      "role": "Role",
+      "fullName": "Full name",
+      "mobile": "Mobile number",
+      "mobileHint": "Used to sign in.",
+      "startsOn": "Posting start date",
+      "startsOnHint": "Leave empty for today.",
+      "create": "Create account",
+      "scopeRequired": "Choose where this role applies.",
+      "noScopeNeeded": "Super administrators are not limited to an area.",
+      "noScopeMatches": "No matches. Try another name or code.",
+      "changeScope": "Choose a different one",
+      "scopeLabel": {
+        "teacher": "School",
+        "crp": "Cluster",
+        "block_officer": "Block",
+        "district_officer": "District",
+        "super_admin": "Area"
+      },
+      "scopeSearch": {
+        "teacher": "Search schools by name or UDISE code",
+        "crp": "Search clusters by name or code",
+        "block_officer": "Search blocks by name or code",
+        "district_officer": "Search districts by name or code",
+        "super_admin": "Search"
+      },
+      "creationErrors": {
+        "mobile_in_use": "this mobile number is already registered",
+        "invalid_scope": "the school, cluster, block or district was not found",
+        "rejected": "the account could not be created",
+        "unconfirmed": "not confirmed, because the connection was interrupted. Check the staff list and add this person again only if they are missing."
+      },
+      "you": "you",
+      "deactivated": "Switched off",
+      "awaitingFirstSignIn": "Has not changed the temporary password",
+      "actionsFor": "Actions for {{name}}",
+      "resetPassword": "Reset password",
+      "resetPasswordTitle": "Reset password?",
+      "resetPasswordBody": "{{name}} will receive a new temporary password. The old password stops working immediately.",
+      "changeMobile": "Change mobile number",
+      "changeMobileTitle": "Change mobile number",
+      "changeMobileHint": "The person will sign in with the new number from now on.",
+      "transfer": "Transfer",
+      "transferTitle": "Transfer to another posting",
+      "transferred": "Transfer recorded.",
+      "currentPosting": "Current posting",
+      "currentPostingIs": "Current posting: {{posting}}",
+      "newRole": "New role",
+      "effectiveOn": "Effective from",
+      "effectiveOnHint": "The current posting ends the day before.",
+      "deactivate": "Switch off account",
+      "deactivateTitle": "Switch off this account?",
+      "deactivateBody": "{{name}} will no longer be able to sign in and will lose access to all records. The history is kept.",
+      "reactivate": "Switch account on",
+      "reactivateTitle": "Switch this account on?",
+      "reactivateBody": "{{name}} will be able to sign in again with their current password.",
+      "importCreated_one": "{{count}} account created.",
+      "importCreated_other": "{{count}} accounts created.",
+      "importSlipsHint": "Print the sign-in slips that have opened.",
+      "importFailed_one": "{{count}} row could not be created.",
+      "importFailed_other": "{{count}} rows could not be created.",
+      "importFailedRow": "Row {{row}} ({{name}}): {{reason}}",
+      "empty": {
+        "title": "No staff accounts yet",
+        "body": "Add staff one by one or import them from a spreadsheet."
+      },
+      "postingFrom": "from {{date}}",
+      "postingUntil": "until {{date}}",
+      "effectiveOnRequired": "Choose the date from which the new posting applies.",
+      "effectiveOnTooEarly": "The new posting cannot start before {{date}}, when the current posting starts."
+    },
+    "students": {
+      "description": "Verified students of each school, their classes and family sign-ins.",
+      "chooseSchool": "School",
+      "search": "Search by name, learner code or admission number",
+      "import": "Import students",
+      "importDescription": "Adds verified students to a school for one academic session and creates their classes. Students whose admission number already exists are skipped.",
+      "importInto": "Students will be added to {{school}}.",
+      "academicYear": "Academic session",
+      "noAcademicYear": "Add an academic session before importing students.",
+      "imported_one": "{{count}} student added.",
+      "imported_other": "{{count}} students added.",
+      "skipped_one": "{{count}} student was already registered and was skipped.",
+      "skipped_other": "{{count}} students were already registered and were skipped.",
+      "classesCreated_one": "{{count}} class was created.",
+      "classesCreated_other": "{{count}} classes were created.",
+      "learnerCode": "Learner code {{code}}",
+      "admission": "Admission no. {{number}}",
+      "status": {
+        "pending": "Awaiting verification",
+        "active": "Verified",
+        "left": "Left"
+      },
+      "specialNeeds": "Special needs",
+      "familyAccount": "Family sign-in issued",
+      "issueSlip": "Issue family sign-in slip",
+      "reissueSlip": "Issue a new PIN",
+      "reissueTitle": "Issue a new PIN?",
+      "reissueBody": "The PIN the family of {{name}} uses now stops working and they are signed out. Give them the new slip.",
+      "revokeSlip": "Withdraw family sign-in",
+      "revokeTitle": "Withdraw family sign-in?",
+      "revokeBody": "The family of {{name}} will be signed out and the PIN stops working. You can issue a new slip at any time.",
+      "revoked": "Family sign-in withdrawn.",
+      "issueFailed": "The sign-in slip for {{name}} could not be issued. Try again.",
+      "empty": {
+        "title": "No students in this school yet",
+        "body": "Import the class lists, or the school’s teachers can add students for verification."
+      }
+    },
+    "years": {
+      "description": "Academic sessions run from 1 April to 31 March.",
+      "addTitle": "Add a session",
+      "startYear": "Starting year",
+      "preview": "Session {{label}}",
+      "invalidYear": "Enter a four-digit year.",
+      "add": "Add session",
+      "addFailed": "The session could not be added. It may overlap an existing one.",
+      "current": "Current",
+      "empty": {
+        "title": "No academic sessions yet",
+        "body": "Add the current session to start."
+      }
+    },
+    "audit": {
+      "description": "Every change to accounts, schools and student records: who made it and when.",
+      "filter": "Show changes to",
+      "allRecords": "All records",
+      "empty": "No changes recorded yet.",
+      "changedFromTo": "{{from}} → {{to}}",
+      "showRecord": "Show record",
+      "service": "Account service",
+      "system": "System",
+      "operations": {
+        "INSERT": "Added",
+        "UPDATE": "Changed",
+        "DELETE": "Removed"
+      },
+      "tables": {
+        "profiles": "Accounts",
+        "staff_assignments": "Postings",
+        "schools": "Schools",
+        "clusters": "Clusters",
+        "blocks": "Blocks",
+        "districts": "Districts",
+        "states": "States",
+        "academic_years": "Academic sessions",
+        "class_sections": "Classes",
+        "class_teachers": "Class teachers",
+        "students": "Students",
+        "student_contacts": "Guardian details",
+        "enrolments": "Enrolments",
+        "guardian_consents": "Consent records"
+      }
+    }
+  },
+  "attendance": {
+    "title": "Attendance",
+    "open": "Attendance",
+    "description": "Tap a name to mark the child absent. Everyone else is counted present. {{school}}",
+    "backToClasses": "Back to classes",
+    "todayLabel": "Today",
+    "chooseDate": "Choose the date",
+    "previousDay": "Previous day",
+    "nextDay": "Next day",
+    "present": "Present",
+    "absent": "Absent",
+    "markAllPresent": "Everyone present",
+    "summary": "{{present}} present · {{absent}} absent · {{total}} on the roll",
+    "save": "Save attendance",
+    "noChanges": "Saved",
+    "saved": "Attendance saved.",
+    "savedUploading": "Attendance saved. Uploading now.",
+    "savedOnDevice": "Attendance saved on this device. It will upload by itself when there is a network.",
+    "saveFailed": "The attendance could not be saved. Try again.",
+    "saveNeedsNetwork": "This browser cannot keep work on the device, so saving needs a network.",
+    "changeDescription": "Attendance · {{class}} · {{date}}",
+    "classNotFound": "This class could not be found.",
+    "leaveTitle": "Leave without saving?",
+    "leaveBody": "The changes you made to this attendance have not been saved.",
+    "keepEditing": "Keep editing",
+    "leaveWithoutSaving": "Leave without saving",
+    "status": {
+      "notMarked": "Attendance has not been taken for this day.",
+      "unknown": "Attendance saved earlier for this day cannot be shown without a network.",
+      "uploaded": "Uploaded: {{present}} of {{total}} present.",
+      "waiting": "Saved on this device. It will upload by itself.",
+      "failedTitle": "This attendance was not accepted",
+      "failedHint": "Open the upload list at the top of the screen to try again or delete it.",
+      "staleTitle": "Someone else saved this day after you started",
+      "staleBody": "The saved version has {{present}} of {{total}} present. Your version is shown below: check it and save it again to replace theirs, or keep the saved version.",
+      "staleBodyUnknown": "Your version is shown below. Connect to see the saved version, then save yours again or keep theirs."
+    },
+    "todayStatus": {
+      "marked": "Today: taken",
+      "notMarked": "Today: not taken",
+      "waiting": "Today: saved on device",
+      "failed": "Today: not accepted"
+    },
+    "noRoster": {
+      "title": "This class list is not on the device yet",
+      "body": "Open the app once with a network so the class list is kept for use without one."
+    },
+    "emptyRoll": {
+      "title": "No children on the roll for this day",
+      "body": "Children appear here once the class list has been imported."
+    },
+    "markAbsent": "Mark {{name}} absent",
+    "saveAgain": "Save my version again",
+    "useSavedVersion": "Keep the saved version instead",
+    "staleDirect": "Someone else saved this day meanwhile. The page now shows their version; make your changes again."
+  },
+  "sync": {
+    "title": "Uploads",
+    "indicator": {
+      "synced": "Everything is uploaded",
+      "pending_one": "{{count}} change waiting to upload",
+      "pending_other": "{{count}} changes waiting to upload",
+      "offline_one": "Offline: {{count}} change kept on this device",
+      "offline_other": "Offline: {{count}} changes kept on this device",
+      "failed_one": "{{count}} change was not accepted",
+      "failed_other": "{{count}} changes were not accepted",
+      "unavailable": "Work cannot be kept on this device"
+    },
+    "onlineHint": "Changes upload by themselves while the app is open and online.",
+    "offlineHint": "You are offline. Changes stay on this device and upload by themselves when a network is available.",
+    "unavailable": "This browser cannot keep work on the device (for example in some private windows). Changes are uploaded straight away and need a network.",
+    "problem": "Reason given by the browser",
+    "empty": "Nothing is waiting. Everything has been uploaded.",
+    "savedAt": "Saved {{time}}",
+    "state": {
+      "waiting": "Waiting",
+      "failed": "Not accepted"
+    },
+    "retrying": "{{reason}} Next try {{time}}.",
+    "retry": "Try again",
+    "discard": "Delete",
+    "discardConfirm": "Delete this change from the device? It will not be uploaded.",
+    "uploadNow": "Upload now",
+    "lastSynced": "Last upload: {{time}}",
+    "storageUsed": "This app uses {{size}} on the device.",
+    "storageKept": "The browser keeps it even when space runs low.",
+    "storageMayBeCleared": "The browser may clear it if space runs very low, so upload when you can.",
+    "privacy": "Everything kept on this device is encrypted and is deleted when you sign out.",
+    "reasons": {
+      "network": "No network.",
+      "permission": "You no longer have permission for this class.",
+      "notAllowed": "The date or the details are no longer allowed.",
+      "unreadable": "This change was saved by an older version and cannot be uploaded.",
+      "server": "The server could not process it.",
+      "other": "The server did not accept it (code {{code}}).",
+      "window": "The date is outside the days that can still be marked or corrected.",
+      "session": "Waiting for you to be signed in again.",
+      "staleRecord": "Someone else saved this day after you started. Open it to review.",
+      "clock": "The phone's date or time was wrong when this was recorded. Delete it and record the child again.",
+      "notDue": "This child is no longer due for a check this month.",
+      "tooLarge": "The recording is too large to upload.",
+      "upload": "The recording could not be uploaded (code {{code}}).",
+      "pulseWindow": "The month's checks can only be sent until 31 days after it ended.",
+      "fileMissing": "The recording is no longer on this phone. Delete this and record the child again.",
+      "duplicate": "This was already saved, from this phone or another.",
+      "uploadRefused": "The recording was not accepted: the family may have withdrawn consent, or the child is no longer due. Delete it.",
+      "consentWithdrawn": "The family has withdrawn consent for audio checks, so this recording cannot be sent. Delete it.",
+      "replaced": "This child was replaced by another child before the check was made. Delete it.",
+      "reused": "This recording was already sent for another check. Delete it and record the child again.",
+      "staleVisit": "The visit was changed on another device. Open it to see the uploaded version.",
+      "closedVisit": "The visit is closed: visits can be corrected for 14 days.",
+      "noteLimit": "This class has received the most notes allowed for one day. Send it tomorrow.",
+      "homeworkDate": "The homework's date is too far in the past or the future. Write it again with a new date.",
+      "noteFileMissing": "The note's photo or PDF is no longer on this phone. Discard this and write the note again."
+    },
+    "actionFailed": "That did not work. Try again."
+  },
+  "signOutGuard": {
+    "title": "Some work is not uploaded yet",
+    "body_one": "{{count}} change saved on this device has not been uploaded. Signing out now deletes it.",
+    "body_other": "{{count}} changes saved on this device have not been uploaded. Signing out now deletes them.",
+    "allUploadedTitle": "Everything is uploaded",
+    "allUploadedBody": "You can sign out safely.",
+    "stay": "Stay signed in",
+    "signOutAnyway": "Sign out and delete"
+  },
+  "pulse": {
+    "title": "Pulse",
+    "open": "Pulse",
+    "titleFor": "Pulse · {{class}}",
+    "description": "One-minute voice checks of children chosen at random: reading, then speaking English. {{school}}",
+    "refresh": "Refresh",
+    "backToList": "Back to Pulse",
+    "recordTitle": "Record a check",
+    "firstRecording": "Pulse check",
+    "secondRecording": "Second recording",
+    "monthLabel": "Pulse for {{month}}",
+    "language": {
+      "hi": "Hindi",
+      "en": "English"
+    },
+    "progressCount": "{{recorded}} of {{target}}",
+    "progressLabel": "children recorded this month",
+    "fairnessNote": "The app chose these children at random. Each week five more appear; the order cannot be changed, so the checks show how the whole class is doing. The results are for planning support, never for judging teachers.",
+    "dueTitle": "Children to record",
+    "dueBody": "Record each child by the date shown. Mark a child absent if they are not in school today.",
+    "nothingDue": {
+      "title": "Nobody is due right now",
+      "bodyMore": "More children will appear when the next week starts.",
+      "bodyDone": "Every child drawn this month has been recorded. Thank you."
+    },
+    "hidden_one": "{{count}} more child will appear in the coming weeks.",
+    "hidden_other": "{{count}} more children will appear in the coming weeks.",
+    "recordedTitle": "Recorded",
+    "replacedTitle": "Replaced",
+    "replacedBody": "These children were absent all week, have left the class, or their consent was withdrawn. Another child, chosen at random, was added in their place.",
+    "badge": {
+      "replacement": "Added as a replacement",
+      "dueBy": "Due by {{date}}",
+      "late": "Late: was due {{date}}",
+      "absentToday": "Absent today",
+      "absentDays_one": "Absent on {{count}} day",
+      "absentDays_other": "Absent on {{count}} days",
+      "uploaded": "Uploaded",
+      "onDevice": "Saved on this device",
+      "refused": "Not accepted",
+      "noisy": "Noisy room",
+      "recordedTwice": "Recorded twice",
+      "replacedAbsent": "Absent all week",
+      "replacedLeft": "Left the class",
+      "replacedConsent": "Consent withdrawn",
+      "adapted": "Adapted check",
+      "consentWithdrawn": "Consent withdrawn"
+    },
+    "refusedHint": "Open the upload list at the top of the screen to try again or delete it.",
+    "record": "Record",
+    "recordAgain": "Record again (noisy room)",
+    "absentToday": "Mark absent today",
+    "absentSaved": "{{name}} is marked absent for today.",
+    "absentFailed": "The absence could not be saved. Try again.",
+    "needsNetwork": "This browser cannot keep work on the device, so saving needs a network.",
+    "notOnDevice": {
+      "title": "This class's Pulse is not on the device yet",
+      "body": "Open it once with a network so the children due can be recorded without one."
+    },
+    "notStarted": {
+      "title": "Pulse has not started for this class this month",
+      "body": "Children are chosen every night at midnight. A class needs children whose verification and parental consent for audio checks are recorded."
+    },
+    "notForGrade": {
+      "title": "Pulse is for Classes 1 to 3",
+      "body": "This class does not take part in the monthly Pulse checks."
+    },
+    "cannotRecord": {
+      "title": "This child cannot be recorded now",
+      "body": "The child may already be recorded, replaced, or not due yet. Go back to the Pulse list to see who is due."
+    },
+    "guide": {
+      "placement": "Sit beside the child and hold the phone about 20 cm (one hand span) from the child's mouth.",
+      "privacy": "Only the voice is recorded. It is kept encrypted on this phone until it is uploaded, and deleted from the server after 30 days.",
+      "twoParts": "The check has two parts in one minute. First the child reads a short text in {{language}} (about 40 seconds); if it is too hard, step down to words, then letters. Then the child talks about pictures in English."
+    },
+    "noise": {
+      "check": "Check the room",
+      "again": "Check again",
+      "measuring": "Listening to the room for two seconds. Please keep quiet.",
+      "quiet": "The room is quiet enough.",
+      "noisyTitle": "The room is noisy",
+      "noisyBody": "Move to a quieter spot, or hold the phone closer to the child. You can also record anyway and mark the room as noisy afterwards."
+    },
+    "microphone": {
+      "title": "The microphone cannot be used",
+      "denied": "Allow this app to use the microphone in the browser's site settings, then try again.",
+      "missing": "No microphone was found on this device.",
+      "busy": "Another app is using the microphone, or it stopped. Close other apps and try again.",
+      "empty": "Nothing was recorded. Start again and let the recording run a little longer before stopping it.",
+      "unsupported": "This browser cannot record audio. Use an up-to-date version of Chrome."
+    },
+    "startRecording": "Start recording",
+    "recordAnyway": "Record anyway",
+    "recording": "Recording",
+    "seconds": "{{elapsed}} / {{limit}} s",
+    "stepDown": {
+      "words": "Too hard: show words",
+      "letters": "Too hard: show letters"
+    },
+    "stop": "Stop",
+    "stoppedAtLimit": "The recording stopped at 60 seconds.",
+    "tooShort": "That recording was too short. Record again.",
+    "form": {
+      "title": "How did it go?",
+      "listen": "Listen to the recording",
+      "clarity": "Voice",
+      "clarityOption": {
+        "clear": "Clear",
+        "low_voice": "Low voice",
+        "nervous": "Nervous"
+      },
+      "classroom": "Room",
+      "classroomOption": {
+        "normal": "Normal",
+        "noisy": "High noise or echo"
+      },
+      "notes": "Notes (optional)",
+      "tag": {
+        "missed_words": "Missed words",
+        "good_pace": "Good pace",
+        "repeated_line": "Repeated a line",
+        "mixed_languages": "Mixed in other languages",
+        "needed_prompting": "Needed prompting"
+      },
+      "save": "Save the check",
+      "required": "Choose one answer.",
+      "reading": "Reading ({{language}})",
+      "readingOption": {
+        "recorded": {
+          "fluent": "Fluent",
+          "hesitant": "Hesitant or stuttering",
+          "needs_support": "Needs basic support"
+        },
+        "adapted": {
+          "fluent": "Reads the text with support",
+          "hesitant": "Reads words or letters with support",
+          "needs_support": "Not reading yet"
+        }
+      },
+      "english": "Speaking English",
+      "englishOption": {
+        "sentences": "Spoke in sentences",
+        "words": "Said single words",
+        "no_response": "Did not answer in English"
+      }
+    },
+    "saved": "{{name}}'s check is uploaded.",
+    "savedUploading": "{{name}}'s check is saved. Uploading now.",
+    "savedOnDevice": "{{name}}'s check is saved on this device. It will upload by itself when there is a network.",
+    "saveFailed": "The check could not be saved. Try again.",
+    "leaveTitle": "Discard this recording?",
+    "leaveBody": "The recording has not been saved. If you record again, the child gets the same text or questions.",
+    "keepRecording": "Stay here",
+    "discardRecording": "Discard the recording",
+    "changes": {
+      "check": "Pulse check · {{name}} · {{class}}",
+      "absence": "Pulse absence · {{name}} · {{date}}"
+    },
+    "consentLink": "Consent",
+    "recordConsent": "Record parental consent",
+    "interrupted": "The microphone stopped during the recording. Check it and record again.",
+    "retryingHint": "It will upload by itself.",
+    "stage": {
+      "preparing": "Before you record"
+    },
+    "subject": "Reading in {{language}} + speaking English",
+    "part": {
+      "reading": "Reading",
+      "english": "Speaking English"
+    },
+    "nextEnglish": "Next: English",
+    "speaking": {
+      "instruction1": "Point at each picture and ask the question. Let the child answer in English.",
+      "instruction2": "Ask the question once. Let the child say a sentence in English.",
+      "instruction3": "Ask the question once. Let the child talk in English for as long as they can."
+    },
+    "weekPosition": "Week {{week}} · {{position}} of {{total}}",
+    "adapted": {
+      "open": "Start adapted check",
+      "label": "Adapted check, observed by the teacher",
+      "title": "Nothing is recorded",
+      "body": "Use the text, words, letters and pictures below with whatever support the child needs, then note what you observed. This check is never scored by a machine; it is shared with the block's special educator.",
+      "formTitle": "What did you observe?"
+    },
+    "unlock": {
+      "title": "Week {{week}} has started",
+      "body": "This phone was offline when the week began, so its children are still locked. Ask the CRP to show the week's code, and scan it.",
+      "notOnDevice": "The children of this week are not on this phone. Open Pulse once with a network.",
+      "scan": "Scan the CRP's code",
+      "scanTitle": "Unlock week {{week}}",
+      "scanBody": "Point the camera at the code on the CRP's phone.",
+      "done_one": "Week {{week}} is unlocked: {{count}} child added.",
+      "done_other": "Week {{week}} is unlocked: {{count}} children added.",
+      "other-class": "This code is for another class or month.",
+      "not-open": "This week has not started yet.",
+      "not-on-device": "This week's children are not on this phone yet.",
+      "wrong-key": "This code does not open this week.",
+      "cameraTitle": "The camera cannot be used",
+      "cameraDenied": "Allow this app to use the camera in the browser's site settings, then try again.",
+      "cameraMissing": "This browser cannot use the camera.",
+      "camera": "Camera"
+    },
+    "codes": {
+      "open": "Pulse unlock codes",
+      "title": "Pulse unlock codes",
+      "description": "Show a teacher the code of a week that began while their phone was offline.",
+      "back": "Back to the cluster",
+      "week": "Week {{week}}",
+      "show": "Show code",
+      "howTo": "On the teacher's phone, open the class's Pulse and tap \"Scan the CRP's code\". The code unlocks only the week shown, and only once it has begun.",
+      "dialogTitle": "{{class}} · week {{week}}",
+      "dialogBody": "Let the teacher's phone scan this code.",
+      "qrLabel": "Unlock code",
+      "empty": {
+        "title": "No weeks to unlock",
+        "body": "Codes appear here once a week of Pulse has begun in a class of your cluster."
+      },
+      "notOnDevice": {
+        "title": "The codes are not on this phone yet",
+        "body": "Open this page once with a network so the codes are kept for visits without one."
+      }
+    },
+    "unnamedChild": "Name not on this phone",
+    "consentWithdrawnHint": "The family withdrew consent for audio checks, so this child is not recorded. Another child takes their place after the next nightly update.",
+    "consentWithdrawn": {
+      "title": "The family has withdrawn consent",
+      "body": "This child is not recorded. Another child of the class takes their place after the next nightly update."
+    },
+    "retakeAfterUpload": "A second recording can be made once this one has uploaded.",
+    "monthEnded": "This month's checks have ended. Go back to the list to see the new month.",
+    "machine": {
+      "summary": "Machine: reading {{reading}}, English {{english}}",
+      "reading": {
+        "fluent": "fluent",
+        "hesitant": "hesitant",
+        "needs_support": "needs support"
+      },
+      "english": {
+        "sentences": "sentences",
+        "words": "single words",
+        "no_response": "no answer"
+      },
+      "wcpm_one": "{{count}} word a minute",
+      "wcpm_other": "{{count}} words a minute",
+      "uncertain": "unsure, please listen",
+      "waiting": "The machine checks this recording overnight."
+    }
+  },
+  "consent": {
+    "title": "Consent for audio checks",
+    "titleFor": "Consent for audio checks · {{class}}",
+    "description": "Pulse records only children whose parent or guardian has agreed.",
+    "howItWorks": "Give each family the consent form and record their decision here from the signed form. A family can change its mind at any time: record the new decision and it applies from then on. A child with consent takes part from the class's next draw: that night if the class has not been drawn this month, otherwise next month's, which is drawn on the 25th (after that, the month after).",
+    "coverage": "{{consented}} of {{total}} children have consent.",
+    "record": "Record decision",
+    "recordFor": "Record the decision for {{name}}",
+    "status": {
+      "none": "No decision recorded",
+      "granted": "Agreed ({{date}})",
+      "refused": "Did not agree ({{date}})",
+      "grantedOnDevice": "Agreed · saved on this device",
+      "refusedOnDevice": "Did not agree · saved on this device",
+      "refusedByServer": "Not accepted"
+    },
+    "form": {
+      "title": "Decision for {{name}}",
+      "description": "Copy the guardian's name and decision from the signed form.",
+      "guardianName": "Parent or guardian",
+      "nameRequired": "Enter the name of the parent or guardian.",
+      "nameTooLong": "The name can have at most 120 characters.",
+      "decision": "Decision",
+      "decisionRequired": "Choose the family's decision.",
+      "granted": "Agrees to audio checks",
+      "refused": "Does not agree",
+      "method": "How it was given",
+      "paperForm": "Signed paper form",
+      "inPerson": "In person, in front of me",
+      "save": "Save the decision"
+    },
+    "saved": "The decision for {{name}} is saved.",
+    "savedOnDevice": "The decision for {{name}} is saved on this device. It will upload by itself when there is a network.",
+    "saveFailed": "The decision could not be saved. Try again.",
+    "needsNetwork": "This browser cannot keep work on the device, so saving needs a network.",
+    "notOnDevice": {
+      "title": "This class list is not on the device yet",
+      "body": "Open it once with a network so decisions can be recorded without one."
+    },
+    "changeDescription": "Audio check consent · {{name}} · {{class}}"
+  },
+  "visits": {
+    "change": {
+      "plan": "Visit planned to {{class}} on {{date}}",
+      "visit": "Visit to {{class}} on {{date}}",
+      "unplan": "Planned visit to {{class}} on {{date}} dropped",
+      "task": "Task: {{title}}",
+      "taskRemoved": "Task removed: {{title}}",
+      "review": "Your levels for {{name}}'s recording",
+      "request": "Request for a visit to {{class}}",
+      "requestWithdrawn": "Request for a visit to {{class}} withdrawn"
+    },
+    "band": {
+      "high": "Visit first",
+      "medium": "Visit soon",
+      "low": "Can wait"
+    },
+    "reason": {
+      "none": "Nothing calls for a visit at the moment.",
+      "checkBack": "Check-back of the agreed step due {{date}}",
+      "checkBackOverdue": "Check-back of the agreed step was due {{date}}",
+      "readingGap_one": "{{count}} of {{checked}} children checked needs basic support in reading",
+      "readingGap_other": "{{count}} of {{checked}} children checked need basic support in reading",
+      "englishGap_one": "{{count}} of {{checked}} children did not answer in English",
+      "englishGap_other": "{{count}} of {{checked}} children did not answer in English",
+      "request": "The teacher asked for a visit ({{topic}})",
+      "neverVisited": "Not visited yet this session",
+      "notVisited_one": "Last visit {{count}} day ago",
+      "notVisited_other": "Last visit {{count}} days ago",
+      "taskDue_one": "{{count}} task due at this school this week",
+      "taskDue_other": "{{count}} tasks due at this school this week",
+      "visitedRecently_one": "Visited {{count}} day ago",
+      "visitedRecently_other": "Visited {{count}} days ago",
+      "visitedToday": "Visited today",
+      "marksCheck_one": "{{count}} recent paper whose marks Pulse does not bear out",
+      "marksCheck_other": "{{count}} recent papers whose marks Pulse does not bear out"
+    },
+    "topic": {
+      "reading": "reading",
+      "english": "English",
+      "classroom": "classroom practice",
+      "other": "something else"
+    },
+    "level": {
+      "reading": {
+        "fluent": "Fluent",
+        "hesitant": "Hesitant",
+        "needs_support": "Needs support"
+      },
+      "english": {
+        "sentences": "Sentences",
+        "words": "Single words",
+        "no_response": "No answer"
+      }
+    },
+    "answer": {
+      "yes": "Yes",
+      "no": "No",
+      "not_seen": "Not seen"
+    },
+    "followUp": {
+      "practised": "Practising it",
+      "partly": "Partly",
+      "not_yet": "Not yet"
+    },
+    "area": {
+      "reading": "Reading and writing",
+      "english": "Spoken English",
+      "inclusion": "Every child included",
+      "classroom": "Classroom"
+    },
+    "step": {
+      "observe": "Observe",
+      "children": "Children",
+      "coach": "Coach",
+      "agree": "Agree"
+    },
+    "save": {
+      "sent": "Saved",
+      "waiting": "Saved on this phone",
+      "failed": "Not uploaded",
+      "notKept": "Not saved"
+    },
+    "home": {
+      "plan": "Week's plan",
+      "tasks": "Tasks",
+      "library": "Practices",
+      "weekTitle": "Coming visits",
+      "comingWeekBody": "{{planned}} for the next seven days.",
+      "weekBody": "{{planned}} for the next seven days; {{done}} this week.",
+      "weekPlanned_one": "{{count}} visit planned",
+      "weekPlanned_other": "{{count}} visits planned",
+      "weekDone_one": "{{count}} made",
+      "weekDone_other": "{{count}} made",
+      "noneThisWeek": "No visits planned for the next seven days. Open the week's plan to choose classes.",
+      "nextTitle": "Visit next",
+      "nextBody": "The classes that most need a visit, and why.",
+      "nothingNext": "Every class is planned or visited recently.",
+      "openPack": "Open",
+      "checkBacks_one": "{{count}} check-back due this week",
+      "checkBacks_other": "{{count}} check-backs due this week",
+      "tasksDue_one": "{{count}} task due this week",
+      "tasksDue_other": "{{count}} tasks due this week",
+      "toListen_one": "{{count}} recording to listen to",
+      "toListen_other": "{{count}} recordings to listen to",
+      "exams": "Exams"
+    },
+    "plan": {
+      "title": "Week's plan",
+      "back": "Back to the cluster",
+      "description": "{{start}} to {{end}}.",
+      "weekTitle": "Planned visits",
+      "nothingPlanned": "Nothing planned",
+      "unplan": "Drop the visit to {{class}}",
+      "rankedTitle": "Classes by need",
+      "rankedBody": "Ranked by a plain score: a check-back due, the share of children needing support in the last Pulse, a teacher's request, and the days since the last visit. Reorder it as you see fit.",
+      "score": "score {{score}}",
+      "add": "Plan",
+      "open": "Open",
+      "empty": {
+        "title": "No classes yet",
+        "body": "Classes of the current session appear here once they are set up."
+      }
+    },
+    "pack": {
+      "title": "Class",
+      "backToPlan": "Back to the week's plan",
+      "start": "Start a visit now",
+      "continue": "Continue today's visit",
+      "plan": "Plan a visit",
+      "planTitle": "Choose a day",
+      "plannedTitle": "Planned visits",
+      "openPlanned": "Open",
+      "requestTitle": "The teacher asked for a visit",
+      "requestBody": "About {{topic}}, on {{date}}.",
+      "pulseTitle": "Last Pulse",
+      "pulseMonth": "{{month}}",
+      "noPulse": "No Pulse checks yet this month or last.",
+      "englishNone_one": "{{count}} of {{checked}} did not answer in English.",
+      "englishNone_other": "{{count}} of {{checked}} did not answer in English.",
+      "levelsLabel": "{{needs}} need support, {{hesitant}} hesitant, {{fluent}} fluent, of {{checked}} children checked",
+      "stepTitle": "Agreed step",
+      "agreedOn": "Agreed on {{date}}",
+      "noStep": "No step waiting for a check-back.",
+      "focusTitle": "Focus for the visit",
+      "focusBody": "Five items to watch, chosen from the agreed step and the last Pulse. You can change them during the visit.",
+      "practicesTitle": "Practices likely to help",
+      "practicesBody": "Each with a ten-minute demonstration on today's textbook page.",
+      "historyTitle": "Earlier visits",
+      "openVisit": "Open",
+      "noHistory": {
+        "title": "No visits yet",
+        "body": "Visits to this class appear here."
+      }
+    },
+    "visit": {
+      "title": "Visit",
+      "backToClass": "Back to the class",
+      "visitedOn": "Visit on {{date}}",
+      "plannedFor": "Planned for {{date}}",
+      "plannedBody": "When you reach the class, start the visit: the time of each tag is counted from then.",
+      "start": "Start the visit",
+      "stepsLabel": "Steps of the visit",
+      "previous": "Back",
+      "next": "Next",
+      "notSent": "This visit was not uploaded",
+      "stale": "The visit was changed on another device after you opened it.",
+      "closed": "This visit can no longer be changed: visits are closed 14 days after they took place.",
+      "useServer": "Show the uploaded version",
+      "saveFailed": "This change could not be kept. Try again.",
+      "recordingLock": "Stop the voice note before moving to another step.",
+      "refused": {
+        "future": "The visit's date is in the future. Check the date on the phone.",
+        "tooOld": "A visit older than 14 days cannot be recorded.",
+        "startDay": "The start time is not on the day of the visit. Check the date and time on the phone.",
+        "movedLater": "The date of a visit that took place can only be moved earlier.",
+        "times": "The finish time does not fit the start time of the visit.",
+        "checkBack": "The check-back date must be 3 days to 6 weeks after the visit.",
+        "agreedBefore": "The agreement is dated before the visit. Check the date and time on the phone.",
+        "teacher": "The teacher chosen no longer teaches at this school. Choose the teacher again.",
+        "noteRefused": "The voice note was not accepted. The visit itself is saved; record the note again.",
+        "noteTooLarge": "The voice note is too large to upload. The visit itself is saved; record a shorter note.",
+        "noteUpload": "The voice note could not be uploaded (code {{code}}). The visit itself is saved; the note is tried again."
+      },
+      "notFound": {
+        "title": "Visit not found",
+        "body": "It may have been removed, or it was never kept on this phone."
+      }
+    },
+    "observe": {
+      "teacher": "Teacher observed",
+      "teacherNone": "Choose the teacher",
+      "lesson": "Lesson and page",
+      "lessonHint": "For example: Sarangi, lesson 6, page 41.",
+      "elapsed_one": "{{count}} minute since the start",
+      "elapsed_other": "{{count}} minutes since the start",
+      "followUpTitle": "Follow-up: {{practice}}",
+      "followUpQuestion": "Is the teacher practising the agreed step?",
+      "focusTitle": "Focus items",
+      "focusBody": "Answer what you saw, not what you were told.",
+      "changeItems": "Change the items",
+      "changeItemsBody": "Choose up to {{count}} items.",
+      "noItems": "No focus items chosen.",
+      "itemNote": "Note (optional)",
+      "momentsTitle": "Moments",
+      "momentsBody": "Tap when something happens; the time is kept with it.",
+      "momentNote": "What happened (optional)",
+      "removeMoment": "Remove this moment"
+    },
+    "children": {
+      "title": "Hear two children again",
+      "body": "Two children from the last Pulse, chosen by the app. Listen to each read the class's text and note what you hear. A big gap is a reason to talk with the teacher, not a fault.",
+      "checked": "Pulse:",
+      "engine": "engine:",
+      "reading": "Reading, as you heard it",
+      "english": "English, as you heard it",
+      "gap": "Your level differs a lot from the Pulse check. Talk it over with the teacher: how did they judge it?",
+      "none": {
+        "title": "No children to hear again",
+        "body": "The class has no Pulse checks this month or last."
+      }
+    },
+    "coach": {
+      "strengthTitle": "One strength",
+      "strengthBody": "Begin with what went well, and say what you saw.",
+      "strength": "What went well",
+      "evidence": "What you saw (moments and items)",
+      "noEvidence": "Tag moments or answer focus items to cite them here.",
+      "stepTitle": "One step to take",
+      "stepBody": "One practice the teacher agrees to try from tomorrow.",
+      "suggested": "Suggested from what you saw",
+      "practice": "Practice",
+      "choosePractice": "Choose a practice",
+      "change": "What to change, in your words",
+      "changeHint": "One sentence the teacher will remember.",
+      "technique": "How exactly",
+      "techniqueHint": "Say what the teacher will do, when, and with which children.",
+      "demoGiven": "I gave the ten-minute demonstration in the class",
+      "plan": "Two-week plan (optional)",
+      "planHint": "Add to the practice's plan what fits this class.",
+      "checkBack": "Check-back date",
+      "checkBackHint": "Between {{min}} days and {{max}} weeks after the visit.",
+      "language": "Language of the card",
+      "tipsTitle": "Before you give the feedback",
+      "tipsBody": "Only you see these.",
+      "tipMet": "Done:",
+      "tipOpen": "Still open:"
+    },
+    "tip": {
+      "evidence": "A strength that rests on something you saw",
+      "oneStep": "One practice, not a list",
+      "specific": "Exactly what the teacher will do",
+      "demo": "Shown in the class, not only told",
+      "soon": "A check-back within three weeks"
+    },
+    "agree": {
+      "incompleteTitle": "The card is not complete",
+      "incompleteBody": "Add a strength, a practice and a check-back date (3 days to 6 weeks after the visit) in the Coach step.",
+      "unanswered_one": "{{count}} focus item is not answered.",
+      "unanswered_other": "{{count}} focus items are not answered.",
+      "agree": "The teacher agreed to this step",
+      "agreedAt": "Agreed at {{time}}",
+      "print": "Print the card",
+      "finishBody": "Finish the visit when you leave the class. You can still correct it for 14 days.",
+      "finish": "Finish the visit",
+      "done": "Visit finished"
+    },
+    "card": {
+      "title": "Practice card",
+      "strength": "What went well",
+      "step": "The step agreed",
+      "how": "How:",
+      "plan": "The next two weeks",
+      "checkBack": "Check-back {{date}}",
+      "lookFor": "At the check-back:"
+    },
+    "practice": {
+      "steps": "How to do it",
+      "demo": "Ten-minute demonstration on today's page",
+      "iDo": "You show · 2 minutes",
+      "weDo": "Together · 4 minutes",
+      "youDo": "Teacher does · 4 minutes",
+      "plan": "Two weeks",
+      "lookFor": "At the check-back, look for:"
+    },
+    "record": {
+      "followUp": "Agreed step:",
+      "notAnswered": "Not answered",
+      "agreed": "Agreed with the teacher",
+      "notAgreed": "Not yet agreed",
+      "noFeedback": "No feedback recorded"
+    },
+    "listen": {
+      "title": "Recordings to listen to",
+      "body": "Where the engine was unsure, or it and the teacher disagree. Your levels count instead of both.",
+      "none": "Nothing to listen to.",
+      "teacher": "Teacher:",
+      "engine": "engine:",
+      "unsure": "unsure",
+      "play": "Listen",
+      "offline": "Listening needs a network.",
+      "failed": "The recording could not be loaded.",
+      "yourReading": "Reading, as you heard it",
+      "yourEnglish": "English, as you heard it",
+      "save": "Save my levels"
+    },
+    "calibration": {
+      "title": "A conversation worth having",
+      "body": "The teacher's reading levels matched yours in {{agreed}} of {{compared}} children. Talk together about how levels are judged, with a recording you both listen to."
+    },
+    "tasks": {
+      "title": "Tasks",
+      "description": "Orders, circulars and meeting actions to fit around the visits. Shared with the other CRPs of the cluster.",
+      "add": "Add a task",
+      "editTitle": "Change the task",
+      "edit": "Change {{title}}",
+      "remove": "Remove {{title}}",
+      "removeTitle": "Remove this task?",
+      "removeBody": "“{{title}}” is removed for every CRP of the cluster.",
+      "removeConfirm": "Remove",
+      "keep": "Keep it",
+      "markDone": "Mark {{title}} done",
+      "markOpen": "Mark {{title}} not done",
+      "due": "Due {{date}}",
+      "empty": {
+        "title": "No tasks",
+        "body": "Add the orders and circulars you receive, with their deadlines."
+      },
+      "group": {
+        "overdue": "Overdue",
+        "week": "This week",
+        "later": "Later",
+        "undated": "No date",
+        "done": "Done"
+      },
+      "source": {
+        "order": "Order",
+        "circular": "Circular",
+        "meeting": "Meeting",
+        "own": "Own reminder"
+      },
+      "titleLabel": "What has to be done",
+      "titleRequired": "Write what has to be done.",
+      "sourceLabel": "From",
+      "dueLabel": "Deadline",
+      "clusterLabel": "Cluster",
+      "schoolLabel": "School",
+      "noSchool": "The whole cluster",
+      "detailsLabel": "Details",
+      "save": "Save"
+    },
+    "library": {
+      "title": "Practice library",
+      "description": "One step at a time: each practice with how to do it, a ten-minute demonstration on today's textbook page and a two-week plan."
+    },
+    "teacher": {
+      "open": "Visits",
+      "title": "Visits and practice card",
+      "cardTitle": "Your practice card",
+      "noCard": "No step agreed yet. After a visit, the step you agree on with your CRP appears here.",
+      "historyTitle": "Visits to this class",
+      "noVisits": {
+        "title": "No visits yet",
+        "body": "When your CRP visits this class, what they saw and the step you agreed appear here."
+      }
+    },
+    "request": {
+      "title": "Ask for a visit",
+      "body": "Your CRP sees the request when planning the week.",
+      "topic": "What would you like help with?",
+      "note": "Anything to add (optional)",
+      "send": "Ask for a visit",
+      "open": "You asked for a visit about {{topic}} on {{date}}.",
+      "openByColleague": "A colleague asked for a visit about {{topic}} on {{date}}.",
+      "withdraw": "Withdraw the request",
+      "waiting": "Request saved on this phone; it is sent when there is a network.",
+      "failed": "The request could not be sent.",
+      "classTeacherOnly": "A visit to this class is asked for by its class teacher."
+    },
+    "note": {
+      "title": "Voice note",
+      "body": "Speak for up to two minutes about what you saw, instead of typing. Only you hear it; the transcript is written overnight. Both are deleted after 30 days.",
+      "noStorage": "This browser cannot keep recordings on the phone, so voice notes cannot be made here.",
+      "language": "Language",
+      "record": "Record a note",
+      "recordAgain": "Record again",
+      "stop": "Stop",
+      "opening": "Opening the microphone…",
+      "waiting": "Note of {{length}} kept on this phone; it uploads with the visit.",
+      "uploaded": "Note of {{length}} uploaded. Its transcript is written overnight.",
+      "transcribed": "Transcript of your note:",
+      "removed": "The note was deleted after 30 days.",
+      "missing": "The voice note was no longer on this phone, so it was not uploaded. The visit itself is saved; record the note again if you need it.",
+      "copy": "Copy the transcript",
+      "copied": "Copied"
+    }
+  },
+  "exams": {
+    "open": "Exams",
+    "kind": {
+      "class_test": "Class test",
+      "unit_test": "Unit test",
+      "half_yearly": "Half-yearly exam",
+      "annual": "Annual exam"
+    },
+    "subject": {
+      "hindi": "Hindi",
+      "english": "English",
+      "maths": "Maths",
+      "evs": "EVS",
+      "urdu": "Urdu",
+      "sanskrit": "Sanskrit",
+      "other": "Other"
+    },
+    "change": {
+      "save": "Exam: {{exam}}, from {{date}}",
+      "remove": "Exam removed: {{exam}}",
+      "move": "{{subject}} paper on {{date}}",
+      "marks": "Marks: {{subject}}, {{class}}",
+      "share": "Sharing the result of {{exam}} with families",
+      "unshare": "Stopping the sharing of {{exam}} with families"
+    },
+    "classFallback": "Class",
+    "saveFailed": "This could not be kept on the phone or sent. Try again.",
+    "save": {
+      "sent": "Uploaded",
+      "waiting": "Saved on this phone",
+      "failed": "Not uploaded"
+    },
+    "class": {
+      "title": "Exams and marks",
+      "back": "Back to home",
+      "schedule": "Schedule a test",
+      "toMark": "Marks to enter",
+      "upcoming": "Coming up",
+      "done": "Results",
+      "empty": {
+        "title": "No exams yet",
+        "body": "Schedule a class test here. Exams your CRP schedules for the cluster appear here too."
+      },
+      "outOf": "out of {{max}}",
+      "graded": "grades A to E",
+      "progress": "{{entered}} of {{children}} entered",
+      "enterMarks": "Enter marks",
+      "viewMarks": "See marks",
+      "result": "Result sheet",
+      "move": "Change",
+      "remove": "Remove the exam",
+      "forCluster": "Scheduled for the cluster",
+      "waiting": "Saved on this phone; it uploads when there is a network."
+    },
+    "schedule": {
+      "titleClass": "Schedule a test for {{class}}",
+      "titleCluster": "Schedule an exam for the cluster",
+      "bodyClass": "One paper for each subject chosen, on the day given. You can change a paper's day later.",
+      "bodyCluster": "One paper for each subject in every class of the grades chosen, at every school of the cluster. Each school can move its papers within the exam's dates.",
+      "kind": "Kind of exam",
+      "name": "Name (optional)",
+      "nameHint": "For example: Unit test 2",
+      "subjects": "Subjects",
+      "otherName": "Name of the other subject",
+      "date": "Day of the papers",
+      "scale": "Marked",
+      "scaleMarks": "Out of a maximum",
+      "scaleGrades": "By grade (A to E)",
+      "maxMarks": "Maximum marks",
+      "grades": "Classes",
+      "save": "Schedule",
+      "noYear": "The current academic session is not set up yet; ask the administrator.",
+      "needSubject": "Choose at least one subject.",
+      "needOtherName": "Write the name of the other subject.",
+      "needGrade": "Choose at least one class.",
+      "datesInvalid": "The days must lie within the session, at most 45 days apart, and begin no more than 60 days ago.",
+      "maxInvalid": "Maximum marks are a whole number from 1 to 500.",
+      "tooMany": "That is more than 600 papers; schedule the grades in two exams.",
+      "papers": "{{papers}} in {{classes}}",
+      "paperCount_one": "{{count}} paper",
+      "paperCount_other": "{{count}} papers",
+      "classCount_one": "{{count}} class",
+      "classCount_other": "{{count}} classes",
+      "kept": "Exam kept on this phone; it uploads when there is a network."
+    },
+    "move": {
+      "title": "Change the {{subject}} paper",
+      "body": "A day within the exam, from {{from}} to {{to}}.",
+      "save": "Save"
+    },
+    "removeDialog": {
+      "title": "Remove this exam?",
+      "body": "{{exam}} is removed with all its papers, for every class it was scheduled in. Exams with marks cannot be removed.",
+      "confirm": "Remove",
+      "keep": "Keep it"
+    },
+    "marks": {
+      "back": "Back to exams",
+      "description": "{{exam}} · {{date}}",
+      "notYet": "Marks can be entered from {{date}}, the day of the paper.",
+      "closed": "Marks can be changed for 60 days after the paper; this paper is closed.",
+      "outOf": "Out of {{max}}",
+      "graded": "Grades A to E",
+      "absent": "Absent",
+      "absentLabel": "Absent: {{name}}",
+      "marksLabel": "Marks of {{name}}",
+      "gradeLabel": "Grade of {{name}}",
+      "problem": {
+        "format": "Type a number, like 14 or 14.5.",
+        "step": "Marks go in steps of a half.",
+        "range": "More than the maximum of {{max}}."
+      },
+      "entered": "{{entered}} of {{children}} entered",
+      "absentCount_one": "{{count}} absent",
+      "absentCount_other": "{{count}} absent",
+      "average": "Average {{value}}%",
+      "range": "Highest {{highest}}%, lowest {{lowest}}%",
+      "save": "Save marks",
+      "saved": "Marks saved on this phone; they upload when there is a network.",
+      "unsaved": "Marks typed here are not saved yet.",
+      "restored": "Marks you typed earlier on this phone and did not save are shown again.",
+      "fixProblems": "Correct the entries marked in red first.",
+      "notSent": "These marks were not uploaded",
+      "stale": "The marks were changed on another phone after you opened them.",
+      "useServer": "Show the uploaded marks",
+      "noChildren": "No children were on the class's roll on the day of the paper.",
+      "notFound": {
+        "title": "Paper not found",
+        "body": "It may have been removed, or it is not on this phone yet. Open the exams once with a network."
+      },
+      "history": {
+        "title": "Corrections",
+        "body": "Marks changed a day or more after they were entered, or by another person. The school and its CRP see this list.",
+        "none": "No corrections.",
+        "removed": "no result",
+        "by": "{{name}}, {{date}}",
+        "someone": "A former staff member"
+      },
+      "leave": {
+        "title": "Leave without saving?",
+        "body": "The marks you typed stay on this phone and are shown again when you come back, but they are not saved yet.",
+        "stay": "Stay",
+        "go": "Leave"
+      },
+      "discard": "Discard the typed marks",
+      "keepMine": "Keep my marks and save them again"
+    },
+    "result": {
+      "title": "Result sheet",
+      "description": "{{exam}} · {{class}} · {{school}}",
+      "child": "Name",
+      "total": "Total",
+      "percent": "%",
+      "absentShort": "AB",
+      "missing": "–",
+      "print": "Print",
+      "noPapers": "This exam has no paper in this class.",
+      "notFound": "Exam not found. It may have been removed.",
+      "totalNote": "The total counts the papers marked out of a maximum; graded papers are shown as their grade."
+    },
+    "crp": {
+      "title": "Exams in the cluster",
+      "back": "Back to the cluster",
+      "description": "Exams scheduled for the cluster and by its schools, with how far the marks are entered.",
+      "schedule": "Schedule an exam",
+      "dates": "{{from}} to {{to}}",
+      "bySchool": "Scheduled by the school",
+      "forCluster": "For the cluster",
+      "empty": {
+        "title": "No exams yet",
+        "body": "Schedule the half-yearly or annual exam for the whole cluster here, or see the tests schools schedule themselves."
+      },
+      "checksTitle": "Marks to talk over",
+      "checksBody": "Language papers where children given high marks were heard reading, or answering in English, at the lowest level in Pulse. A reason to talk with the teacher, never a verdict. Only you see this.",
+      "noChecks": "Nothing to talk over.",
+      "checkLine": "{{weak}} of {{high}} children with high marks heard at the lowest level",
+      "openClass": "Open the class",
+      "progress_one": "{{marked}} of {{count}} paper has marks",
+      "progress_other": "{{marked}} of {{count}} papers have marks"
+    },
+    "check": {
+      "title": "Marks beside Pulse",
+      "body": "Each child's mark in a language paper beside the level Pulse heard. Only your own listening and the engine's sure scores count; the teacher's own levels are shown but not counted.",
+      "none": "No language paper of this class has marks beside a Pulse recording yet.",
+      "paper": "{{subject}}, {{exam}} · {{date}}",
+      "compared_one": "{{count}} child compared",
+      "compared_other": "{{count}} children compared",
+      "highButWeak": "{{weak}} of {{high}} with high marks heard at the lowest level",
+      "lowButStrong_one": "{{count}} child with low marks heard doing well",
+      "lowButStrong_other": "{{count}} children with low marks heard doing well",
+      "flag": "Worth talking over",
+      "showChildren": "Show the children",
+      "hideChildren": "Hide the children",
+      "source": {
+        "review": "your level",
+        "engine": "engine",
+        "teacher": "teacher's level, not counted"
+      },
+      "unnamed": "Child no longer on the list",
+      "loading": "Loading the children…",
+      "failed": "The children could not be loaded. Try again with a network."
+    },
+    "refused": {
+      "closed": "Marks can be changed for 60 days after the paper.",
+      "notYet": "Marks are entered from the day of the paper.",
+      "invalid": "A mark is missing, above the maximum, or not of the paper's kind.",
+      "teachersOnly": "Marks are entered by the school's teachers.",
+      "hasMarks": "An exam or paper with marks cannot be removed.",
+      "dates": "A paper falls within the dates of its exam.",
+      "session": "An exam falls within its academic session.",
+      "tooOld": "An exam is recorded at most 60 days after it began.",
+      "notAuthor": "This exam is outside your school or cluster.",
+      "maximum": "The maximum cannot be lower than a mark already given.",
+      "paperMissing": "This paper is no longer on the server; it may have been removed. Discard these marks.",
+      "future": "A paper with marks keeps its day."
+    },
+    "share": {
+      "title": "Share with families",
+      "sharedOn": "Families of this class can see these results (shared {{time}}).",
+      "notShared": "Families do not see these results until you share them.",
+      "share": "Share with families",
+      "takeBack": "Stop sharing",
+      "unmarked_one": "{{count}} child still has a paper without a result. Share once the marks are complete.",
+      "unmarked_other": "{{count}} children still have a paper without a result. Share once the marks are complete.",
+      "sharing": "Families of this class will see these results once the phone is online.",
+      "waiting": "Waiting to send"
+    }
+  },
+  "notifications": {
+    "title": "Notifications on this phone",
+    "body": "Reminders of what is due, with no names of children. They come through the browser and cost nothing.",
+    "turnOn": "Turn on notifications",
+    "turnOff": "Turn off notifications",
+    "unsupported": "This browser cannot show notifications. Install the app from Chrome to receive them.",
+    "blocked": "Notifications are blocked for this site. Allow them in the browser's site settings, then come back here.",
+    "refused": "Notifications were not allowed.",
+    "failed": "That did not work. Check the network and try again.",
+    "needsNetwork": "Changing notifications needs a network.",
+    "kindsLabel": "Send me",
+    "kind": {
+      "plan_ready": {
+        "title": "The week's plan",
+        "body": "Sunday evening: the check-backs due and the visit requests waiting."
+      },
+      "check_back": {
+        "title": "Check-backs",
+        "body": "The morning an agreed step is due for its check-back."
+      },
+      "pulse_week": {
+        "title": "Pulse weeks",
+        "body": "The morning a Pulse week opens: how many children are due."
+      }
+    }
+  },
+  "notes": {
+    "open": "Notes to families",
+    "title": "Notes to families",
+    "description": "Messages and homework for the families of {{class}}, {{school}}.",
+    "back": "Back to your classes",
+    "kept": "The note is saved. It reaches the families as soon as the phone is online.",
+    "sendFailed": "The note could not be sent. Check the connection and try again.",
+    "removeFailed": "The note could not be removed. Try again.",
+    "sent": "Sent to the class",
+    "discard": "Discard",
+    "remove": "Remove",
+    "dueOn": "Due {{date}}",
+    "byAt": "{{name}} · {{time}}",
+    "kind": {
+      "message": "Message",
+      "homework": "Homework"
+    },
+    "write": {
+      "title": "Write to the families",
+      "kind": "What is it?",
+      "body": "Message",
+      "homeworkBody": "What should the children do?",
+      "count": "{{length}} of {{limit}} characters",
+      "bodyRequired": "Write the message first.",
+      "dueOn": "To be done by",
+      "dueOnRange": "Choose a day from today to {{days}} days ahead.",
+      "addFile": "Add a photo or PDF",
+      "preparing": "Preparing the file…",
+      "removeFile": "Remove the file",
+      "fileHint": "One photo (made smaller on this phone) or a PDF of up to 1 MB. Avoid photos of children.",
+      "fileProblem": {
+        "type": "Only photos and PDF files can be sent.",
+        "tooLarge": "This file is larger than 1 MB and could not be made smaller. Choose a smaller file.",
+        "unreadable": "This file could not be read. Try another one."
+      },
+      "send": "Send to the class"
+    },
+    "file": {
+      "picture": "Photo",
+      "pdf": "PDF",
+      "offline": "Opening the file needs a network.",
+      "failed": "The file could not be opened. Try again.",
+      "pictureAlt": "The photo sent with the note"
+    },
+    "status": {
+      "waiting": "Waiting to send",
+      "failed": "Not sent",
+      "removeFailed": "Not removed"
+    },
+    "empty": {
+      "title": "No notes sent yet",
+      "body": "Notes and homework you send appear here and on the families' phones."
+    },
+    "removeDialog": {
+      "title": "Remove this note?",
+      "body": "Families will no longer see it. A removed note cannot be brought back."
+    },
+    "change": {
+      "message": "Note to families: {{text}}",
+      "homework": "Homework: {{text}}",
+      "remove": "Removing the note: {{text}}"
+    },
+    "reach_one": "Families of {{families}} of the {{count}} child in this class have a family sign-in and can read these notes. The school can issue sign-in slips to the others.",
+    "reach_other": "Families of {{families}} of the {{count}} children in this class have a family sign-in and can read these notes. The school can issue sign-in slips to the others.",
+    "sentNow": "The note has reached the families."
+  },
+  "family": {
+    "practice": {
+      "open": "Practise at home",
+      "today_one": "{{count}} star earned in practice today.",
+      "today_other": "{{count}} stars earned in practice today.",
+      "invite": "Ten minutes of reading and numbers together each day makes a real difference."
+    },
+    "notes": {
+      "title": "From the teacher",
+      "description": "Messages and homework sent to your child's class.",
+      "noClass": "Your child is not enrolled in a class this session.",
+      "none": "No messages from the teacher yet.",
+      "all": "Show all {{total}} notes",
+      "fewer": "Show fewer notes"
+    },
+    "attendance": {
+      "title": "Attendance",
+      "none": "No attendance recorded yet",
+      "noneBody": "Days appear here once the teacher takes attendance this session.",
+      "thisMonth": "This month",
+      "daysOf": "{{present}} of {{marked}} days",
+      "notYet": "Not taken yet",
+      "session": "This session",
+      "percent": "{{percent}}% present",
+      "run": "Present in a row",
+      "runDays_one": "{{count}} day",
+      "runDays_other": "{{count}} days",
+      "absentOn": "Absent this month on: {{days}}.",
+      "byMonth": "Attendance by month",
+      "note": "Only days on which the teacher took attendance are counted. If a day looks wrong, please speak to the teacher."
+    },
+    "results": {
+      "title": "Results",
+      "description": "Exams whose results the school has shared with you.",
+      "none": "No results shared yet",
+      "noneBody": "Results appear here once the teacher shares them after an exam.",
+      "stars_one": "{{count}} star of 5",
+      "stars_other": "{{count}} stars of 5",
+      "caption": "Results in {{exam}}",
+      "subject": "Subject",
+      "result": "Result",
+      "starsHeading": "Stars",
+      "absent": "Absent",
+      "grade": "Grade {{grade}}",
+      "practise": "Some practice at home will help in {{subjects}}.",
+      "starsNote": "Stars follow the school's grade bands: five stars from 80%, four from 60%, three from 40%, two from 20%."
+    }
+  },
+  "practice": {
+    "title": "Practice at home",
+    "description": "Stories, words, letters and numbers for Class {{grade}}. It works without the internet, and nothing your child does here is sent to the school.",
+    "back": "Back to your child's page",
+    "starsToday_one": "{{count}} star today",
+    "starsToday_other": "{{count}} stars today",
+    "language": "Language",
+    "activity": "What shall we practise?",
+    "activities": {
+      "story": "Read a story",
+      "words": "Words",
+      "letters": "Letters",
+      "numbers": "Numbers"
+    },
+    "listen": "Listen",
+    "right": "Well done! You earned a star.",
+    "tryAgain": "Not quite. Read it once more and try again.",
+    "nextStory": "Next story",
+    "wordsHint": "Let your child read the word aloud first. Listen to check it together.",
+    "readIt": "Read it",
+    "skip": "Next word",
+    "lettersHint": "Tap a letter to hear it, and say it together.",
+    "lettersHintSilent": "Point to a letter and say it together.",
+    "nextQuestion": "Next question",
+    "week_one": "Practised on {{count}} day this week.",
+    "week_other": "Practised on {{count}} days this week.",
+    "noVoice": "This phone has no voice for reading aloud in this language, so read together instead.",
+    "maths": {
+      "count": "How many stars?",
+      "compare": "Which number is bigger?",
+      "countLabel": "Stars to count"
+    }
+  },
+  "sahayak": {
+    "offline": "Sahayak needs a network. Everything else on this page works without one.",
+    "errors": {
+      "network": "Sahayak could not be reached. Check the connection and try again.",
+      "notConfigured": "Sahayak is not set up for this project yet. The administrator stores its keys (setup guide, Part 10).",
+      "quota": "Today's limit for this has been reached. It is available again tomorrow.",
+      "unavailable": "The service is busy right now. Try again in a minute.",
+      "refused": "Sahayak could not prepare a useful answer this time. Try again, or write it yourself.",
+      "notSaved": "The agreed feedback has not reached the server yet. Wait until the visit is uploaded.",
+      "forbidden": "Sahayak is for cluster resource persons.",
+      "other": "Something went wrong. Try again."
+    },
+    "draft": {
+      "title": "Draft with Sahayak",
+      "description": "A first draft from what you noted in this lesson, the class's Pulse and your voice note.",
+      "ask": "Prepare a draft",
+      "working": "Preparing…",
+      "observeFirst": "Note what you saw in the lesson first (focus items or moments); the draft is built only from that.",
+      "withNote": "Your voice note's transcript will be used too.",
+      "withoutNote": "No transcript of a voice note yet; the draft uses your notes from the lesson.",
+      "moment": "A moment you noted",
+      "evidence": "Based on: {{list}}",
+      "noEvidence": "No moment of this lesson backs this strength; check it before using it.",
+      "yourCall": "Sahayak only drafts. Take in what helps, then change anything until it is your own words. Names of children and the teacher were not sent.",
+      "use": "Use this draft",
+      "discard": "Discard",
+      "namesLoading": "Getting the class list first, so that names can be taken out…",
+      "namesFailed": "The class list could not be loaded, so names could not be taken out. Open the class once with a network, then try again.",
+      "used": "The draft is in the form. Change anything you like.",
+      "undo": "Undo"
+    },
+    "score": {
+      "title": "How good was this feedback?",
+      "description": "A private check of the feedback you agreed, against six signs of good coaching. Only you see it.",
+      "ask": "Check my feedback",
+      "uploadFirst": "Available once the visit with the agreed feedback is uploaded.",
+      "total": "{{total}} of {{max}}",
+      "parts": {
+        "specific": "Specific to this lesson",
+        "evidence": "Backed by what you saw",
+        "oneFocus": "One clear change",
+        "demonstration": "Shown in practice",
+        "checkBack": "Check-back soon",
+        "respectful": "Respectful, blame-free"
+      },
+      "part": "{{value}} of 2",
+      "tip": "One tip for next time",
+      "private": "This score is not shown to the teacher or to the block. Offices only ever see totals over many visits."
+    },
+    "order": {
+      "open": "Read an order photo",
+      "title": "Tasks from an order",
+      "description": "Take a photo of the order or circular. Sahayak lists what it asks you to do and by when; you check each task before it is added.",
+      "notPicture": "Choose a photo of the order.",
+      "unreadable": "No tasks could be read from this photo. Try a sharper photo of the whole page, in good light.",
+      "choose": "Take or choose a photo",
+      "privacy": "The photo is made smaller on this phone, sent once to be read, and kept nowhere.",
+      "reading": "Reading the order…",
+      "from": "From: {{issuer}}",
+      "check": "Check each task and its date. Untick what does not concern you.",
+      "keep": "Add this task",
+      "add_one": "Add {{count}} task",
+      "add_other": "Add {{count}} tasks",
+      "again": "Another photo"
+    },
+    "rehearsal": {
+      "open": "Rehearsal room",
+      "title": "Rehearsal room",
+      "description": "Practise a hard feedback conversation with a simulated teacher before the real one, then see what went well and what to try next.",
+      "language": "Language of the conversation",
+      "start": "Start",
+      "history": "Your practice so far",
+      "historyBody": "Only you see these. The conversations themselves are not kept.",
+      "noHistory": "No practice yet. Choose a teacher above to start.",
+      "checksMet": "{{met}} of {{total}} checks",
+      "simulated": "This teacher is a simulation, not a real person. Talk as you would after the lesson.",
+      "conversation": "The conversation",
+      "teacherSays": "Teacher:",
+      "youSay": "You:",
+      "thinking": "The teacher is answering…",
+      "yourLine": "What you say",
+      "placeholder": "What do you say to the teacher?",
+      "send": "Say it",
+      "longEnough": "This conversation has run long enough. Finish it to see the debrief.",
+      "finish": "Finish and debrief",
+      "leave": "Leave without a debrief",
+      "finishHint": "Say at least two things before the debrief.",
+      "debriefTitle": "Debrief",
+      "again": "Practise this again",
+      "another": "Choose another teacher",
+      "met": "Done:",
+      "notMet": "Not yet:",
+      "wentWell": "What went well",
+      "tryNext": "Try next time",
+      "checks": {
+        "namedPractice": "You named one concrete practice to try",
+        "askedConstraints": "You asked about the teacher's situation and listened",
+        "agreedCheckBack": "You agreed a day to look again together",
+        "keptBlameOut": "You kept blame and comparison out",
+        "citedEvidence": "You pointed to something specific you saw"
+      },
+      "scenarios": {
+        "tired-veteran": {
+          "title": "The experienced, tired teacher",
+          "briefing": "Kamla ji has taught for 24 years and teaches Classes 1 and 2 together, 38 children who come irregularly. In today's Hindi lesson the class repeated the story in chorus; the back rows did not open their books.",
+          "opening": "Come, sit. You saw it yourself. Half of them do not even come every day. What will a new method do?"
+        },
+        "eager-new-teacher": {
+          "title": "The eager new teacher",
+          "briefing": "Pooja is in her second year, alone with 52 children in Class 2. Today she covered two pages quickly; the same four children answered every question while many could not read the words.",
+          "opening": "Namaste! How did you find the class today? I tried to finish both lessons. Whatever you suggest, I will do all of it."
+        },
+        "pulse-defensive": {
+          "title": "After a hard Pulse result",
+          "briefing": "This month's Pulse heard 9 of the 20 sampled children in Ramesh ji's Class 3 reading at the lowest level. You have come to talk about it; he feels judged.",
+          "opening": "That recording check of yours... the children were scared, and it is harvest time, half of them are in the fields. How is that my fault?"
+        },
+        "overloaded-head-teacher": {
+          "title": "The overloaded head teacher",
+          "briefing": "Yadav ji heads a two-teacher school and also teaches Class 3. Today his children copied from the board for most of the period while he filled registers.",
+          "opening": "Look, the midday meal accounts, the online data, and then the BEO's meetings... where is the time left to teach? You tell me."
+        }
+      }
+    }
+  },
+  "progress": {
+    "open": "Progress",
+    "back": "Back",
+    "hint": "Point at or tab to a month to see its figures.",
+    "asTable": "Show as a table",
+    "month": "Month",
+    "none": "Not available",
+    "checked": "checked",
+    "wcpm": "{{value}} words a minute",
+    "wcpmHeader": "Words a minute",
+    "presentHeader": "Present",
+    "lakshya": "NIPUN Lakshya for Class {{grade}}: {{value}} words a minute",
+    "outOf": "{{value}} of {{max}}",
+    "minutes": "{{value}} minutes",
+    "source": {
+      "review": "heard by the CRP",
+      "engine": "scored by the engine",
+      "teacher": "as the teacher recorded"
+    },
+    "movement": {
+      "up": "Moved up a level",
+      "down": "Moved down a level",
+      "same": "Same level"
+    },
+    "child": {
+      "title": "A child's progress",
+      "notFound": "This child's progress is not available to you.",
+      "description": "Learner code {{code}}. Reading from the Pulse checks, marks from the school's exams, and attendance.",
+      "reading": "Reading",
+      "readingBody": "One level a month, from the most independent check: the CRP's listening, then the engine's sure score, then the teacher's.",
+      "noPulse": "This child has not been checked in the Pulse yet.",
+      "speedTitle": "Reading speed",
+      "marks": "Marks",
+      "noMarks": "No marks entered yet.",
+      "date": "Date",
+      "attendance": "Attendance",
+      "noAttendance": "No attendance taken yet.",
+      "attendanceTitle": "Days present, as a share of the days attendance was taken"
+    },
+    "class": {
+      "title": "Class progress",
+      "heading": "Progress of {{class}}",
+      "notFound": "This class's progress is not available to you.",
+      "trend": "Reading, month by month",
+      "trendBody": "The children checked in each month's Pulse, by reading level.",
+      "noPulse": "No Pulse checks in this class yet.",
+      "levelsTitle": "Children at each reading level",
+      "brightSpots_one": "{{count}} child moved up a level",
+      "brightSpots_other": "{{count}} children moved up a level",
+      "brightSpotsBody": "Since their check before. Worth telling the class and the families.",
+      "children": "Children",
+      "childrenBody": "The latest level and speed, attendance this session, and marks of the last three months.",
+      "noChildren": "No children enrolled in this class.",
+      "child": "Child",
+      "level": "Latest level",
+      "marks": "Marks",
+      "notChecked": "Not checked yet",
+      "note": "Pulse checks a sample of children each month, so not every child has a level yet. Use this to plan help, never to compare children."
+    },
+    "area": {
+      "group": "Class {{grade}}, {{language}} medium",
+      "allWithheld": "Every month here comes from fewer than {{classes}} classes or {{schools}} schools, so nothing is shown yet.",
+      "levelsTitle": "Children at each reading level",
+      "speedTitle": "Middle reading speed",
+      "speedNote": "The middle value of all children timed: a child who could not yet read the passage counts as 0 words a minute.",
+      "latest": "{{month}}: {{checked}} children in {{classes}} classes; {{independent}}% of the levels independently confirmed.",
+      "metLakshya": "Of the children whose speed was measured, {{share}}% read {{value}} words a minute or more.",
+      "someWithheld_one": "{{count}} month is not shown: it comes from fewer than {{classes}} classes or {{schools}} schools.",
+      "someWithheld_other": "{{count}} months are not shown: they come from fewer than {{classes}} classes or {{schools}} schools.",
+      "coaching": "Mentoring that changes practice",
+      "coachingBody": "Measured by what changed in classrooms, not by the number of visits. Finished months only.",
+      "changed": "Follow-up visits that found the agreed step in use",
+      "changedHeader": "Step in use",
+      "changedHint": "Of the visits that checked back on a step agreed earlier. Point at a month to see it.",
+      "withheld": "Not shown (too few classes, schools or CRPs)",
+      "score": "Average feedback score",
+      "scoreHeader": "Average score",
+      "minutes": "Minutes from the end of the lesson to agreed feedback (middle value)",
+      "minutesHeader": "Minutes",
+      "visits": "{{month}}: {{visits}} visits to {{classes}} classes.",
+      "pulse": "Reading (Pulse)",
+      "pulseBody": "Classes 1 to 3 by medium, month by month, against NIPUN Bharat's Lakshya. Finished months only.",
+      "noPulse": "No Pulse checks in your area in these months yet.",
+      "privacy": "A figure is shown only when it comes from at least {{classes}} classes in {{schools}} schools (and, for mentoring, {{crps}} CRPs or more). Nothing is ranked, and no school, class, teacher, CRP or child can be seen. Your area: {{areaSchools}} schools, {{areaClasses}} classes this session.",
+      "visitsWithheld": "{{month}}: too few visits to show."
+    },
+    "mine": {
+      "open": "My coaching",
+      "title": "My coaching",
+      "description": "How your coaching is changing classrooms, month by month. Only you see this page.",
+      "visits": "Visits and feedback",
+      "changed": "Follow-ups that found the agreed step in use",
+      "score": "Average score of your feedback",
+      "minutes": "Minutes from the end of the lesson to agreed feedback",
+      "thisMonth": "This month: {{visits}} visits, {{followUps}} of them follow-ups.",
+      "rehearsals": "Rehearsal room",
+      "checks": "Checks met in your rehearsals (average)",
+      "checksHeader": "Checks met",
+      "private": "These figures are yours alone. Offices see only totals over many classes, never one CRP."
+    }
+  },
+  "demo": {
+    "open": "Try the demo",
+    "hero": {
+      "cta": "Try the live demo",
+      "note": "Choose a role and a complete demonstration district opens for you in seconds. No sign-up."
+    },
+    "invite": {
+      "title": "Reviewing Agla Kadam?",
+      "body": "Open a complete demonstration district of your own: choose a role, no sign-up needed.",
+      "action": "Try the demo"
+    },
+    "login": {
+      "title": "Just looking?",
+      "body": "Try the demo: choose a role and explore a complete district, without an account."
+    },
+    "page": {
+      "eyebrow": "Live demonstration",
+      "title": "Try Agla Kadam",
+      "lead": "A demonstration district is built for you in a few seconds: 16 schools, about 1,200 children, and the months of attendance, Pulse checks, visits, feedback and marks up to today. It is yours for three days.",
+      "steps": {
+        "label": "How the demo works",
+        "pick": "Pick a role",
+        "build": "We build a district in seconds",
+        "explore": "Explore it for three days"
+      },
+      "chooseRole": "Who would you like to be?",
+      "language": "Language of the demo",
+      "start": "Open my demo district",
+      "startAs": "Open the demo as {{role}}",
+      "pickFirst": "Choose a role first.",
+      "simulated": "Everything in a demonstration district is simulated: its schools, children and staff are not real, and nothing in it reaches a real school."
+    },
+    "roles": {
+      "teacher": {
+        "title": "Teacher",
+        "person": "Anita Sharma, Classes 2 and 3",
+        "sees1": "Take attendance and record this week's Pulse children",
+        "sees2": "Enter marks and share results with families",
+        "sees3": "Follow each child's reading month by month"
+      },
+      "crp": {
+        "title": "Cluster Resource Person",
+        "person": "Rajeev Kumar Mishra, eight schools",
+        "sees1": "Plan the week's visits from an honest learning signal",
+        "sees2": "Observe, coach with evidence and check the agreed step",
+        "sees3": "Draft and score feedback, and rehearse, with Sahayak"
+      },
+      "officer": {
+        "title": "Block Education Officer",
+        "person": "Suresh Chandra Dubey, sixteen schools",
+        "sees1": "Mentoring measured by what changed in classrooms",
+        "sees2": "Reading in Classes 1 to 3 against NIPUN Bharat's Lakshya",
+        "sees3": "Only totals over many classes: no school or person singled out"
+      },
+      "family": {
+        "title": "Family",
+        "person": "The family of a Class 2 child",
+        "sees1": "The child's attendance and results",
+        "sees2": "The teacher's notes and homework",
+        "sees3": "Reading and number practice at home"
+      }
+    },
+    "roleName": {
+      "teacher": "the teacher",
+      "crp": "the CRP",
+      "officer": "the block education officer",
+      "family": "the family"
+    },
+    "building": {
+      "title": "Building your demonstration district",
+      "note": "This takes about a quarter of a minute; please keep this page open.",
+      "places": "Setting up 16 schools and 48 classes",
+      "children": "Enrolling about 1,200 children, with their families' consent",
+      "attendance": "Writing the months of attendance",
+      "pulse": "Drawing and scoring each month's Pulse checks",
+      "visits": "Recording the CRPs' visits, feedback and follow-ups",
+      "exams": "Marking the monthly assessments",
+      "signIn": "Signing you in"
+    },
+    "errors": {
+      "busy": "Every demonstration district is in use right now. Please try again in a few minutes.",
+      "throttled": "Several districts were opened from this network in the last hour. Please try again in {{minutes}} minutes.",
+      "network": "The demo could not be reached. Check the connection and try again.",
+      "unavailable": "The demo is not available on this installation.",
+      "unexpected": "The demo could not open. Please try again.",
+      "switch": "The role could not be switched. Check the connection and try again.",
+      "ended": "This demonstration district has ended. Start a new one."
+    },
+    "signedIn": {
+      "title": "You are signed in to an account",
+      "body": "Sign out first to try the demo. Nothing of your account is touched by it.",
+      "back": "Back to the application"
+    },
+    "continue": {
+      "title": "Your demonstration district is open",
+      "body": "Continue as {{role}}, or leave it and start a new district.",
+      "go": "Continue as {{role}}",
+      "newOne": "Start a new district"
+    },
+    "banner": {
+      "label": "Demonstration district",
+      "you": "simulated data · you are {{role}}, {{name}}",
+      "ended": "this district has ended",
+      "startNew": "Start a new one",
+      "guide": "Guide",
+      "switch": "Switch role",
+      "switchTo": "Continue in the same district as",
+      "end": "End demo"
+    },
+    "guide": {
+      "title": "What to try as {{role}}",
+      "simulated": "Everything here is simulated. Change anything you like: the district is yours, and nobody else sees it.",
+      "close": "Start exploring",
+      "teacher": {
+        "intro": "You are {{teacher}}, the teacher of Classes 2 and 3 at {{school}}.",
+        "step1": "Take today's attendance for Class 2: tap the children who are absent.",
+        "step2": "Open this week's Pulse: record a child reading the passage (allow the microphone), or see the children already checked.",
+        "step3": "Enter the Maths marks of this month's class test, then share the latest monthly assessment with Class 2's families.",
+        "step4": "Send a homework note to the families of Class 2.",
+        "step5": "Open Progress for a class to see how each child's reading has moved since the session began."
+      },
+      "crp": {
+        "intro": "You are {{crp}}, the CRP of the Rampur cluster's eight schools, {{school}} among them.",
+        "step1": "See this week's plan: which classes to visit first, and why.",
+        "step2": "Open a class pack before a visit: the Pulse trend, the step agreed last time, and recordings to listen to.",
+        "step3": "Verify the two children {{teacher}} added to Class 2 this week.",
+        "step4": "Start a visit: tap moments as the lesson goes on, answer four focus items, and agree one step with the teacher.",
+        "step5": "Ask Sahayak to draft and score your feedback, or rehearse a difficult conversation in the rehearsal room.",
+        "step6": "Open My coaching to see how your feedback and its follow-ups have changed over the months."
+      },
+      "officer": {
+        "intro": "You are {{officer}}, the block education officer of Rampur block's sixteen schools.",
+        "step1": "See whether mentoring is changing practice: the follow-up visits that found the agreed step in use.",
+        "step2": "Compare Class 2 and Class 3 reading against NIPUN Bharat's Lakshya, month by month.",
+        "step3": "Notice what is held back: the English-medium classes are too few to show without singling a school out."
+      },
+      "family": {
+        "intro": "You are the family of {{child}}, in Class 2 at {{school}}.",
+        "step1": "See {{child}}'s attendance this month.",
+        "step2": "Read the teacher's notes and homework.",
+        "step3": "See the monthly assessment results the teacher shared.",
+        "step4": "Practise reading and numbers together with the read-aloud games."
+      }
+    }
+  }
+}

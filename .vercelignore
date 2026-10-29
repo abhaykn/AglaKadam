@@ -1,0 +1,15 @@
+# The host builds the web app only (see vercel.json); nothing else is uploaded to it.
+private/
+engine/
+node_modules/
+**/node_modules/
+apps/web/dist/
+apps/web/dev-dist/
+.env
+**/.env
+**/.env.local
+**/.env.*.local
+supabase/.temp/
+supabase/.branches/
+.ruff_cache/
+*.log

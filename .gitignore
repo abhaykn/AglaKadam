@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dev-dist/
+coverage/
+*.tsbuildinfo
+
+# Environment files (never commit real credentials)
+.env
+.env.*
+!.env.example
+
+# Supabase local state
+supabase/.branches/
+supabase/.temp/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+engine/build/
+.models/
+
+# Model weights and audio fixtures that must not be versioned
+*.gguf
+*.safetensors
+*.onnx
+*.webm
+*.wav
+!engine/tests/fixtures/**/*.wav
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+
+# Private operator documentation kept outside version control
+private/
+
+# TanStack Router temporary files
+.tanstack/
+
+.vercel
+.env*

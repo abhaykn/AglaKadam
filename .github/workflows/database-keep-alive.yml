@@ -1,0 +1,34 @@
+name: Database keep-alive
+
+# Projects on the free plan are paused after seven days without activity. Calling the status
+# endpoint every few days keeps the project available for schools between busy periods.
+
+on:
+  schedule:
+    # 06:00 UTC on days 1, 4, 7, ... of each month: never more than three days apart.
+    - cron: '0 6 */3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    name: Ping database
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+    steps:
+      - name: Call the service status endpoint
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo "::warning::Repository secrets SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY are not set; nothing to ping."
+            exit 0
+          fi
+          curl --fail --silent --show-error --max-time 30 --retry 3 --retry-delay 10 \
+            --request POST "${SUPABASE_URL%/}/rest/v1/rpc/service_status" \
+            --header "apikey: ${SUPABASE_PUBLISHABLE_KEY}" \
+            --header "Content-Type: application/json" \
+            --data '{}'

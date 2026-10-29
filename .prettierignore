@@ -1,0 +1,10 @@
+node_modules
+dist
+dev-dist
+coverage
+package-lock.json
+apps/web/src/routeTree.gen.ts
+apps/web/public
+supabase/.temp
+*.md
+apps/web/src/lib/database.types.ts
