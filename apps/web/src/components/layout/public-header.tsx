@@ -42,7 +42,20 @@ export function PublicHeader() {
 
   useEffect(() => {
     let frame = 0;
+    let settle = 0;
     let lastY = window.scrollY;
+    // Which section is being read: measured only once scrolling pauses, so that nothing is
+    // measured (and no layout forced) while the page is moving.
+    const findActive = () => {
+      let current: string | null = null;
+      for (const link of sectionLinks) {
+        const section = document.getElementById(link.hash);
+        if (section && section.getBoundingClientRect().top <= window.innerHeight * 0.4) {
+          current = link.hash;
+        }
+      }
+      setActive(current);
+    };
     const update = () => {
       frame = 0;
       const y = window.scrollY;
@@ -53,14 +66,8 @@ export function PublicHeader() {
         setHidden(false);
       }
       lastY = y;
-      let current: string | null = null;
-      for (const link of sectionLinks) {
-        const section = document.getElementById(link.hash);
-        if (section && section.getBoundingClientRect().top <= window.innerHeight * 0.4) {
-          current = link.hash;
-        }
-      }
-      setActive(current);
+      window.clearTimeout(settle);
+      settle = window.setTimeout(findActive, 120);
     };
     const onScroll = () => {
       if (!frame) {
@@ -68,10 +75,12 @@ export function PublicHeader() {
       }
     };
     update();
+    findActive();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(frame);
+      window.clearTimeout(settle);
     };
   }, []);
 
@@ -91,23 +100,24 @@ export function PublicHeader() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 transition-transform duration-300 ease-out',
+        'sticky top-0 z-40 transform-gpu transition-transform duration-300 ease-out will-change-transform',
         hidden && !menuOpen && '-translate-y-full',
       )}
     >
-      <div
-        className={cn(
-          'border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300',
-          scrolled || menuOpen
-            ? 'border-white/10 bg-[hsl(201_100%_9%/0.9)] shadow-lg shadow-black/20 backdrop-blur-md'
-            : 'border-transparent bg-transparent',
-        )}
-      >
+      <div className="relative">
+        {/* The bar behind the navigation fades in and out; nothing but its opacity changes while
+            the page scrolls, and it has no blur, so scrolling stays smooth. */}
+        <span
+          aria-hidden="true"
+          className={cn(
+            'pointer-events-none absolute inset-0 border-b border-white/10 bg-[hsl(201_100%_9%/0.94)] shadow-lg shadow-black/20 transition-opacity duration-300',
+            scrolled || menuOpen ? 'opacity-100' : 'opacity-0',
+          )}
+        />
         <nav
           aria-label={t('common.appName')}
           className={cn(
-            'mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 pt-[env(safe-area-inset-top)] transition-[height] duration-300 sm:px-8',
-            scrolled ? 'h-16' : 'h-20',
+            'relative mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-3 px-4 pt-[env(safe-area-inset-top)] sm:px-8',
           )}
         >
           <Link
@@ -185,7 +195,7 @@ export function PublicHeader() {
         </nav>
 
         {menuOpen ? (
-          <div id="public-menu" className="page-enter px-4 pb-4 lg:hidden">
+          <div id="public-menu" className="page-enter relative px-4 pb-4 lg:hidden">
             <ul className="space-y-1 rounded-2xl bg-white/[0.06] p-2 ring-1 ring-white/10">
               {sectionLinks.map((link) => (
                 <li key={link.hash}>
