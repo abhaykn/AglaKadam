@@ -6,10 +6,12 @@ import { getEnv } from '@/lib/env';
 
 // The video is kept in the application itself, not on another site, so that it always plays.
 const HERO_POSTER_SRC = '/media/hero-poster.jpg';
-// VP9 is about half the size of H.264 and is tried first; every browser can play the MP4.
+// 1280 by 720 at 24 frames a second: a page that scrolls over it has far less to decode than over
+// full-HD. VP9 is smaller than H.264 and is tried first; every browser can play the MP4. The file
+// name carries the size because these files are cached for a year.
 const HERO_VIDEO_SOURCES = [
-  { src: '/media/hero.webm', type: 'video/webm; codecs="vp9"' },
-  { src: '/media/hero.mp4', type: 'video/mp4' },
+  { src: '/media/hero-720.webm', type: 'video/webm; codecs="vp9"' },
+  { src: '/media/hero-720.mp4', type: 'video/mp4' },
 ] as const;
 
 const displayFont = { fontFamily: 'var(--font-display)' } as const;
