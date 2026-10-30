@@ -1,10 +1,13 @@
+import { Table2 } from 'lucide-react';
 import { useId, useState, type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
+import { niceMaximum } from './scale';
 
 /**
  * Small charts of change over months, drawn without a library. Each shows one measure on one
- * scale; hovering or focusing a month shows its figures in words above the chart, and every chart
- * can be read as a table. Colour never carries meaning alone: levels are named in the legend.
+ * scale, with gridlines and a labelled axis; hovering or focusing a month shows its figures in
+ * words above the chart, and every chart can be read as a table. Colour never carries meaning
+ * alone: levels are named in the legend and their shares are written on the columns.
  *
  * Every point is keyed by its month, so two months with the same short name (October of two
  * years) never collide. A month without a figure stays in its place, shown as empty.
@@ -27,16 +30,27 @@ function ChartFrame({ title, tableLabel, hint, children, table, readout }: Frame
   const id = useId();
   return (
     <figure className="space-y-3" aria-labelledby={`${id}-title`}>
-      <figcaption id={`${id}-title`} className="text-sm font-medium text-fg">
+      <figcaption id={`${id}-title`} className="text-sm font-semibold text-fg">
         {title}
       </figcaption>
       {/* For sighted readers only: each mark already carries the same words as its name. */}
-      <p className="min-h-5 text-sm text-fg-muted" aria-hidden="true">
-        {active === null ? hint : readout(active)}
+      <p className="min-h-7 text-xs text-fg-subtle" aria-hidden="true">
+        {active === null ? (
+          hint
+        ) : (
+          <span className="inline-flex max-w-full items-center rounded-full bg-primary-soft px-3 py-1.5 text-xs font-medium text-primary-soft-fg">
+            {readout(active)}
+          </span>
+        )}
       </p>
-      {children(active, setActive)}
+      <div className="rounded-xl border border-border bg-surface-muted p-4 pt-6">
+        {children(active, setActive)}
+      </div>
       <details className="text-sm">
-        <summary className="cursor-pointer text-primary">{tableLabel}</summary>
+        <summary className="inline-flex cursor-pointer items-center gap-1.5 rounded-md text-xs font-medium text-primary hover:underline">
+          <Table2 className="size-3.5" aria-hidden="true" />
+          {tableLabel}
+        </summary>
         <div className="mt-2 overflow-x-auto">{table}</div>
       </details>
     </figure>
@@ -46,21 +60,129 @@ function ChartFrame({ title, tableLabel, hint, children, table, readout }: Frame
 const MARK_FOCUS =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring';
 
-function MonthLabels({
-  points,
-  gapless = false,
+/** The width of the axis labels, shared by the plot and the month labels under it. */
+const AXIS_WIDTH = 'w-9';
+
+const plain = (value: number) => String(Math.round(value * 10) / 10);
+
+const GRID = [0, 0.5, 1] as const;
+
+/** The plot's frame: axis labels at the left, gridlines behind, the marks in front. */
+function Plot({
+  axis,
+  top,
+  children,
 }: {
-  points: readonly { key: string; label: string }[];
-  /** Under a line, whose months sit in equal slots without gaps. */
-  gapless?: boolean;
+  axis: (value: number) => string;
+  top: number;
+  children: ReactNode;
 }) {
   return (
-    <div className={cn('flex text-xs text-fg-muted', !gapless && 'gap-2')} aria-hidden="true">
-      {points.map((point) => (
-        <span key={point.key} className="min-w-6 flex-1 truncate text-center">
-          {point.label}
-        </span>
-      ))}
+    <div className="flex gap-2">
+      <div className={cn('relative h-44 shrink-0', AXIS_WIDTH)} aria-hidden="true">
+        {GRID.map((fraction) => (
+          <span
+            key={fraction}
+            className="absolute right-0 translate-y-1/2 text-xs leading-none text-fg-subtle tabular-nums"
+            style={{ bottom: `${String(fraction * 100)}%` }}
+          >
+            {axis(top * fraction)}
+          </span>
+        ))}
+      </div>
+      <div className="relative h-44 min-w-0 flex-1">
+        {GRID.map((fraction) => (
+          <div
+            key={fraction}
+            aria-hidden="true"
+            className={cn(
+              'absolute inset-x-0 border-t',
+              fraction === 0 ? 'border-border-strong' : 'border-dashed border-border',
+            )}
+            style={{ bottom: `${String(fraction * 100)}%` }}
+          />
+        ))}
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function MonthLabels({
+  points,
+  active,
+}: {
+  points: readonly { key: string; label: string }[];
+  active: number | null;
+}) {
+  return (
+    <div className="mt-2 flex gap-2 text-xs" aria-hidden="true">
+      <span className={cn('shrink-0', AXIS_WIDTH)} />
+      <div className="flex min-w-0 flex-1">
+        {points.map((point, index) => (
+          <span
+            key={point.key}
+            className={cn(
+              'min-w-0 flex-1 truncate text-center transition-colors',
+              active === index ? 'font-semibold text-fg' : 'text-fg-muted',
+            )}
+          >
+            {point.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** A month's slot in the plot: the hover and focus target, a finger wide. */
+function Slot({
+  index,
+  active,
+  setActive,
+  label,
+  children,
+}: {
+  index: number;
+  active: number | null;
+  setActive: (index: number | null) => void;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      role="img"
+      tabIndex={0}
+      aria-label={label}
+      onMouseEnter={() => setActive(index)}
+      onFocus={() => setActive(index)}
+      onBlur={() => setActive(null)}
+      className={cn(
+        'group relative h-full min-w-0 flex-1 rounded-md transition-opacity',
+        MARK_FOCUS,
+        active !== null && active !== index && 'opacity-55',
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0.5 inset-y-0 rounded-lg bg-white/[0.045] opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+      />
+      {children}
+    </div>
+  );
+}
+
+/** The marks of every month, side by side over the whole plot. */
+function Slots({
+  setActive,
+  children,
+}: {
+  setActive: (index: number | null) => void;
+  children: ReactNode;
+}) {
+  return (
+    <div className="absolute inset-0 flex" onMouseLeave={() => setActive(null)}>
+      {children}
     </div>
   );
 }
@@ -90,10 +212,11 @@ export interface LevelNames {
   checked: string;
 }
 
+/** From the top of a column down: those who read well, then those who hesitate, then the rest. */
 const LEVEL_PARTS = [
-  { key: 'needsSupport', className: 'bg-danger' },
-  { key: 'hesitant', className: 'bg-warning' },
   { key: 'fluent', className: 'bg-success' },
+  { key: 'hesitant', className: 'bg-warning' },
+  { key: 'needsSupport', className: 'bg-danger' },
 ] as const;
 
 /** The share of children at each reading level, one column a month. */
@@ -131,19 +254,19 @@ export function LevelTrend({
         <table className="w-full text-left tabular-nums">
           <thead>
             <tr className="text-fg-muted">
-              <th scope="col" className="py-1 pe-3 font-medium">
+              <th scope="col" className="py-1.5 pe-3 font-medium">
                 {monthHeader}
               </th>
-              <th scope="col" className="py-1 pe-3 font-medium">
+              <th scope="col" className="py-1.5 pe-3 font-medium">
                 {names.fluent}
               </th>
-              <th scope="col" className="py-1 pe-3 font-medium">
+              <th scope="col" className="py-1.5 pe-3 font-medium">
                 {names.hesitant}
               </th>
-              <th scope="col" className="py-1 pe-3 font-medium">
+              <th scope="col" className="py-1.5 pe-3 font-medium">
                 {names.needsSupport}
               </th>
-              <th scope="col" className="py-1 font-medium">
+              <th scope="col" className="py-1.5 font-medium">
                 {names.checked}
               </th>
             </tr>
@@ -151,19 +274,19 @@ export function LevelTrend({
           <tbody>
             {points.map(({ key, label, counts }) => (
               <tr key={key} className="border-t border-border">
-                <th scope="row" className="py-1 pe-3 font-normal">
+                <th scope="row" className="py-1.5 pe-3 font-normal">
                   {label}
                 </th>
                 {counts === null ? (
-                  <td className="py-1 text-fg-muted" colSpan={4}>
+                  <td className="py-1.5 text-fg-muted" colSpan={4}>
                     {missing}
                   </td>
                 ) : (
                   <>
-                    <td className="py-1 pe-3">{counts.fluent}</td>
-                    <td className="py-1 pe-3">{counts.hesitant}</td>
-                    <td className="py-1 pe-3">{counts.needsSupport}</td>
-                    <td className="py-1">{total(counts)}</td>
+                    <td className="py-1.5 pe-3">{counts.fluent}</td>
+                    <td className="py-1.5 pe-3">{counts.hesitant}</td>
+                    <td className="py-1.5 pe-3">{counts.needsSupport}</td>
+                    <td className="py-1.5">{total(counts)}</td>
                   </>
                 )}
               </tr>
@@ -173,48 +296,56 @@ export function LevelTrend({
       }
     >
       {(active, setActive) => (
-        <div className="space-y-2">
-          <div className="flex h-36 items-end gap-2" onMouseLeave={() => setActive(null)}>
-            {points.map((point, index) => {
-              const counts = point.counts;
-              const sum = counts === null ? 0 : total(counts);
-              return (
-                <div
-                  key={point.key}
-                  role="img"
-                  tabIndex={0}
-                  aria-label={words(point)}
-                  onMouseEnter={() => setActive(index)}
-                  onFocus={() => setActive(index)}
-                  onBlur={() => setActive(null)}
-                  className={cn(
-                    'flex h-full min-w-6 flex-1 flex-col-reverse gap-0.5 rounded-t-sm',
-                    MARK_FOCUS,
-                    active !== null && active !== index && 'opacity-60',
-                  )}
-                >
-                  {counts === null || sum === 0 ? (
-                    <div className="h-1 rounded-sm bg-surface-sunken" />
-                  ) : (
-                    LEVEL_PARTS.map((part) =>
-                      counts[part.key] > 0 ? (
-                        <div
-                          key={part.key}
-                          className={cn(part.className, 'last:rounded-t-sm')}
-                          style={{ height: `${String((counts[part.key] / sum) * 100)}%` }}
+        <div>
+          <Plot axis={(value) => `${String(Math.round(value))}%`} top={100}>
+            <Slots setActive={setActive}>
+              {points.map((point, index) => {
+                const counts = point.counts;
+                const sum = counts === null ? 0 : total(counts);
+                return (
+                  <Slot
+                    key={point.key}
+                    index={index}
+                    active={active}
+                    setActive={setActive}
+                    label={words(point)}
+                  >
+                    <div className="absolute inset-x-0 inset-y-0 flex items-end justify-center">
+                      {counts === null || sum === 0 ? (
+                        <span
+                          aria-hidden="true"
+                          className="mb-1 h-0.5 w-4 rounded-full bg-fg-subtle/40"
                         />
-                      ) : null,
-                    )
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <MonthLabels points={points} />
-          <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-fg-muted">
-            {[...LEVEL_PARTS].reverse().map((part) => (
+                      ) : (
+                        <div className="flex h-full w-[60%] max-w-16 flex-col gap-0.5 overflow-hidden rounded-t-lg">
+                          {LEVEL_PARTS.map((part) => {
+                            const share = (counts[part.key] / sum) * 100;
+                            return counts[part.key] > 0 ? (
+                              <div
+                                key={part.key}
+                                className={cn(
+                                  part.className,
+                                  'flex items-center justify-center text-xs font-semibold text-neutral-950/80 tabular-nums',
+                                )}
+                                style={{ height: `${String(share)}%` }}
+                              >
+                                {share >= 12 ? `${String(Math.round(share))}%` : null}
+                              </div>
+                            ) : null;
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </Slot>
+                );
+              })}
+            </Slots>
+          </Plot>
+          <MonthLabels points={points} active={active} />
+          <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5 ps-11 text-xs text-fg-muted">
+            {LEVEL_PARTS.map((part) => (
               <li key={part.key} className="inline-flex items-center gap-1.5">
-                <span className={cn('size-2.5 rounded-full', part.className)} aria-hidden="true" />
+                <span className={cn('size-2.5 rounded-sm', part.className)} aria-hidden="true" />
                 {names[part.key]}
               </li>
             ))}
@@ -266,6 +397,7 @@ export function ValueTrend({
   title,
   valueHeader,
   format,
+  axis = plain,
   maximum,
   reference,
   tableLabel,
@@ -278,7 +410,9 @@ export function ValueTrend({
   title: ReactNode;
   valueHeader: string;
   format: (value: number) => string;
-  /** The top of the scale; by default a little above the highest value or the reference. */
+  /** A short form of a value for the axis and the marks, without a unit that needs words. */
+  axis?: (value: number) => string;
+  /** The top of the scale; by default a round number above the highest value or the reference. */
   maximum?: number;
   reference?: { value: number; label: string } | undefined;
   tableLabel: string;
@@ -288,15 +422,18 @@ export function ValueTrend({
   missing: string;
 }) {
   const values = points.flatMap((point) => (point.value === null ? [] : [point.value]));
-  const top = maximum ?? Math.max(1, ...values, reference?.value ?? 0) * 1.15;
+  const top = maximum ?? niceMaximum(Math.max(1, ...values, reference?.value ?? 0));
+  const gradient = useId();
   const width = 300;
-  const height = 120;
-  // Each month sits in the middle of an equal slot, so the labels below line up with the points.
+  const height = 100;
+  // Each month sits in the middle of an equal slot, so the labels below line up with the marks.
   const slot = width / Math.max(1, points.length);
   const x = (index: number) => slot * index + slot / 2;
-  const y = (value: number) => height - (Math.min(value, top) / top) * height;
+  const share = (value: number) => Math.min(value, top) / top;
+  const y = (value: number) => height - share(value) * height;
   const words = (point: ValuePoint) =>
     `${point.label}: ${point.value === null ? missing : format(point.value)}`;
+  const last = points.reduce((found, point, index) => (point.value === null ? found : index), -1);
 
   return (
     <ChartFrame
@@ -309,10 +446,10 @@ export function ValueTrend({
         <table className="w-full text-left tabular-nums">
           <thead>
             <tr className="text-fg-muted">
-              <th scope="col" className="py-1 pe-3 font-medium">
+              <th scope="col" className="py-1.5 pe-3 font-medium">
                 {monthHeader}
               </th>
-              <th scope="col" className="py-1 font-medium">
+              <th scope="col" className="py-1.5 font-medium">
                 {valueHeader}
               </th>
             </tr>
@@ -320,10 +457,10 @@ export function ValueTrend({
           <tbody>
             {points.map((point) => (
               <tr key={point.key} className="border-t border-border">
-                <th scope="row" className="py-1 pe-3 font-normal">
+                <th scope="row" className="py-1.5 pe-3 font-normal">
                   {point.label}
                 </th>
-                <td className={cn('py-1', point.value === null && 'text-fg-muted')}>
+                <td className={cn('py-1.5', point.value === null && 'text-fg-muted')}>
                   {point.value === null ? missing : format(point.value)}
                 </td>
               </tr>
@@ -332,146 +469,136 @@ export function ValueTrend({
         </table>
       }
     >
-      {(active, setActive) =>
-        kind === 'columns' ? (
-          <div className="space-y-2">
-            <div className="flex h-36 items-end gap-2" onMouseLeave={() => setActive(null)}>
-              {points.map((point, index) => (
-                <div
-                  key={point.key}
-                  role="img"
-                  tabIndex={0}
-                  aria-label={words(point)}
-                  onMouseEnter={() => setActive(index)}
-                  onFocus={() => setActive(index)}
-                  onBlur={() => setActive(null)}
-                  className={cn(
-                    'relative flex h-full min-w-6 flex-1 items-end',
-                    MARK_FOCUS,
-                    active !== null && active !== index && 'opacity-60',
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'w-full rounded-t-sm',
-                      point.value === null ? 'h-1 bg-surface-sunken' : 'bg-primary',
-                    )}
-                    style={
-                      point.value === null
-                        ? undefined
-                        : {
-                            height: `${String(Math.max(2, (Math.min(point.value, top) / top) * 100))}%`,
-                          }
-                    }
-                  />
-                </div>
-              ))}
-            </div>
-            <MonthLabels points={points} />
-          </div>
-        ) : (
-          <div className="space-y-2">
-            <svg
-              viewBox={`0 -8 ${String(width)} ${String(height + 16)}`}
-              className="h-auto w-full overflow-visible"
-              onMouseLeave={() => setActive(null)}
-            >
-              <line
-                x1={0}
-                x2={width}
-                y1={height}
-                y2={height}
-                className="stroke-border"
-                strokeWidth={1}
-                vectorEffect="non-scaling-stroke"
-              />
-              {reference ? (
-                <line
-                  x1={0}
-                  x2={width}
-                  y1={y(reference.value)}
-                  y2={y(reference.value)}
-                  className="stroke-fg-muted"
-                  strokeWidth={1}
-                  strokeDasharray="4 4"
-                  vectorEffect="non-scaling-stroke"
-                />
-              ) : null}
-              {runsOf(points).map((run) =>
-                run.length > 1 ? (
-                  <polyline
-                    key={points[run[0]?.index ?? 0]?.key}
-                    points={run
-                      .map((entry) => `${String(x(entry.index))},${String(y(entry.value))}`)
-                      .join(' ')}
-                    fill="none"
-                    className="stroke-primary"
-                    strokeWidth={2}
-                    strokeLinejoin="round"
+      {(active, setActive) => (
+        <div>
+          <Plot axis={axis} top={top}>
+            {kind === 'line' ? (
+              <svg
+                viewBox={`0 0 ${String(width)} ${String(height)}`}
+                preserveAspectRatio="none"
+                className="absolute inset-0 h-full w-full overflow-visible"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <defs>
+                  <linearGradient id={gradient} x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" className="[stop-color:var(--primary)]" stopOpacity="0.32" />
+                    <stop offset="1" className="[stop-color:var(--primary)]" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                {reference ? (
+                  <line
+                    x1={0}
+                    x2={width}
+                    y1={y(reference.value)}
+                    y2={y(reference.value)}
+                    className="stroke-accent"
+                    strokeWidth={1.5}
+                    strokeDasharray="5 4"
                     vectorEffect="non-scaling-stroke"
                   />
-                ) : null,
-              )}
-              {points.map((point, index) => (
-                <g
-                  key={point.key}
-                  role="img"
-                  tabIndex={0}
-                  aria-label={words(point)}
-                  onMouseEnter={() => setActive(index)}
-                  onFocus={() => setActive(index)}
-                  onBlur={() => setActive(null)}
-                  className="group outline-none"
-                >
-                  {/* A target as wide as the month's slot, so a finger finds it. */}
-                  <rect
-                    x={x(index) - slot / 2}
-                    y={-8}
-                    width={slot}
-                    height={height + 16}
-                    fill="transparent"
-                  />
-                  <circle
-                    cx={x(index)}
-                    cy={point.value === null ? height - 1.5 : y(point.value)}
-                    r={9}
-                    fill="none"
-                    className="stroke-ring opacity-0 group-focus-visible:opacity-100"
-                    strokeWidth={2}
-                    vectorEffect="non-scaling-stroke"
-                  />
-                  {point.value === null ? (
-                    <rect
-                      x={x(index) - 6}
-                      y={height - 3}
-                      width={12}
-                      height={3}
-                      rx={1.5}
-                      className="fill-surface-sunken"
-                    />
-                  ) : (
-                    <circle
-                      cx={x(index)}
-                      cy={y(point.value)}
-                      r={active === index ? 6 : 4}
-                      className="fill-primary stroke-surface"
-                      strokeWidth={2}
-                      vectorEffect="non-scaling-stroke"
-                    />
-                  )}
-                </g>
-              ))}
-            </svg>
-            <MonthLabels points={points} gapless />
-            {reference ? (
-              <p className="inline-flex items-center gap-2 text-xs text-fg-muted">
-                <span className="w-6 border-t border-dashed border-fg-muted" aria-hidden="true" />
-                {reference.label}
-              </p>
+                ) : null}
+                {runsOf(points).map((run) => {
+                  const coordinates = run
+                    .map((entry) => `${String(x(entry.index))},${String(y(entry.value))}`)
+                    .join(' ');
+                  const first = run[0];
+                  const end = run.at(-1);
+                  return (
+                    <g key={points[first?.index ?? 0]?.key}>
+                      {first && end && run.length > 1 ? (
+                        <polygon
+                          points={`${String(x(first.index))},${String(height)} ${coordinates} ${String(x(end.index))},${String(height)}`}
+                          fill={`url(#${gradient})`}
+                        />
+                      ) : null}
+                      {run.length > 1 ? (
+                        <polyline
+                          points={coordinates}
+                          fill="none"
+                          className="stroke-primary"
+                          strokeWidth={2.5}
+                          strokeLinejoin="round"
+                          strokeLinecap="round"
+                          vectorEffect="non-scaling-stroke"
+                        />
+                      ) : null}
+                    </g>
+                  );
+                })}
+              </svg>
             ) : null}
-          </div>
-        )
-      }
+            <Slots setActive={setActive}>
+              {points.map((point, index) => {
+                const value = point.value;
+                const emphasised = active === index || (active === null && index === last);
+                const labelled = points.length <= 8 || emphasised;
+                return (
+                  <Slot
+                    key={point.key}
+                    index={index}
+                    active={active}
+                    setActive={setActive}
+                    label={words(point)}
+                  >
+                    {value === null ? (
+                      <span
+                        aria-hidden="true"
+                        className="absolute bottom-1 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-fg-subtle/40"
+                      />
+                    ) : kind === 'columns' ? (
+                      <div
+                        className="absolute bottom-0 left-1/2 w-[58%] max-w-14 -translate-x-1/2"
+                        style={{ height: `${String(Math.max(2, share(value) * 100))}%` }}
+                      >
+                        <div
+                          className={cn(
+                            'h-full w-full rounded-t-lg bg-gradient-to-t transition-[filter]',
+                            emphasised
+                              ? 'from-primary/75 to-primary'
+                              : 'from-primary/45 to-primary/80',
+                          )}
+                        />
+                        {labelled ? (
+                          <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-semibold text-fg tabular-nums">
+                            {axis(value)}
+                          </span>
+                        ) : null}
+                      </div>
+                    ) : (
+                      <span
+                        className="absolute left-1/2 -translate-x-1/2 translate-y-1/2"
+                        style={{ bottom: `${String(share(value) * 100)}%` }}
+                      >
+                        <span
+                          className={cn(
+                            'block rounded-full bg-primary ring-2 ring-[color:var(--surface-solid)] transition-all',
+                            emphasised
+                              ? 'size-4 shadow-[0_0_0_5px_rgb(124_200_242/0.22)]'
+                              : 'size-3',
+                          )}
+                        />
+                        {labelled ? (
+                          <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-semibold text-fg tabular-nums">
+                            {axis(value)}
+                          </span>
+                        ) : null}
+                      </span>
+                    )}
+                  </Slot>
+                );
+              })}
+            </Slots>
+          </Plot>
+          <MonthLabels points={points} active={active} />
+          {reference ? (
+            <p className="mt-4 inline-flex items-center gap-2 ps-11 text-xs text-fg-muted">
+              <span className="w-6 border-t-2 border-dashed border-accent" aria-hidden="true" />
+              {reference.label}
+            </p>
+          ) : null}
+        </div>
+      )}
     </ChartFrame>
   );
 }

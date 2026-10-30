@@ -28,6 +28,7 @@ import { dayInIndia, formatDay } from '@/features/attendance/dates';
 import { classLabel } from '@/features/workspaces/grade-label';
 import { PageHeader } from '@/features/workspaces/page-header';
 import { QueryState } from '@/features/workspaces/query-state';
+import { cn } from '@/lib/cn';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { calibration, suggestFocusItems, suggestPractices, type LevelPair } from './coaching';
 import { MarksCheckCard } from '@/features/exams/marks-check-card';
@@ -457,9 +458,9 @@ export function LevelBar({ signal }: { signal: ClassSignal }) {
     { key: 'fluent', value: signal.fluent, className: 'bg-success' },
   ];
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       <div
-        className="flex h-3 overflow-hidden rounded-full bg-surface-sunken"
+        className="flex h-4 gap-0.5 overflow-hidden rounded-full bg-surface-sunken"
         role="img"
         aria-label={t('visits.pack.levelsLabel', {
           needs: signal.needsSupport,
@@ -468,19 +469,24 @@ export function LevelBar({ signal }: { signal: ClassSignal }) {
           checked: signal.pulseChecked,
         })}
       >
-        {parts.map((part) => (
-          <div
-            key={part.key}
-            className={part.className}
-            style={{ width: `${(part.value / total) * 100}%` }}
-          />
-        ))}
+        {parts.map((part) =>
+          part.value > 0 ? (
+            <div
+              key={part.key}
+              className={cn(part.className, 'first:rounded-s-full last:rounded-e-full')}
+              style={{ width: `${String((part.value / total) * 100)}%` }}
+            />
+          ) : null,
+        )}
       </div>
-      <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-fg-muted">
-        {parts.map((part) => (
-          <li key={part.key} className="inline-flex items-center gap-1.5">
-            <span className={`size-2.5 rounded-full ${part.className}`} aria-hidden="true" />
-            <ReadingLevelLabel level={part.key} />: {part.value}
+      <ul className="grid grid-cols-3 gap-2">
+        {[...parts].reverse().map((part) => (
+          <li key={part.key} className="rounded-lg border border-border bg-surface-muted px-3 py-2">
+            <p className="inline-flex items-center gap-1.5 text-xs text-fg-muted">
+              <span className={cn('size-2.5 rounded-sm', part.className)} aria-hidden="true" />
+              <ReadingLevelLabel level={part.key} />
+            </p>
+            <p className="text-xl leading-tight font-bold text-fg tabular-nums">{part.value}</p>
           </li>
         ))}
       </ul>

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { BookOpenText, HandHeart, ShieldCheck } from 'lucide-react';
+import { BookOpenText, HandHeart, Info, ShieldCheck } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { LevelTrend, ValueTrend } from '@/components/charts/trend-charts';
@@ -92,10 +92,14 @@ function PulseGroup({
           ) : null}
           {lakshya !== undefined &&
           shown.some((row) => row.speed !== null && row.speed.medianWcpm !== null) ? (
-            <p className="text-sm text-fg-muted">{t('progress.area.speedNote')}</p>
+            <p className="flex items-start gap-2 rounded-lg bg-surface-muted px-3 py-2.5 text-sm text-fg-muted">
+              <Info className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+              {t('progress.area.speedNote')}
+            </p>
           ) : null}
           {latest ? (
-            <p className="text-sm text-fg">
+            <p className="flex items-start gap-2 rounded-lg bg-surface-muted px-3 py-2.5 text-sm text-fg">
+              <Info className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
               {t('progress.area.latest', {
                 month: monthLabel(latest.month, language, true),
                 checked: latest.checked,
@@ -194,6 +198,7 @@ export function AreaReportSection() {
                   ),
                 )}
                 maximum={100}
+                axis={(value) => `${String(Math.round(value))}%`}
                 valueHeader={t('progress.area.changedHeader')}
                 format={(value) => `${format.format(value)}%`}
                 tableLabel={t('progress.asTable')}

@@ -216,6 +216,7 @@ export function ChildProgressPage({ studentId }: { studentId: string }) {
               title={t('progress.child.attendanceTitle')}
               points={attendance}
               maximum={100}
+              axis={(value) => `${String(Math.round(value))}%`}
               valueHeader={t('progress.presentHeader')}
               format={(value) => `${format.format(value)}%`}
               tableLabel={t('progress.asTable')}

@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { Landmark } from 'lucide-react';
+import { Landmark, Network, School } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
+import { StatTile } from '@/components/ui/stat-tile';
 import { useCurrentAccess } from '@/features/app-shell/access-context';
 import type { AccessScope } from '@/features/auth/access';
 import { getSupabase } from '@/lib/supabase';
@@ -80,19 +81,17 @@ function ScopeCard({ scope }: { scope: AccessScope }) {
         rows={1}
       >
         <CardBody>
-          <dl className="grid grid-cols-2 gap-4">
-            <div>
-              <dt className="text-sm text-fg-muted">{t('home.columns.clusters')}</dt>
-              <dd className="text-2xl font-bold text-fg tabular-nums">
-                {number.format(figures.data?.clusters ?? 0)}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm text-fg-muted">{t('home.columns.schools')}</dt>
-              <dd className="text-2xl font-bold text-fg tabular-nums">
-                {number.format(figures.data?.schools ?? 0)}
-              </dd>
-            </div>
+          <dl className="grid gap-3 sm:grid-cols-2">
+            <StatTile
+              icon={Network}
+              label={t('home.columns.clusters')}
+              value={number.format(figures.data?.clusters ?? 0)}
+            />
+            <StatTile
+              icon={School}
+              label={t('home.columns.schools')}
+              value={number.format(figures.data?.schools ?? 0)}
+            />
           </dl>
         </CardBody>
       </QueryState>

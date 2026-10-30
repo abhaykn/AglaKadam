@@ -80,6 +80,7 @@ export function MyCoachingPage() {
                 point(row.month, index, percent(row.practised, row.followUps)),
               )}
               maximum={100}
+              axis={(value) => `${String(Math.round(value))}%`}
               valueHeader={t('progress.area.changedHeader')}
               format={(value) => `${format.format(value)}%`}
               {...shared}

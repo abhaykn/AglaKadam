@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
+import { Meter } from '@/components/ui/meter';
 import { EmptyState } from '@/components/ui/empty-state';
 import { LevelTrend } from '@/components/charts/trend-charts';
 import { classDetailsQuery } from '@/features/attendance/attendance-api';
@@ -156,7 +157,7 @@ export function ClassProgressPage({ classSectionId }: { classSectionId: string }
                   <table className="w-full min-w-max text-left text-sm">
                     <caption className="sr-only">{t('progress.class.children')}</caption>
                     <thead>
-                      <tr className="text-fg-muted">
+                      <tr className="text-xs tracking-wide text-fg-muted uppercase">
                         <th scope="col" className="py-1.5 pe-3 font-medium">
                           {t('progress.class.child')}
                         </th>
@@ -179,17 +180,26 @@ export function ClassProgressPage({ classSectionId }: { classSectionId: string }
                         const movement = movementOf(child.previous, child.latest);
                         const present = percent(child.daysPresent, child.daysMarked);
                         return (
-                          <tr key={child.studentId} className="border-t border-border">
-                            <th scope="row" className="py-2 pe-3 font-medium">
+                          <tr
+                            key={child.studentId}
+                            className="border-t border-border transition-colors hover:bg-white/[0.04]"
+                          >
+                            <th scope="row" className="py-2.5 pe-4 font-medium">
                               <Link
                                 to="/app/child/$studentId"
                                 params={{ studentId: child.studentId }}
-                                className="text-primary hover:underline"
+                                className="inline-flex items-center gap-2.5 text-fg hover:text-primary"
                               >
+                                <span
+                                  aria-hidden="true"
+                                  className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary-soft text-xs font-semibold text-primary-soft-fg"
+                                >
+                                  {Array.from(child.fullName)[0]?.toUpperCase() ?? ''}
+                                </span>
                                 {child.fullName}
                               </Link>
                             </th>
-                            <td className="py-2 pe-3">
+                            <td className="py-2.5 pe-4">
                               {child.latest ? (
                                 <span className="inline-flex items-center gap-1.5">
                                   <Badge tone={LEVEL_TONE[child.latest]}>
@@ -218,16 +228,25 @@ export function ClassProgressPage({ classSectionId }: { classSectionId: string }
                                 </span>
                               )}
                             </td>
-                            <td className="py-2 pe-3 tabular-nums">
+                            <td className="py-2.5 pe-4 tabular-nums">
                               {child.wcpm === null ? '–' : format.format(child.wcpm)}
                             </td>
-                            <td className="py-2 pe-3 tabular-nums">
-                              {present === null ? '–' : `${format.format(present)}%`}
+                            <td className="py-2.5 pe-4">
+                              {present === null ? (
+                                <span className="text-fg-muted">–</span>
+                              ) : (
+                                <Meter value={present} label={`${format.format(present)}%`} />
+                              )}
                             </td>
-                            <td className="py-2 tabular-nums">
-                              {child.marksPercent === null
-                                ? '–'
-                                : `${format.format(child.marksPercent)}%`}
+                            <td className="py-2.5">
+                              {child.marksPercent === null ? (
+                                <span className="text-fg-muted">–</span>
+                              ) : (
+                                <Meter
+                                  value={child.marksPercent}
+                                  label={`${format.format(child.marksPercent)}%`}
+                                />
+                              )}
                             </td>
                           </tr>
                         );

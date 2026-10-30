@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { todayInIndia } from '@shared/accounts.ts';
 import { BackLink } from '@/components/ui/back-link';
 import { Button } from '@/components/ui/button';
+import { Meter } from '@/components/ui/meter';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -212,9 +213,11 @@ export function PlanPage() {
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="font-medium text-fg">{name}</span>
                             <BandBadge band={entry.band} />
-                            <span className="text-xs text-fg-muted tabular-nums">
-                              {t('visits.plan.score', { score: entry.score })}
-                            </span>
+                            <Meter
+                              value={entry.score}
+                              label={t('visits.plan.score', { score: entry.score })}
+                              className="text-xs text-fg-muted"
+                            />
                           </div>
                           <ReasonList reasons={entry.reasons} />
                         </div>
