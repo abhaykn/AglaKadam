@@ -1,4 +1,5 @@
 import { PublicLayout } from '@/components/layout/public-layout';
+import { useScrollCalm } from './use-scroll-calm';
 import { useSpotlight } from './use-spotlight';
 import { useEffect } from 'react';
 import { startSmoothScroll } from '@/lib/smooth-scroll';
@@ -14,6 +15,7 @@ import { StatsSection } from './stats-section';
 export function LandingPage() {
   useDocumentTitle();
   useSpotlight();
+  useScrollCalm();
   useEffect(() => startSmoothScroll(), []);
 
   return (

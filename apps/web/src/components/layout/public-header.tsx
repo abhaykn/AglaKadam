@@ -99,7 +99,7 @@ export function PublicHeader() {
         className={cn(
           'border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300',
           scrolled || menuOpen
-            ? 'border-white/10 bg-[hsl(201_100%_9%/0.72)] shadow-lg shadow-black/20 backdrop-blur-xl'
+            ? 'border-white/10 bg-[hsl(201_100%_9%/0.9)] shadow-lg shadow-black/20 backdrop-blur-md'
             : 'border-transparent bg-transparent',
         )}
       >

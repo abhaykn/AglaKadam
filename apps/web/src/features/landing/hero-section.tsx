@@ -12,25 +12,6 @@ const HERO_VIDEO_SOURCES = [
   { src: '/media/hero.mp4', type: 'video/mp4' },
 ] as const;
 
-/**
- * Progressive blur under the two bottom corners: a wide, gentle layer and a tighter, stronger one,
- * so the softening deepens towards the corner instead of starting at a visible edge. Each layer
- * is `[blur in px, how far the mask reaches, tint]`.
- */
-const cornerLayers = [
-  { blur: 6, reach: 1, tint: 'hsl(201 100% 13% / 0.12)' },
-  { blur: 16, reach: 0.62, tint: 'hsl(201 100% 13% / 0.3)' },
-] as const;
-
-function cornerMask(progress: number, reach: number): string {
-  const x = (progress * reach * 78 + 0.1).toFixed(2);
-  const y = (progress * reach * 92 + 0.1).toFixed(2);
-  const stops = '#000 0%, rgb(0 0 0 / 0.65) 30%, rgb(0 0 0 / 0.25) 62%, transparent 100%';
-  return ['0%', '100%']
-    .map((at) => `radial-gradient(ellipse ${x}% ${y}% at ${at} 100%, ${stops})`)
-    .join(', ');
-}
-
 const displayFont = { fontFamily: 'var(--font-display)' } as const;
 
 /**
@@ -47,14 +28,16 @@ export function HeroSection() {
     (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData ===
     true;
   const contentRef = useRef<HTMLDivElement>(null);
+  const shadeRef = useRef<HTMLDivElement>(null);
 
-  // As the visitor scrolls away, both bottom corners blur and darken, spreading inwards.
+  // As the visitor scrolls away the content lifts and fades and the bottom corners darken. Only
+  // opacity and transform change, which the browser can do on the graphics card without repainting.
   useEffect(() => {
     const section = sectionRef.current;
     if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
-    const layers = Array.from(section.querySelectorAll<HTMLElement>('[data-corner]'));
+    const shade = shadeRef.current;
     let frame = 0;
     const update = () => {
       frame = 0;
@@ -64,16 +47,9 @@ export function HeroSection() {
         content.style.opacity = String(1 - progress * 0.7);
         content.style.transform = `translate3d(0, ${(-progress * 56).toFixed(1)}px, 0)`;
       }
-      const video = videoRef.current;
-      if (video) {
-        video.style.transform = `scale(${(1 + progress * 0.12).toFixed(3)})`;
+      if (shade) {
+        shade.style.opacity = progress.toFixed(3);
       }
-      layers.forEach((layer, index) => {
-        const mask = cornerMask(progress, cornerLayers[index]?.reach ?? 1);
-        layer.style.maskImage = mask;
-        layer.style.setProperty('-webkit-mask-image', mask);
-        layer.style.opacity = progress > 0.005 ? '1' : '0';
-      });
     };
     const onScroll = () => {
       if (!frame) {
@@ -90,11 +66,32 @@ export function HeroSection() {
     };
   }, []);
 
-  // Respect "reduce motion": leave the video on its first frame instead of looping it.
+  // Respect "reduce motion": leave the video on its first frame instead of looping it. Otherwise
+  // the video plays only while the hero is on screen, so scrolling the rest of the page is not
+  // slowed by decoding frames nobody can see.
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      videoRef.current?.pause();
+    const video = videoRef.current;
+    if (!video) {
+      return;
     }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.pause();
+      return;
+    }
+    if (typeof IntersectionObserver === 'undefined') {
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) {
+        void video.play().catch(() => undefined);
+      } else {
+        video.pause();
+      }
+    });
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const title = t('landing.hero.title');
@@ -112,7 +109,7 @@ export function HeroSection() {
       {saveData ? null : (
         <video
           ref={videoRef}
-          className="absolute inset-0 z-0 h-full w-full object-cover will-change-transform"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
           poster={HERO_POSTER_SRC}
           preload="auto"
           autoPlay
@@ -155,7 +152,7 @@ export function HeroSection() {
             <>
               <Link
                 to="/demo"
-                className="liquid-glass btn-shine btn-arrow btn-glow inline-flex cursor-pointer items-center gap-2 rounded-full bg-[hsl(201_100%_13%/0.38)]! px-10 py-5 text-base font-medium text-white backdrop-blur-md! transition-transform hover:scale-[1.04] active:scale-[0.98] sm:px-14"
+                className="liquid-glass btn-shine btn-arrow btn-glow inline-flex cursor-pointer items-center gap-2 rounded-full bg-[hsl(201_100%_13%/0.38)]! px-10 py-5 text-base font-medium text-white transition-transform hover:scale-[1.04] active:scale-[0.98] sm:px-14"
               >
                 <FlaskConical className="size-5" aria-hidden="true" />
                 {t('demo.hero.cta')}
@@ -163,7 +160,7 @@ export function HeroSection() {
               </Link>
               <Link
                 to="/login"
-                className="liquid-glass btn-shine rounded-full bg-black/30! px-8 py-5 text-base text-white backdrop-blur-md! transition-transform hover:scale-[1.03] active:scale-[0.98]"
+                className="liquid-glass btn-shine rounded-full bg-black/30! px-8 py-5 text-base text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
               >
                 {t('landing.hero.primaryCta')}
               </Link>
@@ -172,14 +169,14 @@ export function HeroSection() {
             <>
               <Link
                 to="/login"
-                className="liquid-glass btn-shine btn-arrow btn-glow inline-flex cursor-pointer items-center gap-2 rounded-full bg-[hsl(201_100%_13%/0.38)]! px-10 py-5 text-base font-medium text-white backdrop-blur-md! transition-transform hover:scale-[1.04] active:scale-[0.98] sm:px-14"
+                className="liquid-glass btn-shine btn-arrow btn-glow inline-flex cursor-pointer items-center gap-2 rounded-full bg-[hsl(201_100%_13%/0.38)]! px-10 py-5 text-base font-medium text-white transition-transform hover:scale-[1.04] active:scale-[0.98] sm:px-14"
               >
                 {t('landing.hero.primaryCta')}
                 <ArrowRight className="size-5" aria-hidden="true" />
               </Link>
               <a
                 href="#how-it-works"
-                className="liquid-glass btn-shine rounded-full bg-black/30! px-8 py-5 text-base text-white backdrop-blur-md! transition-transform hover:scale-[1.03] active:scale-[0.98]"
+                className="liquid-glass btn-shine rounded-full bg-black/30! px-8 py-5 text-base text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
               >
                 {t('landing.hero.secondaryCta')}
               </a>
@@ -187,25 +184,16 @@ export function HeroSection() {
           )}
         </div>
 
-        <p className="animate-fade-rise-delay-2 mt-8 flex max-w-xl items-start justify-center gap-2 rounded-2xl bg-black/35 px-4 py-2.5 text-sm text-white/80 backdrop-blur-md">
+        <p className="animate-fade-rise-delay-2 mt-8 flex max-w-xl items-start justify-center gap-2 rounded-2xl bg-black/50 px-4 py-2.5 text-sm text-white/80">
           <WifiOff className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           <span>{t('landing.hero.note')}</span>
         </p>
       </div>
-      {cornerLayers.map((layer) => (
-        <div
-          key={layer.blur}
-          data-corner
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-20"
-          style={{
-            backdropFilter: `blur(${layer.blur}px)`,
-            WebkitBackdropFilter: `blur(${layer.blur}px)`,
-            background: layer.tint,
-            opacity: 0,
-          }}
-        />
-      ))}
+      <div
+        ref={shadeRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-20 opacity-0 [background:radial-gradient(ellipse_70%_60%_at_0%_100%,hsl(201_100%_13%/0.55),transparent),radial-gradient(ellipse_70%_60%_at_100%_100%,hsl(201_100%_13%/0.55),transparent)]"
+      />
       <span
         aria-hidden="true"
         className="absolute bottom-6 left-1/2 z-10 hidden h-9 w-5 -translate-x-1/2 justify-center rounded-full border border-white/40 pt-2 sm:flex"

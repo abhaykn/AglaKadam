@@ -25,7 +25,7 @@ function PhoneMockup() {
     <div className="relative mx-auto w-[16.5rem] sm:w-[19rem]">
       <div
         aria-hidden="true"
-        className="absolute -inset-10 rounded-full bg-primary/20 blur-3xl"
+        className="absolute -inset-10 rounded-full [background:radial-gradient(closest-side,color-mix(in_srgb,var(--primary)_28%,transparent),transparent)]"
         style={{ animation: 'vg-pulse 5s ease-in-out infinite' }}
       />
       <div

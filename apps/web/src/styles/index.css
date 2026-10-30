@@ -456,8 +456,6 @@
 .liquid-glass {
   background: rgba(255, 255, 255, 0.01);
   background-blend-mode: luminosity;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   border: none;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
   position: relative;
@@ -719,6 +717,16 @@ html:has(.snap-page) {
 
 .snap-page {
   scroll-snap-align: start;
+}
+
+/* Decorations rest while the page scrolls and while their section is off screen (see use-scroll-calm). */
+html[data-calm][data-scrolling] *,
+html[data-calm][data-scrolling] *::before,
+html[data-calm][data-scrolling] *::after,
+html[data-calm] [data-away] *,
+html[data-calm] [data-away] *::before,
+html[data-calm] [data-away] *::after {
+  animation-play-state: paused !important;
 }
 
 /* A soft light that follows the pointer across glass cards. */
