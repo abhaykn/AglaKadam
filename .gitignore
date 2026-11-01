@@ -53,3 +53,6 @@ private/
 
 .vercel
 .env*
+
+# Example files list the names of the settings only, never a value: they are committed.
+!.env.example

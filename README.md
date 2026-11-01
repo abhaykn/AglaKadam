@@ -59,6 +59,23 @@ days. A banner switches between roles, and a short guide lists what to try in ea
 
 Everything in a demonstration district is simulated, and it is kept apart from real data.
 
+### For evaluators: test access and sample inputs
+
+**Test access.** None is needed: there are no passwords to type. Open
+<https://agla-kadam-pi.vercel.app>, tap **Try the live demo**, and pick the role. **Switch role** in
+the strip at the top of every screen moves between the four roles of the same district. If a
+demonstration district is busy, wait a minute and try again: the oldest one makes way.
+
+| Role | Sample inputs that show it at its best |
+| --- | --- |
+| **Teacher** (Anita Sharma) | 1. **Attendance**, Class 2: tap two names absent, then **Save attendance**. 2. Turn the network off (airplane mode or DevTools, Network, Offline) and repeat: the app says it is saved on the device, and uploads by itself when the network returns. 3. **Pulse**, Class 1: the children drawn at random this month, each with the level the speech engine heard. 4. **Progress**: reading levels by month. |
+| **Cluster Resource Person** (Rajeev Kumar Mishra) | 1. **Week's plan**: classes ranked by need, each with its reasons. 2. Open the first planned class, then **Start a visit now**. 3. **Observe**: choose the teacher, tap moments, answer the focus items. 4. **Coach**, then **Prepare a draft**: Sahayak drafts feedback from the evidence; read the checklist under *Before you give the feedback*. 5. **My coaching**: how feedback and follow-ups changed over the months. |
+| **Block education officer** (Suresh Chandra Dubey) | 1. **Mentoring that changes practice**: follow-up visits that found the agreed step in use. 2. **Reading (Pulse)** against NIPUN Bharat's Lakshya (Class 2: 45 words a minute). 3. **Class 1, English medium** shows nothing on purpose: too few classes to show without singling a school out. 4. **Show as a table** under any chart, and the **हिं** button for Hindi. |
+| **Family** | 1. The child's attendance and results. 2. The teacher's notes and home practice. |
+
+**Disha**, the learning guide, is the round button at the bottom right of every screen: try *How do I
+give feedback that a teacher will use?*. A visitor to the demonstration may ask 25 questions a day.
+
 ## Who uses it
 
 | Role | What they do in the app |
