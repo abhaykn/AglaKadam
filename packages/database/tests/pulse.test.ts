@@ -905,7 +905,10 @@ describe('recording a check', () => {
   });
 
   it('accepts only a passage in the class language and items of the class grade', async () => {
-    const { classId, samples } = await openChild();
+    // Twenty children give five in each week, so the first five checks all belong to the first
+    // week, which is open from the first of the month. With fewer children a later week would be
+    // used, and a week that has not begun refuses its recordings.
+    const { classId, samples } = await openChild(20);
     const attempts: [string, string][] = [
       ['en-g2-p01', 'en-g2-s01'],
       ['hi-g3-p01', 'en-g2-s01'],
